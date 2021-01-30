@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# set dotfiles path
+export DOTFILES=/personal-files/dotfiles
+
+# modify PS1
+source $DOTFILES/bash/command-prompt.sh
+
+# set gopath and goroot
+export GOPATH="/personal-files/gopath"
+export GOENV="$GOPATH/env"
+export GOROOT="/personal-files/go"
+
+# set zigpath
+export ZIGPATH="/personal-files/zig"
+
+# add custom binaries and golang to path
+export PERSONAL_BIN="/personal-files/bin"
+export PATH="$PERSONAL_BIN:$GOROOT/bin:$GOPATH/bin:$ZIGPATH:$PATH"
+
+# call neofetch
+neofetch
+
+
