@@ -1,0 +1,58 @@
+image: "golang:1.15.8-buster"
+
+before_script:
+  - go get github.com/boumenot/gocover-cobertura
+
+
+stages:
+  - testing
+  - reports
+  - deploy
+
+test-code:
+  stage: testing
+  script:
+    - go test -cover -coverprofile=cov.out -covermode=atomic ./...
+    - go tool cover -func=cov.out
+  coverage: '/total:\s+\(statements\)\s+(\d+.\d+\%)/'
+  artifacts:
+    paths:
+      - cov.out
+
+# even though it is a report, it is mostly just for visualization of unit tests passing / failing
+junit:
+  stage: testing
+  script:
+    - go get -u github.com/jstemmer/go-junit-report
+    - go test -v ./... 2>&1 | go-junit-report -set-exit-code > report.xml
+  artifacts:
+    when: always
+    reports:
+      junit: report.xml
+
+cobertura-report:
+  stage: reports
+  script:
+    - go tool cover -html=cov.out -o coverage.html
+    - gocover-cobertura < cov.out > coverage.xml
+    - sed -i "s=<source>.*</source>=<source>./</source>=g" coverage.xml
+  dependencies:
+    - test-code
+  artifacts:
+    paths:
+      - coverage.html
+    reports:
+      cobertura: coverage.xml
+
+pages:
+  stage: deploy
+  script:
+    - mkdir -p public/
+    - mv coverage.html public/coverage-$CI_COMMIT_BRANCH.html
+  artifacts:
+    paths:
+      - public
+    expire_in: 30 days
+  only:
+    - dev
+    - master
