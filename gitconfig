@@ -1,0 +1,5 @@
+
+#!/bin/bash
+
+# use my ssh file for personal repos
+git config --global url."gitlab:".insteadOf "https://gitlab.com/"
