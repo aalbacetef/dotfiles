@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # set dotfiles path
 export DOTFILES=/personal-files/dotfiles
@@ -17,6 +17,8 @@ export ZIGPATH="/personal-files/zig"
 # add custom binaries and golang to path
 export PERSONAL_BIN="/personal-files/bin"
 export PATH="$PERSONAL_BIN:$GOROOT/bin:$GOPATH/bin:$ZIGPATH:$PATH"
+
+source $DOTFILES/bash/rustrc
 
 # call neofetch
 neofetch
