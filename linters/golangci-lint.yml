@@ -115,8 +115,7 @@ linters:
   enable:
     - deadcode 
     - dupl
-    - error
-    - errorcheck
+    - errcheck
     - funlen
     - gochecknoglobals
     - gocognit
@@ -147,3 +146,4 @@ issues:
   
   new: false
   fix: false
+
