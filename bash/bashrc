@@ -21,6 +21,7 @@ export WIREGUARD_TUNNEL_NAME="tunnel"
 
 source $DOTFILES/bash/rustrc
 source $DOTFILES/bash/tunnel.sh
+source $DOTFILES/bash/hidden.sh
 
 # call neofetch
 neofetch
