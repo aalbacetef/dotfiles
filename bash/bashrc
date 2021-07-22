@@ -19,9 +19,16 @@ export PERSONAL_BIN="/personal-files/bin"
 export PATH="$PERSONAL_BIN:$GOROOT/bin:$GOPATH/bin:$ZIGPATH:$PATH"
 export WIREGUARD_TUNNEL_NAME="tunnel"
 
+# add podman user-level service/socket as docker host
+export DOCKER_HOST=///run/user/$UID/podman/podman.sock
+
 source $DOTFILES/bash/rustrc
 source $DOTFILES/bash/tunnel.sh
 source $DOTFILES/bash/hidden.sh
+
+reload-bash() {
+  source ~/.bashrc
+}
 
 # call neofetch
 neofetch
