@@ -33,7 +33,7 @@ git_branch() {
 
         branch_name="git ~ $(git_info) "
         status_output="Add: $added    Mod: $(expr $modified + $renamed)   Del: $deleted    Unt: $untracked"
-        echo " 	"
+#        echo " 	"
         echo -n " ["
         echo -n ' '$branch_name
         echo -n ' || '$status_output
@@ -84,10 +84,7 @@ PROMPT_COMMAND='export git_str=$( get_branch_info )'
 ## disable venv prompt change
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 
-
-
-
-PS1="\n$login_info $time_var $size_str $venv \n ~> $directory "'$git_str'" \n "'$ '
+PS1="\n$login_info $time_var $size_str $venv \n ~> $directory \n"'$git_str'" \n "'$ '
 
 
 gitlab() {
