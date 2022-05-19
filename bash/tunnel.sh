@@ -63,9 +63,8 @@ tun-exec() {
 
 tssh() {
   TUNNEL_NAME=$WIREGUARD_TUNNEL_NAME
-  HOSTNAME=$1
   current_user=$(whoami)
-  sudo ip netns exec $TUNNEL_NAME sudo -u $current_user ssh -4 -C $HOSTNAME
+  sudo ip netns exec $TUNNEL_NAME sudo -u $current_user ssh -4 -C "$@"
 }
 
 tun-print(){
@@ -76,8 +75,6 @@ tun-print(){
 
 tscp() {
   TUNNEL_NAME=$WIREGUARD_TUNNEL_NAME
-  SRC="$1"
-  DEST="$2"
   current_user=$(whoami)
-  sudo ip netns exec $TUNNEL_NAME sudo -u $current_user scp  $SRC $DEST
+  sudo ip netns exec $TUNNEL_NAME sudo -u $current_user scp "$@"
 }

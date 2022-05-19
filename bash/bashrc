@@ -22,9 +22,21 @@ export WIREGUARD_TUNNEL_NAME="tunnel"
 # add podman user-level service/socket as docker host
 export DOCKER_HOST=unix:///run/user/$UID/podman/podman.sock
 
+## DDO launcher. Added this because steam was struggling to launch DDO.
+ddo-launch() {
+  local pfx=$(realpath ~/.steam/debian-installation/steamapps/compatdata/206480/pfx)
+  local rootdir="$(realpath ~/.steam/debian-installation/steamapps/common/Dungeons\ and\ Dragons\ Online)"
+
+  echo "prefix: $pfx"
+  echo "rootdir: $rootdir"
+  echo ""
+  env WINEPREFIX=$pfx wine "$rootdir/DNDLauncher.exe"
+}
+
+
 source $DOTFILES/bash/rustrc
 source $DOTFILES/bash/tunnel.sh
-source $DOTFILES/bash/hidden.sh
+source $DOTFILES/bash/hidden.sh # TODO: need a better way to inject/import this.
 
 reload-bash() {
   source ~/.bashrc
