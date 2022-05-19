@@ -86,7 +86,7 @@ linters-settings:
     # report about shadowed variables
     check-shadowing: true
     enable-all: true
-
+    disable: [fieldalignment]
     # settings per analyzer
     settings:
       # analyzer name, run `go tool vet help` to see all analyzers
@@ -98,10 +98,7 @@ linters-settings:
           - (github.com/golangci/golangci-lint/pkg/logutils.Log).Errorf
           - (github.com/golangci/golangci-lint/pkg/logutils.Log).Fatalf
 
-  maligned:
-    # print struct with more effective memory layout or not, default is false
-    suggest-new: true
-   
+
   misspell: 
     # Correct spellings using locale preferences for US or UK.
     # Default is to use a neutral variety of English.
@@ -126,8 +123,6 @@ linters:
     - govet
     - gosec
     - ineffassign
-    - interfacer
-    - maligned
     - misspell
     - prealloc
     - staticcheck
