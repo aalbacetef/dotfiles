@@ -1,3 +1,30 @@
+##
+## Goland
+##
 
-# exlude idea editor
+# exclude idea editor
 /.idea/
+
+
+##
+##  Taskfile
+##
+
+# exclude Taskfile.yml by default
+Taskfile.yml
+
+# exclude top-level tasks directory by default
+/tasks/
+
+# exclude logs/ by default
+/logs/
+
+# exclude misc folder
+/misc/
+
+# exclude redis database folder that usually gets mounted
+/redis-db/
+
+# exclude common build directories
+/build/
+/dist/
