@@ -1,0 +1,44 @@
+# Beryllium
+
+padding         = 1
+spacing         = 1
+hide_ascii      = false
+prefer_small_ascii = true
+key_color       = "#7067CF"
+separator       = "=>"
+#separator_color = ""
+
+[box]
+border          = "plain"
+visible         = true
+
+[palette]
+visible         = true
+type            = "Full"
+
+[bar]
+glyph           = "○"
+hide_delimiters = true
+visible         = true
+
+[box.inner_margin]
+x               = 2
+y               = 1
+
+[custom_ascii]
+#color           = "#7067CF"
+#color           = "#FF7001"
+path            = "~/.config/macchina/ascii-art.txt"
+
+
+
+[keys]
+host         = ""
+distro       = " "
+kernel       = ""
+de           = " "
+wm           = " "
+terminal     = " "
+packages     = " "
+shell        = " "
+memory       = " "

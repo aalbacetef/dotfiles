@@ -43,4 +43,5 @@ reload-bash() {
 }
 
 # call neofetch
-neofetch
+#neofetch
+macchina
