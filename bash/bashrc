@@ -41,6 +41,13 @@ source $DOTFILES/bash/rustrc
 source $DOTFILES/bash/tunnel.sh
 source $DOTFILES/bash/hidden.sh # TODO: need a better way to inject/import this.
 
+# add support for kitty helpers
+source $DOTFILES/kitty/select.sh
+
+# add additional commands
+source $DOTFILES/bash/extension.sh
+
+
 reload-bash() {
   source ~/.bashrc
 }
