@@ -21,6 +21,9 @@ export WIREGUARD_TUNNEL_NAME="tunnel"
 
 # add podman user-level service/socket as docker host
 export DOCKER_HOST=unix:///run/user/$UID/podman/podman.sock
+export SHADOWED_DOCKER_HOST=unix:///run/docker.sock
+alias docker='env DOCKER_HOST=$SHADOWED_DOCKER_HOST docker'
+
 
 ## DDO launcher. Added this because steam was struggling to launch DDO.
 ddo-launch() {
