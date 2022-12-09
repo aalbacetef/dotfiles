@@ -19,6 +19,10 @@ export PERSONAL_BIN="/personal-files/bin"
 export PATH="$PERSONAL_BIN:$GOROOT/bin:$GOPATH/bin:$ZIGPATH:$PATH"
 export WIREGUARD_TUNNEL_NAME="tunnel"
 
+# vagrant.d
+export VAGRANT_HOME=/media/arturo/cc6316ab-ead6-4170-a960-5ce437efd6fa/vms/vagrant.d
+
+
 # add podman user-level service/socket as docker host
 export DOCKER_HOST=unix:///run/user/$UID/podman/podman.sock
 export SHADOWED_DOCKER_HOST=unix:///run/docker.sock
