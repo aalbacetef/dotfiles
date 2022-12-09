@@ -1,1 +1,7 @@
 /bash/hidden.sh
+
+
+
+# ignore heavy themes
+/themes/icons
+/kitty/themes
