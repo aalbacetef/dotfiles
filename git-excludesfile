@@ -27,4 +27,5 @@ Taskfile.yml
 
 # exclude common build directories
 /build/
+/builds/
 /dist/
