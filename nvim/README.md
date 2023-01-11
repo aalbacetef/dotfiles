@@ -1,8 +1,8 @@
-Using NvChad for nvim.
+Using AstroNvim
 
 I should link it to ~/.config/nvim and call:
 
-nvim +'hi NormalFloat guibg=#1e222a' +PackerSync
+nvim +PackerSync
 
 UNINSTALL:
 
