@@ -1,33 +1,6 @@
 #!/usr/bin/env bash
 
-# set dotfiles path
-export DOTFILES=/personal-files/dotfiles
-
-# modify PS1
-source $DOTFILES/bash/command-prompt.sh
-
-# set gopath and goroot
-export GOPATH="/personal-files/gopath"
-export GOENV="$GOPATH/env"
-export GOROOT="/personal-files/go"
-
-# set zigpath
-export ZIGPATH="/personal-files/zig"
-
-# add custom binaries and golang to path
-export PERSONAL_BIN="/personal-files/bin"
-export PATH="$PERSONAL_BIN:$GOROOT/bin:$GOPATH/bin:$ZIGPATH:$PATH"
-export WIREGUARD_TUNNEL_NAME="tunnel"
-
-# vagrant.d
-export VAGRANT_HOME=/media/arturo/cc6316ab-ead6-4170-a960-5ce437efd6fa/vms/vagrant.d
-
-
-# add podman user-level service/socket as docker host
-export DOCKER_HOST=unix:///run/user/$UID/podman/podman.sock
-export SHADOWED_DOCKER_HOST=unix:///run/docker.sock
-alias docker='env DOCKER_HOST=$SHADOWED_DOCKER_HOST docker'
-
+source  "$(dirname $BASH_SOURCE)/paths.sh"
 
 ## DDO launcher. Added this because steam was struggling to launch DDO.
 ddo-launch() {
@@ -41,9 +14,18 @@ ddo-launch() {
 }
 
 
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+source "/personal-files/apps/cargo/env"
 source $DOTFILES/bash/rustrc
 source $DOTFILES/bash/tunnel.sh
 source $DOTFILES/bash/hidden.sh # TODO: need a better way to inject/import this.
+
+complete -C /personal-files/bin/mc mc
+
+# custom bash prompt
+source $DOTFILES/bash/command-prompt.sh
 
 # add support for kitty helpers
 source $DOTFILES/kitty/select.sh
@@ -52,10 +34,11 @@ source $DOTFILES/kitty/select.sh
 source $DOTFILES/bash/extension.sh
 
 
+# alias docker to use non-podman host
+alias docker='env DOCKER_HOST=$SHADOWED_DOCKER_HOST docker'
+
 reload-bash() {
   source ~/.bashrc
 }
 
-# call neofetch
-#neofetch
 macchina
