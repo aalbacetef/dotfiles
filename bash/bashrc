@@ -37,6 +37,10 @@ source $DOTFILES/bash/extension.sh
 # alias docker to use non-podman host
 alias docker='env DOCKER_HOST=$SHADOWED_DOCKER_HOST docker'
 
+
+export KITTY_CONFIG_DIRECTORY=$DOTFILES/kitty
+
+
 reload-bash() {
   source ~/.bashrc
 }
