@@ -10,3 +10,11 @@ It would go through the steps of installing all the necessary packages, copying 
 ### project variables
 
 I need to find a way to add variables into my system. Ideally, I'd add a config.sample.yml, the bootstrap script could check for a config.yml, and exit if it can't find it.
+
+
+### Templates in files
+
+For example, alacritty requires that files be imported using absolute paths or ~/ paths, in which case
+I would need to be able to subsitute $DOTFILES into it.
+
+

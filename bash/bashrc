@@ -36,7 +36,7 @@ source $DOTFILES/bash/extension.sh
 
 # alias docker to use non-podman host
 alias docker='env DOCKER_HOST=$SHADOWED_DOCKER_HOST docker'
-
+alias sp='superproductivity --user-data-dir='$SUPERPROD_USER_DATA
 
 export KITTY_CONFIG_DIRECTORY=$DOTFILES/kitty
 

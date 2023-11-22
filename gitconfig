@@ -1,9 +1,0 @@
-
-#!/usr/bin/env bash
-
-# use my ssh file for personal repos
-git config --global url."gitlab:".insteadOf "https://gitlab.com/"
-
-# use github key
-git config --global url."github:".insteadOf "https://github.com"
-

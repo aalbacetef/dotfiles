@@ -1,0 +1,18 @@
+
+system:
+  terminal:
+     alacritty:
+        config: alacritty/
+
+services:
+  - podman:
+      enabled: true
+      desc: |
+        I prefer using Podman over Docker because the rootless mode is fantastic. 
+        There are some downsides with it like talking with the outside world is more difficult
+        which is why I don't alias docker.
+      options:
+        override-socket: true
+        aliases: []           # to alias to docker just use ["docker"]
+        
+        
