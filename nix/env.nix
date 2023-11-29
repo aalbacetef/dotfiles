@@ -1,18 +1,34 @@
 with import <nixpkgs> {}; [
+  alacritty
+  bash-completion
   coreutils-full
   fd
+  ffmpeg
+  fish
+  fzf
   gdb
+  git
+  gh
+  glab
+  go
+  graphviz
+  grpc
   jq
+  lua
+  luarocks
   nasm
   neovim
   nodejs
   obsidian
+  qemu
+  podman
   python3
   ripgrep
-  ruby_3_1
+  ruby
   shellcheck
   socat
   tmux
   tree
   universal-ctags
+  zig
 ]
