@@ -5,7 +5,6 @@
 
   inputs = {
     nixpkgs.url = github:NixOS/nixpkgs/nixpkgs-unstable;
-    flake-utils.url = "github:numtide/flake-utils";
   };
   
 
@@ -20,6 +19,7 @@
         "alacritty"
         "bash-completion"
         "coreutils-full"
+        "doctl"
         "fd"
         "ffmpeg"
         "fish"
@@ -29,34 +29,43 @@
         "gh"
         "glab"
         "go"
+        "go-task"
+        "go-toml"
         "graphviz"
         "grpc"
         "jq"
         "lua"
         "luarocks"
+        "mc"
         "nasm"
         "neovim"
         "nodejs"
         "obsidian"
         "qemu"
         "podman"
+        "poetry"
         "python311"
         "ripgrep"
         "ruby"
         "shellcheck"
         "socat"
+        "terraform"
         "tmux"
         "tree"
         "universal-ctags"
-        "vagrant"
+        "yq"
         "zig"
       ]; 
 
       linuxPkgs = [] ++ commonPackages;
       
       darwinPkgs = [
+        "fuse-ext2"
+        "rectangle"
         "skhd"
         "sketchybar" 
+        "texliveMedium"
+        "texstudio"
       ] ++ commonPackages;
 
     in {

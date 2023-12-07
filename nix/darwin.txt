@@ -1,4 +1,0 @@
-# packages I need to add for darwin only
-skhd
-sketchybar
-amethyst (or yabai)

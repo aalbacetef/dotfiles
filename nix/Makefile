@@ -9,3 +9,6 @@ run:
 
 run-sh:
 	podman run --rm -it nix-test:latest bash
+
+upgrade:
+	nix profile upgrade 0 --impure
