@@ -1,5 +1,27 @@
 #!/usr/bin/env bash
 
+############################################
+# Creates an ip network namespace to use 
+# for wireguard connection. This allows one 
+# to neatly isolate traffic.
+# 
+# Arguments:
+#  - Tunnel Name 
+#  - Private key file 
+#  - Peer public key 
+#  - Endpoint 
+#  - Allowed IPS 
+#  - Peer Address
+#  - VPN DNS 
+#  - MTU
+#
+# Outputs:
+#  - ip network namespace $TUNNEL_NAME
+#  - ip link wg0 
+#  - /etc/netns/$TUNNEL_NAME 
+#  - /etc/netns/$TUNNEL_NAME/resolv.conf
+#
+###############################################
 register-tunnel() {
   TUNNEL_NAME="$1"
   PRIVATE_KEY_FILE="$2"
@@ -9,6 +31,7 @@ register-tunnel() {
   PEER_ADDR="$6"
   VPN_DNS="$7"
   MTU="$8"
+
   echo "TUNNEL_NAME=$TUNNEL_NAME"
   echo "PRIVATE_KEY_FILE=$PRIVATE_KEY_FILE"
   echo "PEER_PUBLIC_KEY=$PEER_PUBLIC_KEY"
