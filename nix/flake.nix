@@ -28,6 +28,8 @@
         "git"
         "gh"
         "glab"
+        "gnumake"
+        "gnuplot"
         "go"
         "go-task"
         "go-toml"
