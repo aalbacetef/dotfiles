@@ -2,16 +2,6 @@
 
 source  "$(dirname $BASH_SOURCE)/paths.sh"
 
-## DDO launcher. Added this because steam was struggling to launch DDO.
-ddo-launch() {
-  local pfx=$(realpath ~/.steam/debian-installation/steamapps/compatdata/206480/pfx)
-  local rootdir="$(realpath ~/.steam/debian-installation/steamapps/common/Dungeons\ and\ Dragons\ Online)"
-
-  echo "prefix: $pfx"
-  echo "rootdir: $rootdir"
-  echo ""
-  env WINEPREFIX=$pfx wine "$rootdir/DNDLauncher.exe"
-}
 
 
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
