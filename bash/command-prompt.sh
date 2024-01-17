@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 venv_info() {
     if [[ -n "$VIRTUAL_ENV" ]]; then
         # strip out the path and just leave the env name

@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+current_dir="$(dirname $(realpath $BASH_SOURCE))"
+
+source "$current_dir"/helpers/platform.sh
 
 function mkd() {
   local path="$1"
@@ -44,4 +47,23 @@ function remove-personal-ssh-ip() {
     doctl compute firewall remove-rules $firewall_id --inbound-rules "$rules_to_delete"
   fi
   
+}
+
+
+## DDO launcher. Added this because steam was struggling to launch DDO.
+ddo-launch() {
+  # should only run on linux
+  if [[ "$(platform::is_linux)" != "1" ]]; then
+    echo "only on linux"
+    return $ERR_WRONG_PLATFORM
+  fi
+
+
+  local pfx=$(realpath ~/.steam/debian-installation/steamapps/compatdata/206480/pfx)
+  local rootdir="$(realpath ~/.steam/debian-installation/steamapps/common/Dungeons\ and\ Dragons\ Online)"
+
+  echo "prefix: $pfx"
+  echo "rootdir: $rootdir"
+  echo ""
+  env WINEPREFIX=$pfx wine "$rootdir/DNDLauncher.exe"
 }

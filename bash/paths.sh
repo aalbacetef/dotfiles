@@ -34,22 +34,15 @@ export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
 export PATH=$PATH:$ANDROID_SDK_ROOT/emulator
 export CAPACITOR_ANDROID_STUDIO_PATH=/personal-files/android/android-studio/bin/studio.sh
 
-# TODO: move this somewhere else
-# source nix
 source $HOME/.nix-profile/etc/profile.d/nix.sh
-
 export XDG_DATA_DIRS="/personal-files/apps:$XDG_DATA_DIRS"
-export LOCAL_USR_BIN="$(realpath ~/.local/bin)"
+
 export DENO_INSTALL="/personal-files/apps/deno"
-export PATH="$LOCAL_USR_BIN:$DENO_INSTALL/bin:$PATH"
+export PATH="$DENO_INSTALL/bin:$PATH"
 
 # add nim paths
-export PATH="/personal-files/nim/bin:$PATH"
+export PATH="$PATH:/personal-files/nim/bin"
 
 # add taskwarrior rc file path 
 export TASKDATA="/personal-files/work/taskwarrior"
 export TASKRC="$TASKDATA/taskrc"
-
-# superproductivity
-export SUPERPROD_USER_DATA="/personal-files/work/superproductivity"
-
