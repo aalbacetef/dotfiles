@@ -1,0 +1,38 @@
+return {
+  "nvim-treesitter/nvim-treesitter",
+  opts = {
+    ensure_installed = {
+      "c", 
+      "css",
+      "html", 
+      "bash", 
+      "lua", 
+      "dockerfile", 
+      "html",
+      "go",
+      "csv",
+      "fish",
+      "hcl",
+      "json",
+      "latex",
+      "make",
+      "meson",
+      "ninja",
+      "nix",
+      "python",
+      "rust",
+      "scss",
+      "solidity",
+      "ssh_config",
+      "svelte",
+      "terraform",
+      "todotxt",
+      "toml",
+      "typescript",
+      "verilog",
+      "vue",
+      "yaml",
+      "zig",
+    }
+  }
+}
