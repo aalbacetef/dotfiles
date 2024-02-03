@@ -1,88 +1,118 @@
-
-
 {
-  description = "Core packages in use";
+  description = "declarative package setup";
 
   inputs = {
     nixpkgs.url = github:NixOS/nixpkgs/nixpkgs-unstable;
   };
-  
 
-  outputs = { self, nixpkgs, ... }: 
-    let 
+
+  outputs = { self, nixpkgs, ... }:
+    let
       systems = [
         "x86_64-linux"
         "x86_64-darwin"
-      ]; 
+      ];
 
-      commonPackages = [
-        "alacritty"
+      essentials = [
         "bash-completion"
+        "curl"
         "coreutils-full"
-        "doctl"
+        "deno"
         "fd"
-        "ffmpeg"
-        "fish"
         "fzf"
         "gdb"
         "git"
-        "gh"
-        "glab"
         "gnumake"
         "gnuplot"
-        "go"
+        "golangci-lint"
         "go-task"
         "go-toml"
         "graphviz"
         "grpc"
-        "jq"
-        "lua"
-        "luarocks"
-        "mc"
+        "libssh2"
         "nasm"
-        "neovim"
-        "nodejs"
-        "obsidian"
-        "qemu"
+        "openssl_3_1"
         "podman"
-        "poetry"
-        "python311"
+        "qemu"
         "ripgrep"
-        "ruby"
         "shellcheck"
         "socat"
-        "terraform"
-        "tmux"
         "tree"
         "universal-ctags"
-        "yq"
-        "zig"
-      ]; 
+        "wget"
+      ];
 
-      linuxPkgs = [] ++ commonPackages;
-      
+      apps = [
+        "alacritty"
+        "doctl"
+        "ffmpeg"
+        "fish"
+        "gh"
+        "glab"
+        "jq"
+        "minio-client"
+        "nmap"
+        "nmap-formatter"
+        "neovim"
+        "obsidian"
+        "terraform"
+        "tmux"
+        "yarn"
+        "yq"
+      ];
+
+      langs = [
+        "clojure"
+        "go"
+        "groovy"
+        "lua"
+        "luarocks"
+        "nodejs"
+        "python311"
+        "poetry"
+        "racket"
+        "ruby"
+        "rustup"
+        "zig"
+      ];
+
+
+      commonPackages = apps ++ langs ++ essentials;
+
+      linuxPkgs = [
+        "koreader"
+        "signal-desktop"
+      ] ++ commonPackages;
+
       darwinPkgs = [
+        "fontconfig"
         "fuse-ext2"
+        "nerdfonts"
         "rectangle"
+        "sketchybar"
         "skhd"
-        "sketchybar" 
         "texliveMedium"
         "texstudio"
       ] ++ commonPackages;
 
-    in {
-       packages.x86_64-linux.default = let
-        pkgs = nixpkgs.legacyPackages.x86_64-linux;
-       in pkgs.buildEnv {
-        name = "user-linux-packages";
-        paths = (map (p: nixpkgs.legacyPackages.x86_64-linux.${p}) linuxPkgs);
-       };
-       
-       packages.x86_64-darwin.default = let
-        pkgs = nixpkgs.legacyPackages.x86_64-darwin;
-       in pkgs.buildEnv {
-        name = "user-darwin-packages";
-        paths = (map (p: nixpkgs.legacyPackages.x86_64-darwin.${p}) darwinPkgs);
-       };
+    in
+    {
+      packages.x86_64-linux.default =
+        let
+          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+        in
+        pkgs.buildEnv {
+          name = "user-linux-packages";
+          paths = (map (p: nixpkgs.legacyPackages.x86_64-linux.${p}) linuxPkgs);
+        };
+
+      packages.x86_64-darwin.default =
+        let
+          pkgs = nixpkgs.legacyPackages.x86_64-darwin;
+        in
+        pkgs.buildEnv {
+          name = "user-darwin-packages";
+          paths = (map (p: nixpkgs.legacyPackages.x86_64-darwin.${p}) darwinPkgs);
+        };
     };
 }
