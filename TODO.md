@@ -17,4 +17,4 @@ I need to find a way to add variables into my system. Ideally, I'd add a config.
 For example, alacritty requires that files be imported using absolute paths or ~/ paths, in which case
 I would need to be able to subsitute $DOTFILES into it.
 
-
+Same for tmux.conf
