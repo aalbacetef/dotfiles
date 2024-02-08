@@ -1,0 +1,12 @@
+brew 'bash'
+brew 'djview4'
+brew 'm-cli'
+
+cask 'atom'
+cask 'libreoffice'
+cask 'macfuse'
+cask 'signal'
+cask 'spotify'
+cask 'steam'
+cask 'telegram'
+cask 'whatsapp'
