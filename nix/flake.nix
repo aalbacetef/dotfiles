@@ -44,6 +44,7 @@
 
       apps = [
         "alacritty"
+        "bun"
         "doctl"
         "ffmpeg"
         "fish"
