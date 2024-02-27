@@ -3,6 +3,7 @@ brew 'djview4'
 brew 'm-cli'
 
 cask 'atom'
+cask 'chromium'
 cask 'libreoffice'
 cask 'macfuse'
 cask 'signal'
