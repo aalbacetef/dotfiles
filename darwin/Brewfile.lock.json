@@ -177,7 +177,7 @@
         }
       },
       "signal": {
-        "version": "6.48.1",
+        "version": "7.0.0",
         "options": {
           "full_name": "signal"
         }
@@ -201,13 +201,13 @@
         }
       },
       "spotify": {
-        "version": "1.2.31.1205,4d59ad7c,345",
+        "version": "1.2.32.997,4c6498b6,1686",
         "options": {
           "full_name": "spotify"
         }
       },
       "libreoffice": {
-        "version": "24.2.0",
+        "version": "24.2.1",
         "options": {
           "full_name": "libreoffice"
         }
@@ -216,6 +216,32 @@
         "version": "latest",
         "options": {
           "full_name": "chromium"
+        }
+      },
+      "google-chrome": {
+        "version": "122.0.6261.94",
+        "options": {
+          "full_name": "google-chrome"
+        }
+      },
+      "vagrant": {
+        "version": "2.4.1",
+        "options": {
+          "full_name": "vagrant"
+        }
+      },
+      "popcorn-time": {
+        "version": "0.4.9",
+        "options": {
+          "full_name": "popcorn-time"
+        }
+      }
+    },
+    "tap": {
+      "popcorn-official/popcorn-desktop": {
+        "revision": "448fdcea35970a90a92eb791eed3a44e48576b5c",
+        "options": {
+          "clone_target": "https://github.com/popcorn-official/popcorn-desktop.git"
         }
       }
     }
@@ -228,7 +254,7 @@
         "Homebrew/homebrew-core": "api",
         "CLT": "15.1.0.0.1.1700200546",
         "Xcode": "15.1",
-        "macOS": "13.6.3"
+        "macOS": "13.6.4"
       }
     }
   }
