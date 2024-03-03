@@ -39,6 +39,7 @@
         "socat"
         "tree"
         "universal-ctags"
+        "wasmtime"
         "wget"
       ];
 
@@ -94,6 +95,7 @@
         "skhd"
         "texliveMedium"
         "texstudio"
+        "wine64"
       ] ++ commonPackages;
 
     in
