@@ -17,7 +17,9 @@ return {
       "rust_analyzer",
       "solc",
       "terraformls",
-      "vtsls",
+      -- "typescript-language-server",
+      "tsserver",
+      -- "vtsls",
       "volar",
       "unocss", -- CSS
       "zls", -- zig
