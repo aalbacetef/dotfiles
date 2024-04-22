@@ -29,6 +29,7 @@
         "go-toml"
         "graphviz"
         "grpc"
+        "imagemagick"
         "libssh2"
         "nasm"
         "openssl_3_1"
@@ -95,7 +96,6 @@
         "skhd"
         "texliveMedium"
         "texstudio"
-        "wine64"
       ] ++ commonPackages;
 
     in
