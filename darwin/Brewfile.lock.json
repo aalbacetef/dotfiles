@@ -161,6 +161,20 @@
             }
           }
         }
+      },
+      "winetricks": {
+        "version": "20240105",
+        "bottle": {
+          "rebuild": 0,
+          "root_url": "https://ghcr.io/v2/homebrew/core",
+          "files": {
+            "all": {
+              "cellar": ":any_skip_relocation",
+              "url": "https://ghcr.io/v2/homebrew/core/winetricks/blobs/sha256:05bbb807e30155dcb1aeabb9be0bc53090fa3c708f1a831bbd8dab7d99f0365f",
+              "sha256": "05bbb807e30155dcb1aeabb9be0bc53090fa3c708f1a831bbd8dab7d99f0365f"
+            }
+          }
+        }
       }
     },
     "cask": {
@@ -171,13 +185,13 @@
         }
       },
       "macfuse": {
-        "version": "4.6.0",
+        "version": "4.6.2",
         "options": {
           "full_name": "macfuse"
         }
       },
       "signal": {
-        "version": "7.0.0",
+        "version": "7.4.0",
         "options": {
           "full_name": "signal"
         }
@@ -189,25 +203,25 @@
         }
       },
       "whatsapp": {
-        "version": "2.24.3.79",
+        "version": "2.24.6.79",
         "options": {
           "full_name": "whatsapp"
         }
       },
       "telegram": {
-        "version": "10.8,259860",
+        "version": "10.10.2,261795",
         "options": {
           "full_name": "telegram"
         }
       },
       "spotify": {
-        "version": "1.2.32.997,4c6498b6,1686",
+        "version": "1.2.35.663,b699649e,5726",
         "options": {
           "full_name": "spotify"
         }
       },
       "libreoffice": {
-        "version": "24.2.1",
+        "version": "24.2.2",
         "options": {
           "full_name": "libreoffice"
         }
@@ -219,7 +233,7 @@
         }
       },
       "google-chrome": {
-        "version": "122.0.6261.94",
+        "version": "123.0.6312.124",
         "options": {
           "full_name": "google-chrome"
         }
@@ -235,11 +249,59 @@
         "options": {
           "full_name": "popcorn-time"
         }
+      },
+      "wine-stable": {
+        "version": "9.0",
+        "options": {
+          "full_name": "wine-stable"
+        }
+      },
+      "transmission": {
+        "version": "4.0.5",
+        "options": {
+          "full_name": "transmission"
+        }
+      },
+      "thunderbird": {
+        "version": "115.9.0",
+        "options": {
+          "full_name": "thunderbird"
+        }
+      },
+      "gimp": {
+        "version": "2.10.36",
+        "options": {
+          "full_name": "gimp"
+        }
+      },
+      "easyfind": {
+        "version": "5.0.2",
+        "options": {
+          "full_name": "easyfind"
+        }
+      },
+      "dolphin": {
+        "version": "5.0",
+        "options": {
+          "full_name": "dolphin"
+        }
+      },
+      "vlc": {
+        "version": "3.0.20",
+        "options": {
+          "full_name": "vlc"
+        }
+      },
+      "koodo-reader": {
+        "version": "1.5.1",
+        "options": {
+          "full_name": "koodo-reader"
+        }
       }
     },
     "tap": {
       "popcorn-official/popcorn-desktop": {
-        "revision": "448fdcea35970a90a92eb791eed3a44e48576b5c",
+        "revision": "ab632e5ffcbf86d643c63ac86b83993de24caf3d",
         "options": {
           "clone_target": "https://github.com/popcorn-official/popcorn-desktop.git"
         }
@@ -249,12 +311,12 @@
   "system": {
     "macos": {
       "ventura": {
-        "HOMEBREW_VERSION": "4.2.10",
+        "HOMEBREW_VERSION": "4.2.17",
         "HOMEBREW_PREFIX": "/usr/local",
         "Homebrew/homebrew-core": "api",
         "CLT": "15.1.0.0.1.1700200546",
         "Xcode": "15.1",
-        "macOS": "13.6.4"
+        "macOS": "13.6.6"
       }
     }
   }
