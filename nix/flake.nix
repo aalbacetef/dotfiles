@@ -48,6 +48,7 @@
         "alacritty"
         "bun"
         "doctl"
+        "emacs"
         "ffmpeg"
         "fish"
         "gh"
@@ -70,12 +71,14 @@
         "groovy"
         "lua"
         "luarocks"
+        "maxima"
         "nodejs"
         "python311"
         "poetry"
         "racket"
         "ruby"
         "rustup"
+        "sbcl"
         "zig"
       ];
 
@@ -83,7 +86,12 @@
       commonPackages = apps ++ langs ++ essentials;
 
       linuxPkgs = [
+        "calibre"
+        "ghdl"
         "koreader"
+        "ngspice"
+        "octaveFull"
+        "qucs-s"
         "signal-desktop"
       ] ++ commonPackages;
 
