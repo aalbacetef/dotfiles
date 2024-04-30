@@ -175,6 +175,50 @@
             }
           }
         }
+      },
+      "octave": {
+        "version": "9.1.0_2",
+        "bottle": {
+          "rebuild": 0,
+          "root_url": "https://ghcr.io/v2/homebrew/core",
+          "files": {
+            "arm64_sonoma": {
+              "cellar": "/opt/homebrew/Cellar",
+              "url": "https://ghcr.io/v2/homebrew/core/octave/blobs/sha256:c0e3b1658deeb3be2605a127f76e570825a42a876b08b74a9c98e0bc60af459d",
+              "sha256": "c0e3b1658deeb3be2605a127f76e570825a42a876b08b74a9c98e0bc60af459d"
+            },
+            "arm64_ventura": {
+              "cellar": "/opt/homebrew/Cellar",
+              "url": "https://ghcr.io/v2/homebrew/core/octave/blobs/sha256:2c5bbf702bf4eb17c76e37aa6e672579924350a2317a74b8b706beb0c496da09",
+              "sha256": "2c5bbf702bf4eb17c76e37aa6e672579924350a2317a74b8b706beb0c496da09"
+            },
+            "arm64_monterey": {
+              "cellar": "/opt/homebrew/Cellar",
+              "url": "https://ghcr.io/v2/homebrew/core/octave/blobs/sha256:f79169679d11f185d863c4356388acbe2d953323ac281416db5b1bf6b3fb2079",
+              "sha256": "f79169679d11f185d863c4356388acbe2d953323ac281416db5b1bf6b3fb2079"
+            },
+            "sonoma": {
+              "cellar": "/usr/local/Cellar",
+              "url": "https://ghcr.io/v2/homebrew/core/octave/blobs/sha256:24df1e7892e1c2c7d0aa0949cb0f44fb9a831cd9af12e44a56b4c3a9b84a43a9",
+              "sha256": "24df1e7892e1c2c7d0aa0949cb0f44fb9a831cd9af12e44a56b4c3a9b84a43a9"
+            },
+            "ventura": {
+              "cellar": "/usr/local/Cellar",
+              "url": "https://ghcr.io/v2/homebrew/core/octave/blobs/sha256:065db32c758ca9cb33cb2362559c51e136d797962db8219f0f3d45e5c745e276",
+              "sha256": "065db32c758ca9cb33cb2362559c51e136d797962db8219f0f3d45e5c745e276"
+            },
+            "monterey": {
+              "cellar": "/usr/local/Cellar",
+              "url": "https://ghcr.io/v2/homebrew/core/octave/blobs/sha256:633bb63c92d310ce88d56b9f9889bcdcf2fb4f44503af9d7af8fbbcfa50ecaa2",
+              "sha256": "633bb63c92d310ce88d56b9f9889bcdcf2fb4f44503af9d7af8fbbcfa50ecaa2"
+            },
+            "x86_64_linux": {
+              "cellar": "/home/linuxbrew/.linuxbrew/Cellar",
+              "url": "https://ghcr.io/v2/homebrew/core/octave/blobs/sha256:348b047a1f7f1c5b77c9ba684256051a962cf152aa3c75608a4787af404e5466",
+              "sha256": "348b047a1f7f1c5b77c9ba684256051a962cf152aa3c75608a4787af404e5466"
+            }
+          }
+        }
       }
     },
     "cask": {
@@ -185,13 +229,13 @@
         }
       },
       "macfuse": {
-        "version": "4.6.2",
+        "version": "4.7.1",
         "options": {
           "full_name": "macfuse"
         }
       },
       "signal": {
-        "version": "7.4.0",
+        "version": "7.6.0",
         "options": {
           "full_name": "signal"
         }
@@ -209,7 +253,7 @@
         }
       },
       "telegram": {
-        "version": "10.10.2,261795",
+        "version": "10.12.2,262594",
         "options": {
           "full_name": "telegram"
         }
@@ -233,7 +277,7 @@
         }
       },
       "google-chrome": {
-        "version": "123.0.6312.124",
+        "version": "124.0.6367.93",
         "options": {
           "full_name": "google-chrome"
         }
@@ -263,7 +307,7 @@
         }
       },
       "thunderbird": {
-        "version": "115.9.0",
+        "version": "115.10.1",
         "options": {
           "full_name": "thunderbird"
         }
@@ -297,11 +341,29 @@
         "options": {
           "full_name": "koodo-reader"
         }
+      },
+      "kicad": {
+        "version": "8.0.1",
+        "options": {
+          "full_name": "kicad"
+        }
+      },
+      "ghdl": {
+        "version": "4.0.0",
+        "options": {
+          "full_name": "ghdl"
+        }
+      },
+      "calibre": {
+        "version": "7.9.0",
+        "options": {
+          "full_name": "calibre"
+        }
       }
     },
     "tap": {
       "popcorn-official/popcorn-desktop": {
-        "revision": "ab632e5ffcbf86d643c63ac86b83993de24caf3d",
+        "revision": "27e137126657cf01e5369ece256750ed9866af19",
         "options": {
           "clone_target": "https://github.com/popcorn-official/popcorn-desktop.git"
         }
@@ -311,7 +373,7 @@
   "system": {
     "macos": {
       "ventura": {
-        "HOMEBREW_VERSION": "4.2.17",
+        "HOMEBREW_VERSION": "4.2.19",
         "HOMEBREW_PREFIX": "/usr/local",
         "Homebrew/homebrew-core": "api",
         "CLT": "15.1.0.0.1.1700200546",
