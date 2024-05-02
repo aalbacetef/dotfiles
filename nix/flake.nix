@@ -55,6 +55,7 @@
         "gh"
         "glab"
         "http-server"
+        "hugo"
         "jq"
         "minio-client"
         "nmap"
