@@ -32,7 +32,7 @@
         "imagemagick"
         "libssh2"
         "nasm"
-        "openssl_3_1"
+        "openssl_3_2"
         "podman"
         "qemu"
         "ripgrep"
@@ -73,13 +73,12 @@
         "luarocks"
         "maxima"
         "nodejs"
-        "python311"
-        "poetry"
+        "python312"
         "racket"
         "ruby"
         "rustup"
         "sbcl"
-        "zig"
+        "zig_0_12"
       ];
 
 
