@@ -1,40 +1,38 @@
-
-
-
-
 # output configuration options
 output:
-  # colored-line-number|line-number|json|tab|checkstyle|code-climate, default is "colored-line-number"
-  format: colored-line-number
-
-  # print lines of code with issue, default is true
+  formats: colored-line-number
   print-issued-lines: true
-
-  # print linter name in the end of issue text, default is true
   print-linter-name: true
-
-  # make issues output unique by line, default is true
   uniq-by-line: true
-
-  # add a prefix to the output file references; default is no prefix
   path-prefix: ""
-
-  # sorts results by: filepath, line and column
   sort-results: false
 
 
 linters-settings:
-  dupl:
-    # tokens count to trigger issue, 150 by default
-    threshold: 150
+  cyclop:
+    max-complexity: 20
+    package-average: 5
+    skip-tests: true
 
+  depguard:
+    rules:
+      main:
+        allow:
+          - github.com/aalbacetef
+        deny: []
+  
+  dogsled:
+    max-blank-identifiers: 3
+
+  dupl:
+    threshold: 100
+
+  dupword:
+    keywords: []
+  
   errcheck:
-    # report about not checking of errors in type assertions: `a := b.(MyStruct)`;
-    # default is false: such cases aren't reported by default.
     check-type-assertions: true
 
-    # report about assignment of errors to blank identifier: `num, _ := strconv.Atoi(numStr)`;
-    # default is false: such cases aren't reported by default.
     check-blank: true
 
     # [deprecated] comma-separated list of pairs of the form pkg:regex
@@ -42,52 +40,81 @@ linters-settings:
     # see https://github.com/kisielk/errcheck#the-deprecated-method for details
     ignore: fmt:.*,io/ioutil:^Read.*
 
-    # path to a file containing a list of functions to exclude from checking
-    # see https://github.com/kisielk/errcheck#excluding-functions for details
-    # exclude: /path/to/file.txt
+  errorlint:
+    errorf: true
+    errorf-multi: true
+    asserts: true
+    comparison: true
+
+  exhaustive:
+    check:
+      - switch
+      - map
+    check-generated: true
+    default-signifies-exhaustive: true
+    ignore-enum-members: "Example.+"
+    ignore-enum-types: "Example.+"
+    explicit-exhaustive-map: true
+
+  exhaustruct:
+    include: []
+    exclude: []
+
 
   funlen:
     lines: 60
     statements: 40
+    ignore-comments: true
+  
+  gci:
+    sections:
+      - standard
+      - default 
+      - prefix(github.com/aalbacetef)
+    skip-generated: false
+    custom-order: true
 
   gocognit:
-    # minimal code complexity to report, 30 by default (but we recommend 10-20)
-    min-complexity: 10
+    min-complexity: 15
 
   goconst:
-    # minimal length of string constant, 3 by default
     min-len: 3
-    # minimal occurrences count to trigger, 3 by default
     min-occurrences: 3 
+    ignore-tests: true 
+    match-constant: true 
    
   godot:
-    # comments to be checked: `declarations`, `toplevel`, or `all`
     scope: declarations
-    # list of regexps for excluding particular comment lines from check
-    exclude:
-      # example: exclude comments which contain numbers
-      # - '[0-9]+'
-    # check that each sentence starts with a capital letter
+    exclude: []
+    period: true
     capital: true
-  golint:
-    # minimal confidence for issues, default is 0.8
-    min-confidence: 0.8
 
   gomnd:
-    settings:
-      mnd:
-        # the list of enabled checks, see https://github.com/tommy-muehle/go-mnd/#checks for description.
-        checks: argument,case,condition,operation,return,assign
-        # ignored-numbers: 1000
-        # ignored-files: magic_.*.go
-        # ignored-functions: math.*    
+    checks: argument,case,condition,operation,return,assign
+    ignored-numbers:
+      - '0x1'
+      - 0
+      - 1
+      - 2
+      - 4
+      - 7
+      - 8
+      - 10
+    # ignored-files: magic_.*.go
+    # ignored-functions: math.*    
+
+
+  gosec:
+    exclude-generated: false 
+    severity: low 
+    confidence: low 
+    concurrency: 2
+
 
   govet:
-    # report about shadowed variables
-    check-shadowing: true
     enable-all: true
-    disable: [fieldalignment]
-    # settings per analyzer
+    disable:
+      - fieldalignment
     settings:
       # analyzer name, run `go tool vet help` to see all analyzers
       printf: 
@@ -98,47 +125,142 @@ linters-settings:
           - (github.com/golangci/golangci-lint/pkg/logutils.Log).Errorf
           - (github.com/golangci/golangci-lint/pkg/logutils.Log).Fatalf
 
+  interfacebloat:
+    max: 5
+ 
+  ireturn:
+    allow: "error,stdlib"
+
+  lll:
+    line-length: 120
+    tab-width: 1
+
+  maintidx:
+    under: 20
 
   misspell: 
-    # Correct spellings using locale preferences for US or UK.
-    # Default is to use a neutral variety of English.
-    # Setting locale to US will correct the British spelling of 'colour' to 'color'.
     locale: US
     ignore-words: []
+
+  nakedret:
+    max-func-lines: 20
+
+  nestif:
+    min-complexity: 3
+
+  varnamelen:
+    max-distance: 6
+    min-name-length: 3
+    check-receiver: false
+    check-return: false
+    check-type-param: false
+    ignore-type-assert-ok: false
+    ignore-map-index-ok: false
+    ignore-chan-recv-ok: false
+    ignore-names:
+      - err
+      - c
+      - l
+      - ch
+      - w
+      - h    
+    ignore-decls:
+      - c echo.Context
+      - t *testing.T
+      - tt *testing.T 
+      - f *foo.Bar
+      - e error
+      - k int
+      - const C
+      - T any
+      - m map[string]int
+      - r io.Reader
+      - w io.Writer
+      - fd *os.File
+      - p []byte
+      - n int
+      - wc io.WriteCloser
+      - b *strings.Builder
+      - x int 
+      - y int
+      - dx int 
+      - dy int 
+      - p []int
+      - pc int
+      - tw *tabwriter.Writer
+      - d *Display
+      - v int
+      - r io.Reader
+      - r *bytes.Reader
+      - vx byte
 
 
 linters:
   disable-all: true
   enable:
-    - deadcode 
+    - asasalint
+    - bidichk
+    - bodyclose
+    - containedctx
+    - contextcheck
+    - cyclop
+    - decorder
+    - dogsled
     - dupl
+    - dupword
+    - durationcheck
     - errcheck
+    - errname
+    - errorlint
+    - exhaustive
+    - forcetypeassert
     - funlen
+    - gci
     - gochecknoglobals
+    - gochecknoinits
     - gocognit
     - goconst
     - godot
-    - golint
     - gomnd
-    - govet
+    - gosimple
     - gosec
+    - govet
+    - grouper
     - ineffassign
+    - interfacebloat
+    - ireturn
+    - lll
+    - maintidx 
     - misspell
+    - nakedret
+    - nestif
+    - nilnil
+    - nlreturn
+    - nolintlint
+    - nonamedreturns
     - prealloc
+    - predeclared
+    - reassign
+    - revive
     - staticcheck
-    - structcheck
+    - stylecheck
+    - tagalign
+    - tagliatelle
+    - thelper
     - typecheck
     - unconvert
     - unused
-    - varcheck 
+    - usestdlibvars
+    - unparam
+    - varnamelen
+    - whitespace
+    - wrapcheck
+    - wsl
 
 
 issues:
-  # maximum issues count per one linter. Set to 0 to disable. Default is 50.
   max-issues-per-linter: 0
-  # Maximum count of issues with the same text. Set to 0 to disable. Default is 3.
   max-same-issues: 0
-  
   new: false
   fix: false
 
