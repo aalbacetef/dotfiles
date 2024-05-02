@@ -73,6 +73,7 @@
         "luarocks"
         "maxima"
         "nodejs"
+        "poetry"
         "python312"
         "racket"
         "ruby"
