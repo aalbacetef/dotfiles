@@ -1,0 +1,12 @@
+import = ["~/.config/alacritty/color-schemes.toml", "~/.config/alacritty/fonts.toml"]
+
+shell = "/usr/local/bin/bash"
+
+[window]
+  title = "alacritty"
+  decorations = "none"
+  opacity = 0.968
+[window.padding]
+    x = 6
+    y = 6
+
