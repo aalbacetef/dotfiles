@@ -235,7 +235,7 @@
         }
       },
       "signal": {
-        "version": "7.6.0",
+        "version": "7.7.0",
         "options": {
           "full_name": "signal"
         }
@@ -247,7 +247,7 @@
         }
       },
       "whatsapp": {
-        "version": "2.24.6.79",
+        "version": "2.24.8.85",
         "options": {
           "full_name": "whatsapp"
         }
@@ -265,7 +265,7 @@
         }
       },
       "libreoffice": {
-        "version": "24.2.2",
+        "version": "24.2.3",
         "options": {
           "full_name": "libreoffice"
         }
@@ -277,7 +277,7 @@
         }
       },
       "google-chrome": {
-        "version": "124.0.6367.93",
+        "version": "124.0.6367.119",
         "options": {
           "full_name": "google-chrome"
         }
@@ -307,7 +307,7 @@
         }
       },
       "thunderbird": {
-        "version": "115.10.1",
+        "version": "115.10.2",
         "options": {
           "full_name": "thunderbird"
         }
@@ -343,7 +343,7 @@
         }
       },
       "kicad": {
-        "version": "8.0.1",
+        "version": "8.0.2",
         "options": {
           "full_name": "kicad"
         }
@@ -359,11 +359,17 @@
         "options": {
           "full_name": "calibre"
         }
+      },
+      "surfshark": {
+        "version": "4.13.3,2210",
+        "options": {
+          "full_name": "surfshark"
+        }
       }
     },
     "tap": {
       "popcorn-official/popcorn-desktop": {
-        "revision": "27e137126657cf01e5369ece256750ed9866af19",
+        "revision": "b5d19e0c256cb0db54c85c6639f86ca79d4a49ff",
         "options": {
           "clone_target": "https://github.com/popcorn-official/popcorn-desktop.git"
         }
@@ -373,7 +379,7 @@
   "system": {
     "macos": {
       "ventura": {
-        "HOMEBREW_VERSION": "4.2.19",
+        "HOMEBREW_VERSION": "4.2.20",
         "HOMEBREW_PREFIX": "/usr/local",
         "Homebrew/homebrew-core": "api",
         "CLT": "15.1.0.0.1.1700200546",
