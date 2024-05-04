@@ -2,6 +2,7 @@ return {
   "nvim-treesitter/nvim-treesitter",
   opts = {
     ensure_installed = {
+      "astro",
       "c", 
       "css",
       "html", 
@@ -16,6 +17,8 @@ return {
       "json",
       "latex",
       "make",
+      "markdown",
+      "markdown_inline",
       "meson",
       "ninja",
       "nix",
