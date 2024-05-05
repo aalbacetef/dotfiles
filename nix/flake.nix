@@ -68,9 +68,7 @@
       ];
 
       langs = [
-        "clojure"
         "go"
-        "groovy"
         "lua"
         "luarocks"
         "maxima"
@@ -81,6 +79,7 @@
         "ruby"
         "rustup"
         "sbcl"
+        "scala"
         "zig_0_12"
       ];
 
