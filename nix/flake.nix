@@ -80,7 +80,7 @@
         "rustup"
         "sbcl"
         "scala"
-        "zig_0_12"
+        "zig"
       ];
 
 
