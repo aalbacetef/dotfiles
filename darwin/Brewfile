@@ -29,3 +29,6 @@ cask 'vlc'
 
 tap 'popcorn-official/popcorn-desktop', 'https://github.com/popcorn-official/popcorn-desktop.git'
 cask 'popcorn-time'
+
+tap 'cfergeau/crc'
+brew 'vfkit'

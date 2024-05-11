@@ -219,6 +219,10 @@
             }
           }
         }
+      },
+      "vfkit": {
+        "version": "0.5.1",
+        "bottle": false
       }
     },
     "cask": {
@@ -379,6 +383,9 @@
         "options": {
           "clone_target": "https://github.com/popcorn-official/popcorn-desktop.git"
         }
+      },
+      "cfergeau/crc": {
+        "revision": "abfb526da66c3ace838f153899752b03c5888d26"
       }
     }
   },
