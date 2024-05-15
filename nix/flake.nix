@@ -32,7 +32,7 @@
         "imagemagick"
         "libssh2"
         "nasm"
-        "openssl_3_2"
+        "openssl_3_3"
         "podman"
         "qemu"
         "ripgrep"
@@ -98,10 +98,8 @@
 
       darwinPkgs = [
         "fontconfig"
-        "fuse-ext2"
         "nerdfonts"
         "rectangle"
-        "sketchybar"
         "skhd"
         "texliveMedium"
         "texstudio"
