@@ -32,7 +32,7 @@
         "imagemagick"
         "libssh2"
         "nasm"
-        "openssl_3_3"
+        "openssl_3_2"
         "podman"
         "qemu"
         "ripgrep"
@@ -46,6 +46,7 @@
 
       apps = [
         "alacritty"
+        "asciidoctor"
         "bun"
         "devenv"
         "doctl"
@@ -55,6 +56,7 @@
         "gh"
         "glab"
         "http-server"
+        "httpie"
         "jq"
         "minio-client"
         "nmap"
