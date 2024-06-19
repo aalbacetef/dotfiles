@@ -3,9 +3,10 @@ return {
   opts = {
     ensure_installed = {
       "astro",
-      "autotools_ls", -- makefile
+      "autotools_ls", 
       "bashls",
       "clangd",
+      "cssls",
       "dockerls",
       "eslint", 
       "golangci_lint_ls",
@@ -20,9 +21,9 @@ return {
       "solc",
       "terraformls",
       "tsserver",
-      "volar",
-      "unocss", -- CSS
-      "zls", -- zig
+      "volar@1.8.27",
+      "unocss",
+      "zls", 
     },
   },
 }
