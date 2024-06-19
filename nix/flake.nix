@@ -55,6 +55,7 @@
         "fish"
         "gh"
         "glab"
+        "htop"
         "http-server"
         "httpie"
         "jq"
