@@ -239,7 +239,7 @@
         }
       },
       "signal": {
-        "version": "7.8.0",
+        "version": "7.11.0",
         "options": {
           "full_name": "signal"
         }
@@ -251,19 +251,19 @@
         }
       },
       "whatsapp": {
-        "version": "2.24.8.85",
+        "version": "2.24.10.80",
         "options": {
           "full_name": "whatsapp"
         }
       },
       "telegram": {
-        "version": "10.12.2,262594",
+        "version": "10.13,264000",
         "options": {
           "full_name": "telegram"
         }
       },
       "spotify": {
-        "version": "1.2.37.701,e66eb7bc,1227",
+        "version": "1.2.38.720,a4a70a0e,1234",
         "options": {
           "full_name": "spotify"
         }
@@ -281,7 +281,7 @@
         }
       },
       "google-chrome": {
-        "version": "124.0.6367.208",
+        "version": "125.0.6422.142",
         "options": {
           "full_name": "google-chrome"
         }
@@ -305,13 +305,13 @@
         }
       },
       "transmission": {
-        "version": "4.0.5",
+        "version": "4.0.6",
         "options": {
           "full_name": "transmission"
         }
       },
       "thunderbird": {
-        "version": "115.10.2",
+        "version": "115.11.1",
         "options": {
           "full_name": "thunderbird"
         }
@@ -353,13 +353,13 @@
         }
       },
       "ghdl": {
-        "version": "4.0.0",
+        "version": "4.1.0",
         "options": {
           "full_name": "ghdl"
         }
       },
       "calibre": {
-        "version": "7.10.0",
+        "version": "7.12.0",
         "options": {
           "full_name": "calibre"
         }
@@ -379,7 +379,7 @@
     },
     "tap": {
       "popcorn-official/popcorn-desktop": {
-        "revision": "b5d19e0c256cb0db54c85c6639f86ca79d4a49ff",
+        "revision": "4073c37481ebd826b3a25c657ff60a419d34b504",
         "options": {
           "clone_target": "https://github.com/popcorn-official/popcorn-desktop.git"
         }
@@ -392,7 +392,7 @@
   "system": {
     "macos": {
       "ventura": {
-        "HOMEBREW_VERSION": "4.3.0",
+        "HOMEBREW_VERSION": "4.3.3",
         "HOMEBREW_PREFIX": "/usr/local",
         "Homebrew/homebrew-core": "api",
         "CLT": "15.1.0.0.1.1700200546",
