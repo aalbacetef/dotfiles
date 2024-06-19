@@ -5,7 +5,6 @@ brew 'octave'
 brew 'winetricks'
 
 cask 'atom'
-cask 'calibre'
 cask 'chromium'
 cask 'gimp'
 cask 'ghdl'
