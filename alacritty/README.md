@@ -1,0 +1,3 @@
+
+
+symlink to ~/.config/alacritty
