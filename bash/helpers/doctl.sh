@@ -21,4 +21,52 @@ doctl::get_firewall_id() {
   doctl compute firewall list --format 'ID,Name' | grep -E "\s$name$" | cut -d' ' -f 1
 }
 
+###############################################
+# Add the given inbound rules for the firewall
+# with the corresponding ID.
+#
+# Arguments:
+#  - ID of the firewall
+#  - inbound rules
+#
+###############################################
+doctl::add_rule() {
+  local firewall_id="$1"
+  local rule_to_add="$2"
+
+  doctl compute firewall add-rules "$firewall_id" --inbound-rules "$rule_to_add"
+}
+
+###############################################
+# Get the given inbound rules for the firewall
+# with the corresponding ID.
+#
+# Arguments:
+#  - ID of the firewall
+# 
+# Outputs:
+#  - inbound rules 
+#
+###############################################
+doctl::get_rules() {
+  local firewall_id="$1"
+
+  doctl compute firewall get "$firewall_id" --format InboundRules --no-header
+}
+
+#################################################
+# Remove the given inbound rules for the firewall
+# with the corresponding ID.
+#
+# Arguments:
+#  - ID of the firewall
+#  - inbound rules
+#
+#################################################
+doctl::remove_rules() {
+  local firewall_id="$1"
+  local rules_to_delete="$2"
+
+  doctl compute firewall remove-rules "$firewall_id" --inbound-rules "$rules_to_delete"
+}
 
