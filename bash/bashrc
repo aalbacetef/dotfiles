@@ -1,9 +1,17 @@
 #!/usr/bin/env bash
 
-export src="${BASH_SOURCE[0]}"
-export DOTFILES="$(realpath "$src/../../")"
+src="${BASH_SOURCE[0]}"
+curr_dir="$(dirname "$src")"
+dot_dir="$(dirname "$curr_dir")"
+export DOTFILES="$dot_dir"
 
-source  "$DOTFILES/bash/paths.sh"
+# Nix
+if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
+  . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+fi
+# End Nix
+
+source "$DOTFILES/bash/paths.sh"
 source "$DOTFILES/bash/helpers/platform.sh"
 
 [ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -33,10 +41,5 @@ source "$DOTFILES/bash/aliases.sh"
 # add mc completion
 complete -C /personal-files/bin/mc mc
 
-# Nix
-if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
-  . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
-fi
-# End Nix
 
 macchina
