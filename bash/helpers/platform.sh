@@ -1,7 +1,5 @@
 #!/usr/bin/env bash 
 
-readonly ERR_WRONG_PLATFORM=110
-
 platform::get_os() {
   uname -o 
 }

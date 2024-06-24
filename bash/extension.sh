@@ -68,7 +68,6 @@ ddo-launch() {
   # should only run on linux
   if [[ "$(platform::is_linux)" != "1" ]]; then
     echo "only on linux"
-    return $ERR_WRONG_PLATFORM
   fi
 
   local pfx
