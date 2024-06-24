@@ -14,17 +14,17 @@
 #    if not found 
 ###########################################
 
-env::get_value() {
+env::get() {
   local filename="$1"
   local key="$2"
 
   if [ -z "$filename" ] ; then 
-    echo "filename is not set"
+    echo "filename is not set" > /dev/stderr
     return 1 
   fi 
 
   if [ -z "$key" ]; then 
-    echo "key is not set"
+    echo "key is not set" > /dev/stderr
     return 1 
   fi 
 
