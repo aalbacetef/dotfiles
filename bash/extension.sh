@@ -1,18 +1,27 @@
 #!/usr/bin/env bash
 
-current_dir="$(dirname $(realpath $BASH_SOURCE))"
+current_dir="$(dirname "$(realpath "${BASH_SOURCE[0]}")")"
 
 source "$current_dir"/helpers/platform.sh
+source "$current_dir"/helpers/doctl.sh
 
 function mkd() {
   local path="$1"
 
-  mkdir -p "$path" && cd "$path"
+  mkdir -p "$path"
+  cd "$path" || echo "could not cd to '$path'"
 }
 
 function personal-ssh-ip() {
-  local my_ip=$(curl -s ifconfig.me)
-  local firewall_id=$(doctl compute firewall list --format 'ID,Name'| grep 'personal-ssh' | cut -d' ' -f 1)
+  local my_ip
+  local firewall_id
+  local firewall_name="personal-ssh"
+  local rules_to_delete
+  local rule_to_add="protocol:tcp,ports:22,address:$my_ip"
+
+  my_ip=$(curl -s ifconfig.me)
+
+  firewall_id=$(doctl::get_firewall_id "$firewall_name")
   if [[ "$firewall_id" == "" ]]; then 
     echo "No firewall found"
     return 1
@@ -20,20 +29,23 @@ function personal-ssh-ip() {
   
   echo "found firewall with id: $firewall_id"
 
-  local rules_to_delete=$(doctl compute firewall get $firewall_id --format InboundRules --no-header)
+  rules_to_delete=$(doctl::get_rules "$firewall_id")
   if [[ "$rules_to_delete" != "" ]]; then 
     echo "removing previous inbound rule: $rules_to_delete"
-    doctl compute firewall remove-rules $firewall_id --inbound-rules "$rules_to_delete"
+    doctl::remove_rules "$firewall_id" "$rules_to_delete"
   fi
   
-  local rule_to_add="protocol:tcp,ports:22,address:$my_ip"
+
   echo "adding inbound rule: $rule_to_add"
-  doctl compute firewall add-rules $firewall_id --inbound-rules "$rule_to_add"
+  doctl::add_rule "$firewall_id" "$rule_to_add"
 }
 
 
 function remove-personal-ssh-ip() {
-  local firewall_id=$(doctl compute firewall list --format 'ID,Name'| grep 'personal-ssh' | cut -d' ' -f 1)
+  local firewall_id
+  local rules_to_delete
+
+  firewall_id=$(doctl::get_firewall_id "personal-ssh")
   if [[ "$firewall_id" == "" ]]; then 
     echo "No firewall found"
     return 1
@@ -41,14 +53,15 @@ function remove-personal-ssh-ip() {
   
   echo "found firewall with id: $firewall_id"
 
-  local rules_to_delete=$(doctl compute firewall get $firewall_id --format InboundRules --no-header)
-  if [[ "$rules_to_delete" != "" ]]; then 
-    echo "removing previous inbound rule: $rules_to_delete"
-    doctl compute firewall remove-rules $firewall_id --inbound-rules "$rules_to_delete"
+  rules_to_delete=$(doctl::get_rules "$firewall_id")
+  if [[ "$rules_to_delete" == "" ]]; then 
+    echo "no rules to remove"
+    return 0
   fi
-  
-}
 
+  echo "removing previous inbound rule: $rules_to_delete"
+  doctl::remove_rules "$firewall_id" "$rules_to_delete"
+}
 
 ## DDO launcher. Added this because steam was struggling to launch DDO.
 ddo-launch() {
@@ -58,12 +71,15 @@ ddo-launch() {
     return $ERR_WRONG_PLATFORM
   fi
 
+  local pfx
+  local rootdir
 
-  local pfx=$(realpath ~/.steam/debian-installation/steamapps/compatdata/206480/pfx)
-  local rootdir="$(realpath ~/.steam/debian-installation/steamapps/common/Dungeons\ and\ Dragons\ Online)"
+
+  pfx=$(realpath ~/.steam/debian-installation/steamapps/compatdata/206480/pfx)
+  rootdir="$(realpath ~/.steam/debian-installation/steamapps/common/Dungeons\ and\ Dragons\ Online)"
 
   echo "prefix: $pfx"
   echo "rootdir: $rootdir"
   echo ""
-  env WINEPREFIX=$pfx wine "$rootdir/DNDLauncher.exe"
+  env WINEPREFIX="$pfx" wine "$rootdir/DNDLauncher.exe"
 }

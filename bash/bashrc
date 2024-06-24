@@ -1,38 +1,42 @@
 #!/usr/bin/env bash
 
-source  "$(dirname $BASH_SOURCE)/paths.sh"
+export src="${BASH_SOURCE[0]}"
+export DOTFILES="$(realpath "$src/../../")"
 
+source  "$DOTFILES/bash/paths.sh"
+source "$DOTFILES/bash/helpers/platform.sh"
 
-
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-source "/personal-files/apps/cargo/env"
-source $DOTFILES/bash/rustrc
-source $DOTFILES/bash/tunnel.sh
-source $DOTFILES/bash/hidden.sh # TODO: need a better way to inject/import this.
-
-complete -C /personal-files/bin/mc mc
+[ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && source "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # custom bash prompt
-source $DOTFILES/bash/command-prompt.sh
+source "$DOTFILES/bash/command-prompt.sh"
 
 # add support for kitty helpers
-source $DOTFILES/kitty/select.sh
+source "$DOTFILES/kitty/select.sh"
 
 # add additional commands
-source $DOTFILES/bash/extension.sh
+source "$DOTFILES/bash/extension.sh"
 
+# darwin specific
+if [[ "$(platform::is_darwin)" == "1" ]]; then 
+  source "$DOTFILES/bash/extension.darwin.sh"
+  source "$DOTFILES/darwin/git-completion.bash"
+  export FONTCONFIG_FILE=/usr/local/etc/fonts/fonts.conf
+  nix_profile_comp="$HOME/.nix-profile/etc/profile.d/bash_completion.sh"
+  [ -s "$nix_profile_comp" ] && source "$nix_profile_comp"
+fi
 
-# alias docker to use non-podman host
-alias docker='env DOCKER_HOST=$SHADOWED_DOCKER_HOST docker'
-alias sp='superproductivity --user-data-dir='$SUPERPROD_USER_DATA
+# add aliases
+source "$DOTFILES/bash/aliases.sh"
 
-export KITTY_CONFIG_DIRECTORY=$DOTFILES/kitty
+# add mc completion
+complete -C /personal-files/bin/mc mc
 
-
-reload-bash() {
-  source ~/.bashrc
-}
+# Nix
+if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
+  . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+fi
+# End Nix
 
 macchina
