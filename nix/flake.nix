@@ -59,6 +59,7 @@
         "http-server"
         "httpie"
         "jq"
+        "macchina"
         "minio-client"
         "nmap"
         "nmap-formatter"
