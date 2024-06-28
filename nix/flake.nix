@@ -104,6 +104,7 @@
         "octaveFull"
         "qucs-s"
         "remmina"
+        "shfmt"
         "signal-desktop"
       ] ++ commonPackages;
 
