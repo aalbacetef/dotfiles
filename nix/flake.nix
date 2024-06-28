@@ -105,7 +105,6 @@
         "qucs-s"
         "remmina"
         "signal-desktop"
-        "vivaldi"
       ] ++ commonPackages;
 
       darwinPkgs = [
