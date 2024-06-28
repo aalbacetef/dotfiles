@@ -15,6 +15,7 @@
 
       essentials = [
         "bash-completion"
+        "cmake"
         "curl"
         "coreutils-full"
         "deno"
@@ -32,6 +33,7 @@
         "imagemagick"
         "libssh2"
         "nasm"
+        "nerdfonts"
         "openssl_3_2"
         "podman"
         "qemu"
@@ -45,7 +47,6 @@
       ];
 
       apps = [
-        "alacritty"
         "asciidoctor"
         "bun"
         "devenv"
@@ -101,8 +102,7 @@
       ] ++ commonPackages;
 
       darwinPkgs = [
-        "fontconfig"
-        "nerdfonts"
+        "alacritty"
         "rectangle"
         "skhd"
         "texliveMedium"
