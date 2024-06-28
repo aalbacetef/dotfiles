@@ -28,7 +28,7 @@ y               = 1
 [custom_ascii]
 #color           = "#7067CF"
 #color           = "#FF7001"
-path            = "~/.config/macchina/ascii-art.txt"
+path            = "~/.config/macchina/ascii-best.txt"
 
 
 
