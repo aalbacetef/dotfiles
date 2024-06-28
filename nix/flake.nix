@@ -49,6 +49,7 @@
       apps = [
         "asciidoctor"
         "bun"
+        "checksec"
         "devenv"
         "doctl"
         "emacs"
@@ -60,13 +61,16 @@
         "http-server"
         "httpie"
         "jq"
+        "kitty"
         "macchina"
         "minio-client"
+        "netcat-openbsd"
         "nmap"
         "nmap-formatter"
         "neovim"
         "obsidian"
         "terraform"
+        "thc-hydra"
         "tmux"
         "yarn"
         "yq"
@@ -85,6 +89,7 @@
         "rustup"
         "sbcl"
         "scala"
+        "solc"
         "zig"
       ];
 
@@ -98,7 +103,9 @@
         "ngspice"
         "octaveFull"
         "qucs-s"
+        "remmina"
         "signal-desktop"
+        "vivaldi"
       ] ++ commonPackages;
 
       darwinPkgs = [
