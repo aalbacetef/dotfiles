@@ -1,5 +1,7 @@
 import = ["~/.config/alacritty/color-schemes.toml", "~/.config/alacritty/fonts.toml"]
 
+shell = "bash"
+
 [window]
   title = "alacritty"
   decorations = "None"
