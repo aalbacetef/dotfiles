@@ -97,6 +97,7 @@
       commonPackages = apps ++ langs ++ essentials;
 
       linuxPkgs = [
+        "autotools-language-server"
         "calibre"
         "ghdl"
         "koreader"
