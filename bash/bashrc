@@ -5,17 +5,15 @@ curr_dir="$(dirname "$src")"
 dot_dir="$(dirname "$curr_dir")"
 export DOTFILES="$dot_dir"
 
-# Nix
-if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
-  . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
-fi
-# End Nix
-
+source_if_exists() {
+  local fpath="$1"
+  if test -s "$fpath"; then 
+    source "$fpath"
+  fi 
+}
+ 
+# load paths
 source "$DOTFILES/bash/paths.sh"
-source "$DOTFILES/bash/helpers/platform.sh"
-
-[ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && source "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # custom bash prompt
 source "$DOTFILES/bash/command-prompt.sh"
@@ -26,20 +24,27 @@ source "$DOTFILES/kitty/select.sh"
 # add additional commands
 source "$DOTFILES/bash/extension.sh"
 
-# darwin specific
-if [[ "$(platform::is_darwin)" == "1" ]]; then 
-  source "$DOTFILES/bash/extension.darwin.sh"
-  source "$DOTFILES/darwin/git-completion.bash"
-  export FONTCONFIG_FILE=/usr/local/etc/fonts/fonts.conf
-  nix_profile_comp="$HOME/.nix-profile/etc/profile.d/bash_completion.sh"
-  [ -s "$nix_profile_comp" ] && source "$nix_profile_comp"
-fi
-
 # add aliases
 source "$DOTFILES/bash/aliases.sh"
 
 # add mc completion
-complete -C /personal-files/bin/mc mc
+complete -C $(which mc) mc
 
+# load platform helpers
+source "$DOTFILES/bash/helpers/platform.sh"
+
+# darwin specific
+if platform::is_darwin; then 
+  source "$DOTFILES/bash/extension.darwin.sh"
+  source "$DOTFILES/darwin/git-completion.bash"
+  export FONTCONFIG_FILE=/usr/local/etc/fonts/fonts.conf
+  nix_profile_comp="$HOME/.nix-profile/etc/profile.d/bash_completion.sh"
+  source_if_exists "$nix_profile_comp"
+fi
+
+# load additional programs
+source_if_exists "$NVM_DIR/nvm.sh"
+source_if_exists "$NVM_DIR/bash_completion"
+source_if_exists "/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh"
 
 macchina
