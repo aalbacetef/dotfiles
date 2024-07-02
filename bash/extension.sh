@@ -46,7 +46,7 @@ function remove-personal-ssh-ip() {
   local rules_to_delete
 
   firewall_id=$(doctl::get_firewall_id "personal-ssh")
-  if [[ "$firewall_id" == "" ]]; then 
+  if test -z "$firewall_id"; then 
     echo "No firewall found"
     return 1
   fi
@@ -54,7 +54,7 @@ function remove-personal-ssh-ip() {
   echo "found firewall with id: $firewall_id"
 
   rules_to_delete=$(doctl::get_rules "$firewall_id")
-  if [[ "$rules_to_delete" == "" ]]; then 
+  if test -z "$rules_to_delete"; then 
     echo "no rules to remove"
     return 0
   fi
@@ -66,8 +66,9 @@ function remove-personal-ssh-ip() {
 ## DDO launcher. Added this because steam was struggling to launch DDO.
 ddo-launch() {
   # should only run on linux
-  if [[ "$(platform::is_linux)" != "1" ]]; then
+  if platform::is_linux; then
     echo "only on linux"
+    return 1
   fi
 
   local pfx
