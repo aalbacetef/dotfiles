@@ -5,19 +5,17 @@ platform::get_os() {
 }
 
 platform::is_linux() {
-  local v="0"
   if [[ $(platform::get_os) = "Linux" ]]; then 
-    v="1"
+    return 0
   fi 
   
-  echo "$v"
+  return 1
 }
 
 platform::is_darwin() {
-  local v="0"
   if [[ $(platform::get_os) = "Darwin" ]]; then
-    v="1"
+    return 0
   fi 
 
-  echo "$v" 
+  return 1
 }
