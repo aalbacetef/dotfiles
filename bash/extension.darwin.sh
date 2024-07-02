@@ -11,5 +11,5 @@ darwin::brew-sync() {
 }
 
 darwin::ds-cleanup() {
-  find /Users/arturo -name '.DS_Store' -type f -delete -print  2> /dev/null
+  find "$HOME" -name '.DS_Store' -type f -delete -print  2> /dev/null
 }
