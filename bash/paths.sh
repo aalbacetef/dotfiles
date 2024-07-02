@@ -30,6 +30,11 @@ fi
 
 if platform::is_linux; then 
   xdg_data_dirs="$(env::get "$envrc" XDG_DATA_DIRS)"
+  add_local_bin=$(env::get "$envrc" ADD_LOCAL_BIN)
+
+  if test -n "$add_local_bin"; then 
+    export PATH="/usr/local/bin:$PATH"
+  fi
 
   if test -n "$xdg_data_dirs"; then 
     export XDG_DATA_DIRS="$xdg_data_dirs:$XDG_DATA_DIRS"
