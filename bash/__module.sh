@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
 RC_FILE="$(realpath ~/.bashrc)"
-LINE="source $(realpath ./bash/bashrc)"
+current_dir="$(dirname "$(realpath "${BASH_SOURCE[0]}")")"
+LINE="source $current_dir/bashrc"
 
 log() {
   now=$(date +"%H:%M:%S")
@@ -9,7 +10,6 @@ log() {
 }
 
 needs_install() {
-
   log "checking if bashrc file exists..."
 
   if test ! -f "$RC_FILE"; then
