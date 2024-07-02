@@ -1,8 +1,5 @@
 #!/usr/bin/env bash 
 
-source "$DOTFILES/bash/helpers/platform.sh"
-
-
 # NOTE: this one might shadow ghostscript
 alias gs='git status'
 
