@@ -109,6 +109,7 @@
         "remmina"
         "shfmt"
         "signal-desktop"
+        "vagrant"
       ] ++ commonPackages;
 
       darwinPkgs = [
