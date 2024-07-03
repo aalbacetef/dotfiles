@@ -9,3 +9,5 @@ defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 # disable DS_Store on USBs
 defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true 
 
+# ensure dock autohides
+defaults write com.apple.dock autohide -bool true
