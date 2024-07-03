@@ -7,11 +7,11 @@ export DOTFILES="$dot_dir"
 
 source_if_exists() {
   local fpath="$1"
-  if test -s "$fpath"; then 
+  if test -s "$fpath"; then
     source "$fpath"
-  fi 
+  fi
 }
- 
+
 # load paths
 source "$DOTFILES/bash/paths.sh"
 
@@ -28,13 +28,13 @@ source "$DOTFILES/bash/extension.sh"
 source "$DOTFILES/bash/aliases.sh"
 
 # add mc completion
-complete -C $(which mc) mc
+complete -C "$(which mc)" mc
 
 # load platform helpers
 source "$DOTFILES/bash/helpers/platform.sh"
 
 # darwin specific
-if platform::is_darwin; then 
+if platform::is_darwin; then
   source "$DOTFILES/bash/extension.darwin.sh"
   source "$DOTFILES/darwin/git-completion.bash"
   export FONTCONFIG_FILE=/usr/local/etc/fonts/fonts.conf
