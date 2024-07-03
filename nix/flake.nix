@@ -47,6 +47,8 @@
       ];
 
       apps = [
+        "ansible"
+        "ansible-lint"
         "asciidoctor"
         "bun"
         "checksec"
