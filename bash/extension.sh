@@ -14,12 +14,12 @@ function mkd() {
 
 function personal-ssh-ip() {
   local my_ip
+  my_ip="$(curl -s ifconfig.me)"
+
   local firewall_id
   local firewall_name="personal-ssh"
   local rules_to_delete
   local rule_to_add="protocol:tcp,ports:22,address:$my_ip"
-
-  my_ip=$(curl -s ifconfig.me)
 
   firewall_id=$(doctl::get_firewall_id "$firewall_name")
   if [[ "$firewall_id" == "" ]]; then 
