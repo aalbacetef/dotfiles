@@ -11,7 +11,7 @@ git config --global init.defaultbranch master
 git config --global --add merge.ff false
 
 # automatically rebase when pulling
-git config --global --add pull.rebase preserve
+git config --global --add pull.rebase true
 
 # set excludes file
 current_dir="$(dirname "$(realpath "${BASH_SOURCE[0]}")")"
