@@ -22,3 +22,7 @@ bash:
 .PHONY: git
 git:
 	./git/__module.sh
+
+.PHONY: helix
+helix:
+	./helix/__module.sh
