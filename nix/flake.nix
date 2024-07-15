@@ -59,6 +59,7 @@
         "fish"
         "gh"
         "glab"
+        "helix"
         "htop"
         "http-server"
         "httpie"
@@ -94,7 +95,6 @@
         "solc"
         "zig"
       ];
-
 
       commonPackages = apps ++ langs ++ essentials;
 
