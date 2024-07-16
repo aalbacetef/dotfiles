@@ -101,6 +101,7 @@
       linuxPkgs = [
         "autotools-language-server"
         "calibre"
+        "chromium"
         "ghdl"
         "koreader"
         "ngspice"
