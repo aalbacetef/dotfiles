@@ -239,7 +239,7 @@
         }
       },
       "signal": {
-        "version": "7.15.0",
+        "version": "7.16.0",
         "options": {
           "full_name": "signal"
         }
@@ -269,7 +269,7 @@
         }
       },
       "libreoffice": {
-        "version": "24.2.4",
+        "version": "24.2.5",
         "options": {
           "full_name": "libreoffice"
         }
@@ -281,7 +281,7 @@
         }
       },
       "google-chrome": {
-        "version": "126.0.6478.127",
+        "version": "126.0.6478.183",
         "options": {
           "full_name": "google-chrome"
         }
@@ -311,7 +311,7 @@
         }
       },
       "thunderbird": {
-        "version": "115.12.2",
+        "version": "115.13.0",
         "options": {
           "full_name": "thunderbird"
         }
@@ -347,7 +347,7 @@
         }
       },
       "kicad": {
-        "version": "8.0.3",
+        "version": "8.0.4",
         "options": {
           "full_name": "kicad"
         }
@@ -365,7 +365,7 @@
         }
       },
       "surfshark": {
-        "version": "4.14.0,2225",
+        "version": "4.15.0,2252",
         "options": {
           "full_name": "surfshark"
         }
