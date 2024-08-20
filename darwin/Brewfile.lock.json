@@ -239,7 +239,7 @@
         }
       },
       "signal": {
-        "version": "7.16.0",
+        "version": "7.17.0",
         "options": {
           "full_name": "signal"
         }
@@ -251,7 +251,7 @@
         }
       },
       "whatsapp": {
-        "version": "2.24.13.80",
+        "version": "2.24.14.85",
         "options": {
           "full_name": "whatsapp"
         }
@@ -263,7 +263,7 @@
         }
       },
       "spotify": {
-        "version": "1.2.41.434,39a25e2c,341",
+        "version": "1.2.42.290,242057a2,1353",
         "options": {
           "full_name": "spotify"
         }
@@ -281,7 +281,7 @@
         }
       },
       "google-chrome": {
-        "version": "126.0.6478.183",
+        "version": "127.0.6533.73",
         "options": {
           "full_name": "google-chrome"
         }
@@ -365,7 +365,7 @@
         }
       },
       "surfshark": {
-        "version": "4.15.0,2252",
+        "version": "4.15.1,2271",
         "options": {
           "full_name": "surfshark"
         }
@@ -374,6 +374,12 @@
         "version": "1.10.4",
         "options": {
           "full_name": "julia"
+        }
+      },
+      "discord": {
+        "version": "0.0.312",
+        "options": {
+          "full_name": "discord"
         }
       }
     },
@@ -392,7 +398,7 @@
   "system": {
     "macos": {
       "ventura": {
-        "HOMEBREW_VERSION": "4.3.9",
+        "HOMEBREW_VERSION": "4.3.10",
         "HOMEBREW_PREFIX": "/usr/local",
         "Homebrew/homebrew-core": "api",
         "CLT": "15.1.0.0.1.1700200546",
