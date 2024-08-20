@@ -6,6 +6,7 @@ brew 'winetricks'
 
 cask 'atom'
 cask 'chromium'
+cask 'discord'
 cask 'gimp'
 cask 'ghdl'
 cask 'google-chrome'
