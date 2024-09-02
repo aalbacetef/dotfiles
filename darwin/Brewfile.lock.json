@@ -239,7 +239,7 @@
         }
       },
       "signal": {
-        "version": "7.20.1",
+        "version": "7.22.2",
         "options": {
           "full_name": "signal"
         }
@@ -251,7 +251,7 @@
         }
       },
       "whatsapp": {
-        "version": "2.24.15.80",
+        "version": "2.24.16.80",
         "options": {
           "full_name": "whatsapp"
         }
@@ -269,7 +269,7 @@
         }
       },
       "libreoffice": {
-        "version": "24.2.5",
+        "version": "24.8.0",
         "options": {
           "full_name": "libreoffice"
         }
@@ -281,7 +281,7 @@
         }
       },
       "google-chrome": {
-        "version": "127.0.6533.120",
+        "version": "128.0.6613.114",
         "options": {
           "full_name": "google-chrome"
         }
@@ -371,13 +371,13 @@
         }
       },
       "julia": {
-        "version": "1.10.4",
+        "version": "1.10.5",
         "options": {
           "full_name": "julia"
         }
       },
       "discord": {
-        "version": "0.0.315",
+        "version": "0.0.317",
         "options": {
           "full_name": "discord"
         }
@@ -385,7 +385,7 @@
     },
     "tap": {
       "popcorn-official/popcorn-desktop": {
-        "revision": "3b254f7ed4547b299db3bbec60d6a53f1e9c799d",
+        "revision": "f372a5d6817d8580bd0f1ff4c845ee737376297f",
         "options": {
           "clone_target": "https://github.com/popcorn-official/popcorn-desktop.git"
         }
