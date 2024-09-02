@@ -13,3 +13,12 @@ darwin::brew-sync() {
 darwin::ds-cleanup() {
   find "$HOME" -name '.DS_Store' -type f -delete -print  2> /dev/null
 }
+
+darwin::help() {
+  echo ""
+  echo "commands available"
+  echo "  - darwin::brew-sync"
+  echo "  - darwin::ds-cleanup"
+  echo "  - darwin::nix-update"
+  echo ""
+}
