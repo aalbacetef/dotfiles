@@ -66,7 +66,7 @@
         "kitty"
         "macchina"
         "minio-client"
-        "netcat-openbsd"
+        "netcat"
         "nmap"
         "nmap-formatter"
         "neovim"
