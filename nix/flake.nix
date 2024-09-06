@@ -51,7 +51,6 @@
         "ansible-lint"
         "asciidoctor"
         "bun"
-        "checksec"
         "devenv"
         "doctl"
         "emacs"
@@ -101,6 +100,7 @@
       linuxPkgs = [
         "autotools-language-server"
         "calibre"
+        "checksec"
         "chromium"
         "ghdl"
         "koreader"
