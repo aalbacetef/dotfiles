@@ -18,7 +18,6 @@
         "cmake"
         "curl"
         "coreutils-full"
-        "deno"
         "fd"
         "fzf"
         "gdb"
