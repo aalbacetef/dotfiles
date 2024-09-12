@@ -3,10 +3,11 @@
 
   inputs = {
     nixpkgs.url = github:NixOS/nixpkgs/nixpkgs-unstable;
+    roc.url = github:roc-lang/roc;
   };
 
 
-  outputs = { self, nixpkgs, ... }:
+  outputs = { self, nixpkgs, roc, ... }:
     let
       systems = [
         "x86_64-linux"
@@ -78,6 +79,7 @@
       ];
 
       langs = [
+        "elixir"
         "go"
         "lua"
         "luarocks"
@@ -120,24 +122,27 @@
         "texstudio"
       ] ++ commonPackages;
 
+
     in
     {
       packages.x86_64-linux.default =
         let
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
+          rocPkgs = roc.packages.x86_64-linux;
         in
         pkgs.buildEnv {
           name = "user-linux-packages";
-          paths = (map (p: nixpkgs.legacyPackages.x86_64-linux.${p}) linuxPkgs);
+          paths = (map (p: pkgs.${p}) linuxPkgs) ++ [ rocPkgs.cli ];
         };
 
       packages.x86_64-darwin.default =
         let
           pkgs = nixpkgs.legacyPackages.x86_64-darwin;
+          rocPkgs = roc.packages.x86_64-darwin;
         in
         pkgs.buildEnv {
           name = "user-darwin-packages";
-          paths = (map (p: nixpkgs.legacyPackages.x86_64-darwin.${p}) darwinPkgs);
+          paths = (map (p: pkgs.${p}) darwinPkgs) ++ [ rocPkgs.cli ];
         };
     };
 }
