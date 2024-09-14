@@ -82,7 +82,7 @@
 
       langs = sysPkgs: with sysPkgs; [
         elixir
-        go
+        go_1_23
         lua
         luarocks
         maxima
