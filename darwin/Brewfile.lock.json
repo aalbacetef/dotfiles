@@ -7,6 +7,11 @@
           "rebuild": 0,
           "root_url": "https://ghcr.io/v2/homebrew/core",
           "files": {
+            "arm64_sequoia": {
+              "cellar": "/opt/homebrew/Cellar",
+              "url": "https://ghcr.io/v2/homebrew/core/bash/blobs/sha256:2dc853662f375e5a8e8d86fa5b41280d9ab317f31c9086c3da9c9d2ceae6d271",
+              "sha256": "2dc853662f375e5a8e8d86fa5b41280d9ab317f31c9086c3da9c9d2ceae6d271"
+            },
             "arm64_sonoma": {
               "cellar": "/opt/homebrew/Cellar",
               "url": "https://ghcr.io/v2/homebrew/core/bash/blobs/sha256:1f93264ad5646699b5554ad4a96ca1303a813876065d5c0782fa653f9a50ad83",
@@ -51,6 +56,11 @@
           "rebuild": 0,
           "root_url": "https://ghcr.io/v2/homebrew/core",
           "files": {
+            "arm64_sequoia": {
+              "cellar": ":any",
+              "url": "https://ghcr.io/v2/homebrew/core/djview4/blobs/sha256:50f358049ae7371431b1640620050d40f9075e998695efc69e3cfc228955d189",
+              "sha256": "50f358049ae7371431b1640620050d40f9075e998695efc69e3cfc228955d189"
+            },
             "arm64_sonoma": {
               "cellar": ":any",
               "url": "https://ghcr.io/v2/homebrew/core/djview4/blobs/sha256:aeec9249493e568780d0760a7c11d597c51e9a89835d9d7be3a3512510dd6e09",
@@ -109,6 +119,11 @@
           "rebuild": 0,
           "root_url": "https://ghcr.io/v2/homebrew/core",
           "files": {
+            "arm64_sequoia": {
+              "cellar": ":any_skip_relocation",
+              "url": "https://ghcr.io/v2/homebrew/core/m-cli/blobs/sha256:6c34603cd51adaa1e6dabc3c9ca533b2b72e2eb2a0626ecbac725b04428a4f7e",
+              "sha256": "6c34603cd51adaa1e6dabc3c9ca533b2b72e2eb2a0626ecbac725b04428a4f7e"
+            },
             "arm64_sonoma": {
               "cellar": ":any_skip_relocation",
               "url": "https://ghcr.io/v2/homebrew/core/m-cli/blobs/sha256:16476d5b167268a327662d0aa26bf9c46aaf41bba5b08527f862b9ef2ce14034",
@@ -239,7 +254,7 @@
         }
       },
       "signal": {
-        "version": "7.22.2",
+        "version": "7.24.1",
         "options": {
           "full_name": "signal"
         }
@@ -257,19 +272,19 @@
         }
       },
       "telegram": {
-        "version": "11.0.2,267159",
+        "version": "11.1,267758",
         "options": {
           "full_name": "telegram"
         }
       },
       "spotify": {
-        "version": "1.2.44.405,81fd6352,3707",
+        "version": "1.2.45.454",
         "options": {
           "full_name": "spotify"
         }
       },
       "libreoffice": {
-        "version": "24.8.0",
+        "version": "24.8.1",
         "options": {
           "full_name": "libreoffice"
         }
@@ -281,7 +296,7 @@
         }
       },
       "google-chrome": {
-        "version": "128.0.6613.114",
+        "version": "128.0.6613.138",
         "options": {
           "full_name": "google-chrome"
         }
@@ -311,7 +326,7 @@
         }
       },
       "thunderbird": {
-        "version": "115.14.0",
+        "version": "128.2.0esr",
         "options": {
           "full_name": "thunderbird"
         }
@@ -347,7 +362,7 @@
         }
       },
       "kicad": {
-        "version": "8.0.4",
+        "version": "8.0.5",
         "options": {
           "full_name": "kicad"
         }
@@ -377,7 +392,7 @@
         }
       },
       "discord": {
-        "version": "0.0.317",
+        "version": "0.0.319",
         "options": {
           "full_name": "discord"
         }
@@ -398,7 +413,7 @@
   "system": {
     "macos": {
       "ventura": {
-        "HOMEBREW_VERSION": "4.3.17",
+        "HOMEBREW_VERSION": "4.3.18",
         "HOMEBREW_PREFIX": "/usr/local",
         "Homebrew/homebrew-core": "api",
         "CLT": "15.1.0.0.1.1700200546",
