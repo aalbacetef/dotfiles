@@ -29,7 +29,7 @@ helix:
 	./helix/__module.sh
 
 .PHONY: tmux 
-tmux:
+tmux: sync
 	./tmux/__module.sh
 
 sync:
