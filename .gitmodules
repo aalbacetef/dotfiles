@@ -9,3 +9,7 @@
 [submodule "tmux/config/tmux-sensible"]
 	path = tmux/config/tmux-sensible
 	url = https://github.com/tmux-plugins/tmux-sensible
+
+[submodule "ranger/colorschemes/dracula"]
+  path = ranger/colorschemes/dracula
+	url = https://github.com/dracula/ranger.git
