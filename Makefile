@@ -10,7 +10,8 @@ help:
 	@echo "  - bash"
 	@echo "  - git"
 	@echo "  - macchina"
-
+	@echo "  - tmux"
+	
 .PHONY: macchina 
 macchina:
 	./macchina/__module.sh
@@ -26,3 +27,7 @@ git:
 .PHONY: helix
 helix:
 	./helix/__module.sh
+
+.PHONY: tmux 
+tmux:
+	./tmux/__module.sh
