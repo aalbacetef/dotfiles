@@ -33,4 +33,4 @@ tmux:
 	./tmux/__module.sh
 
 sync:
-  git submodule update --init --recursive
+	git submodule update --init --recursive
