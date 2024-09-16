@@ -1,0 +1,15 @@
+[submodule "tmux/config/tpm"]
+	path = tmux/config/tpm
+	url = https://github.com/tmux-plugins/tpm
+
+[submodule "tmux/config/tmux"]
+	path = tmux/config/tmux
+	url = https://github.com/catppuccin/tmux
+
+[submodule "tmux/config/tmux-sensible"]
+	path = tmux/config/tmux-sensible
+	url = https://github.com/tmux-plugins/tmux-sensible
+
+[submodule "ranger/colorschemes/dracula"]
+  path = ranger/colorschemes/dracula
+	url = https://github.com/dracula/ranger.git
