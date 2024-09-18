@@ -42,3 +42,11 @@ if ! check_cfg_dir_exists; then
   log "linking..."
   ln -s "$current_dir/config" "$cfg_dir_path"
 fi
+
+source "$DOTFILES/bash/helpers/platform.sh"
+
+if platform::is_darwin; then 
+  log "darwin detected"
+  log "installing term256 color support..."
+  tic -x "$current_dir/term256"
+fi 
