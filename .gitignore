@@ -3,3 +3,5 @@
 # ignore heavy themes
 /themes/icons
 /kitty/themes
+
+__pycache__/
