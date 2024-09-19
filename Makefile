@@ -11,6 +11,7 @@ help:
 	@echo "  - git"
 	@echo "  - macchina"
 	@echo "  - tmux"
+	@echo "  - emacs"
 	
 .PHONY: macchina 
 macchina:
@@ -31,6 +32,10 @@ helix:
 .PHONY: tmux 
 tmux: sync
 	./tmux/__module.sh
+
+.PHONY: emacs
+emacs: sync
+	./emacs/__module.sh
 
 sync:
 	git submodule update --init --recursive
