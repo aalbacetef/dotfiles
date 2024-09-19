@@ -1,7 +1,14 @@
 #!/usr/bin/env bash
 
 current_dir="$(dirname "$(realpath "${BASH_SOURCE[0]}")")"
+
 CONFIG_DIR="$(realpath ~/.config/ranger)"
+
+log() {
+  now=$(date +"%H:%M:%S")
+  echo "[ranger | $now]" "$@"
+}
+
 needs_dir() {
   log "checking if config dir (~/.config/ranger) exists..."
 
