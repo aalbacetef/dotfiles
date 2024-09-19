@@ -73,6 +73,7 @@
         nmap-formatter
         neovim
         obsidian
+        ranger
         terraform
         thc-hydra
         tmux

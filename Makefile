@@ -12,6 +12,7 @@ help:
 	@echo "  - macchina"
 	@echo "  - tmux"
 	@echo "  - emacs"
+	@echo "  - ranger"
 	
 .PHONY: macchina 
 macchina:
@@ -36,6 +37,10 @@ tmux: sync
 .PHONY: emacs
 emacs: sync
 	./emacs/__module.sh
+
+.PHONY: ranger
+ranger: sync
+	./ranger/__module.sh
 
 sync:
 	git submodule update --init --recursive
