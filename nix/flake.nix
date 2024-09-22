@@ -82,6 +82,7 @@
       ];
 
       langs = sysPkgs: with sysPkgs; [
+        cargo
         elixir
         go_1_23
         lua
