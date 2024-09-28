@@ -15,7 +15,7 @@ return {
       "julials",
       "marksman",
       "pyright",
-      "reason",
+     "reason_ls",
       "rnix",
       "ruff_lsp",
       "rust_analyzer",
