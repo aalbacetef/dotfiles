@@ -44,6 +44,7 @@
         socat
         tree
         universal-ctags
+        wabt
         wasmtime
         wget
       ];
