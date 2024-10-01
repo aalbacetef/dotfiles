@@ -24,6 +24,7 @@ return {
       "svelte",
       "terraformls",
       --"volar@1.8.27",
+      "ts_ls",
       "vuels",
       "yamlls",
       "zls", 
