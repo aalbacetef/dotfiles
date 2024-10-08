@@ -105,11 +105,9 @@
 
       linuxPkgs = with pkgsLinux; [
         autotools-language-server
-        calibre
         checksec
         chromium
         ghdl
-        koreader
         ngspice
         octaveFull
         qucs-s
