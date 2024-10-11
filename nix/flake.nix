@@ -28,7 +28,6 @@
         gnumake
         gnuplot
         golangci-lint
-        go-task
         go-toml
         graphviz
         grpc
