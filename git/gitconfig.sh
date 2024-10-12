@@ -19,4 +19,5 @@ excludes_file="$current_dir/git-excludes-file"
 
 git config --global --add core.excludesfile "$excludes_file"
 
+# set meld as the merge tool
 git config --global --add merge.tool meld
