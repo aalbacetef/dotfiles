@@ -18,3 +18,5 @@ current_dir="$(dirname "$(realpath "${BASH_SOURCE[0]}")")"
 excludes_file="$current_dir/git-excludes-file"
 
 git config --global --add core.excludesfile "$excludes_file"
+
+git config --global --add merge.tool meld
