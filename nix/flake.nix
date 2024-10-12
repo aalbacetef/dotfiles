@@ -67,6 +67,7 @@
         jq
         kitty
         macchina
+        meld
         minio-client
         netcat
         nmap
