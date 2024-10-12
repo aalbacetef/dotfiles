@@ -8,6 +8,7 @@ return {
       "clangd",
       "cssls",
       "dockerls",
+      "elixirls",
       "eslint", 
       "golangci_lint_ls",
       "gopls",
