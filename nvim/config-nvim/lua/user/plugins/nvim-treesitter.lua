@@ -22,6 +22,7 @@ return {
       "meson",
       "ninja",
       "nix",
+      "ocaml",
       "python",
       "rust",
       "scss",
