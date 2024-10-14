@@ -89,7 +89,12 @@
         luarocks
         maxima
         nodejs
+        ocamlformat
+        ocamlPackages.dune_3
+        ocamlPackages.odoc
         ocamlPackages.reason
+        ocamlPackages.utop
+        opam
         poetry
         python312
         racket
