@@ -35,7 +35,7 @@
         libssh2
         nasm
         nerdfonts
-        openssl_3_2
+        openssl_3_3
         podman
         qemu
         ripgrep
