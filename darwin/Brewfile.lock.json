@@ -234,7 +234,7 @@
         }
       },
       "signal": {
-        "version": "7.27.0",
+        "version": "7.29.0",
         "options": {
           "full_name": "signal"
         }
@@ -252,13 +252,13 @@
         }
       },
       "telegram": {
-        "version": "11.1,267758",
+        "version": "11.2.2,268402",
         "options": {
           "full_name": "telegram"
         }
       },
       "spotify": {
-        "version": "1.2.47.364",
+        "version": "1.2.48.405",
         "options": {
           "full_name": "spotify"
         }
@@ -276,7 +276,7 @@
         }
       },
       "google-chrome": {
-        "version": "129.0.6668.90",
+        "version": "130.0.6723.59",
         "options": {
           "full_name": "google-chrome"
         }
@@ -306,7 +306,7 @@
         }
       },
       "thunderbird": {
-        "version": "131.0",
+        "version": "131.0.1",
         "options": {
           "full_name": "thunderbird"
         }
@@ -342,7 +342,7 @@
         }
       },
       "kicad": {
-        "version": "8.0.5",
+        "version": "8.0.6",
         "options": {
           "full_name": "kicad"
         }
@@ -360,19 +360,19 @@
         }
       },
       "surfshark": {
-        "version": "4.15.2,2293",
+        "version": "4.15.3,2354",
         "options": {
           "full_name": "surfshark"
         }
       },
       "julia": {
-        "version": "1.10.5",
+        "version": "1.11.1",
         "options": {
           "full_name": "julia"
         }
       },
       "discord": {
-        "version": "0.0.321",
+        "version": "0.0.322",
         "options": {
           "full_name": "discord"
         }
@@ -393,7 +393,7 @@
   "system": {
     "macos": {
       "ventura": {
-        "HOMEBREW_VERSION": "4.4.0",
+        "HOMEBREW_VERSION": "4.4.1",
         "HOMEBREW_PREFIX": "/usr/local",
         "Homebrew/homebrew-core": "api",
         "CLT": "15.1.0.0.1.1700200546",
