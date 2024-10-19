@@ -39,6 +39,7 @@
         podman
         qemu
         ripgrep
+        rsync
         shellcheck
         socat
         tree
@@ -83,25 +84,35 @@
       ];
 
       langs = sysPkgs: with sysPkgs; [
+        ammonite
+        dotnet-sdk_8
         elixir
+        fsharp
         go_1_23
         lua
         luarocks
         maxima
+        metals
         nodejs
+        ocaml
         ocamlformat
         ocamlPackages.dune_3
+        ocamlPackages.ocaml-lsp
         ocamlPackages.odoc
         ocamlPackages.reason
         ocamlPackages.utop
         opam
         poetry
+        ponyc
+        purescript
         python312
         racket
         ruby
         rustup
         sbcl
+        sbt
         scala
+        scalafmt
         solc
         zig
       ];
