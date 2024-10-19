@@ -20,5 +20,11 @@ vim.filetype.add({
   }
 })
 
+vim.filetype.add({
+  extension = {
+    purs = 'purescript'
+  }
+})
+
 
 return settings
