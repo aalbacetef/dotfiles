@@ -1,6 +1,7 @@
 # output configuration options
 output:
-  formats: colored-line-number
+  formats: 
+    - format: colored-line-number
   print-issued-lines: true
   print-linter-name: true
   uniq-by-line: true
@@ -32,13 +33,15 @@ linters-settings:
   
   errcheck:
     check-type-assertions: true
-
     check-blank: true
+    exclude-functions: 
+      - fmt.*
+      - encoding/json.Marshal
+      - encoding/json.MarshalIndent
 
-    # [deprecated] comma-separated list of pairs of the form pkg:regex
-    # the regex is used to ignore names within pkg. (default "fmt:.*").
-    # see https://github.com/kisielk/errcheck#the-deprecated-method for details
-    ignore: fmt:.*,io/ioutil:^Read.*
+  errchkjson:
+    check-error-free-encoding: true
+    report-no-exported: false 
 
   errorlint:
     errorf: true
@@ -59,7 +62,6 @@ linters-settings:
   exhaustruct:
     include: []
     exclude: []
-
 
   funlen:
     lines: 60
@@ -83,38 +85,39 @@ linters-settings:
     ignore-tests: true 
     match-constant: true 
    
+  gocritic: 
+    disable-all: true
+    enabled-checks:
+      - nestingReduce
+      - unnamedResult
+      - ruleguard
+    enabled-tags:
+      - diagnostic
+      - performance
+
   godot:
-    scope: declarations
+    scope: all
     exclude: []
     period: true
     capital: true
 
-  gomnd:
-    checks: argument,case,condition,operation,return,assign
-    ignored-numbers:
-      - '0x1'
-      - 0
-      - 1
-      - 2
-      - 4
-      - 7
-      - 8
-      - 10
-    # ignored-files: magic_.*.go
-    # ignored-functions: math.*    
 
 
   gosec:
+    includes: []
     exclude-generated: false 
     severity: low 
     confidence: low 
     concurrency: 2
 
+  gosimple:
+    checks: ["all"]
+
 
   govet:
     enable-all: true
     disable:
-      - fieldalignment
+      - fieldalignment # rarely necessary
     settings:
       # analyzer name, run `go tool vet help` to see all analyzers
       printf: 
@@ -125,11 +128,18 @@ linters-settings:
           - (github.com/golangci/golangci-lint/pkg/logutils.Log).Errorf
           - (github.com/golangci/golangci-lint/pkg/logutils.Log).Fatalf
 
+  inamedparam:
+    skip-single-param: true
+
   interfacebloat:
     max: 5
  
   ireturn:
-    allow: "error,stdlib"
+    allow: 
+      - error
+      - stdlib
+      - anon
+      - empty
 
   lll:
     line-length: 120
@@ -137,6 +147,18 @@ linters-settings:
 
   maintidx:
     under: 20
+
+  mnd:
+    checks: 
+      - argument
+      - case
+      - condition 
+      - operation
+      - return
+      - assign
+    # ignored-numbers: 1000
+    # ignored-files: magic_.*.go
+    # ignored-functions: math.*    
 
   misspell: 
     locale: US
@@ -162,8 +184,6 @@ linters-settings:
       - c
       - l
       - ch
-      - w
-      - h    
     ignore-decls:
       - c echo.Context
       - t *testing.T
@@ -180,19 +200,7 @@ linters-settings:
       - p []byte
       - n int
       - wc io.WriteCloser
-      - b *strings.Builder
-      - x int 
-      - y int
-      - dx int 
-      - dy int 
-      - p []int
-      - pc int
-      - tw *tabwriter.Writer
-      - d *Display
-      - v int
-      - r io.Reader
-      - r *bytes.Reader
-      - vx byte
+
 
 
 linters:
@@ -204,12 +212,12 @@ linters:
     - containedctx
     - contextcheck
     - cyclop
-    - decorder
     - dogsled
     - dupl
     - dupword
     - durationcheck
     - errcheck
+    - errchkjson
     - errname
     - errorlint
     - exhaustive
@@ -220,22 +228,24 @@ linters:
     - gochecknoinits
     - gocognit
     - goconst
+    - gocritic
+    - gocyclo
     - godot
-    - gomnd
     - gosimple
     - gosec
     - govet
     - grouper
+    - inamedparam
     - ineffassign
     - interfacebloat
     - ireturn
     - lll
     - maintidx 
     - misspell
+    - mnd
     - nakedret
     - nestif
     - nilnil
-    - nlreturn
     - nolintlint
     - nonamedreturns
     - prealloc
