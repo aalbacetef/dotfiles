@@ -28,6 +28,7 @@ return {
       "pony",
       "python",
       "purescript",
+      "roc",
       "rust",
       "scala",
       "scss",
