@@ -103,7 +103,6 @@
         ocamlPackages.utop
         opam
         poetry
-        ponyc
         purescript
         python312
         racket
@@ -135,6 +134,7 @@
 
       darwinPkgs = with pkgsDarwin; [
         alacritty
+        ponyc
         rectangle
         skhd
         texliveMedium
