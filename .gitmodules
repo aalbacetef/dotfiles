@@ -17,3 +17,8 @@
 [submodule "emacs/spacemacs"]
 	path = emacs/spacemacs
 	url = https://github.com/syl20bnr/spacemacs
+
+[submodule "popos/themes/dracula-arturo"]
+	path = popos/themes/dracula-arturo
+	url = https://github.com/aalbacetef/dracula-arturo.git
+	branch = master
