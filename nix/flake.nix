@@ -37,6 +37,7 @@
         nerdfonts
         openssl_3_3
         podman
+        podman-compose
         qemu
         ripgrep
         rsync
