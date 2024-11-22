@@ -62,15 +62,14 @@ get_branch_info() {
     is_inside_repo="$(git rev-parse --is-inside-work-tree 2>/dev/null)"
 
     if test "$is_inside_repo"; then
-        git_branch
+        git_branch 2>/dev/null
     fi
 
     echo " "
 }
 
 # size helpers
-files_count="\$(ls -1 | wc -l | sed 's: ::g')"
-cur_files_size="\$(ls -lah | grep -m 1 total | sed 's/total //')"
+files_count="\$(ls -1 2>/dev/null | wc -l | sed 's: ::g' )"
 
 # color helpers
 RESET_COLOR='\[\033[00m\]'
