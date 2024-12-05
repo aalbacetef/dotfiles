@@ -34,7 +34,13 @@
         imagemagick
         libssh2
         nasm
-        nerdfonts
+        nerd-fonts._0xproto
+        nerd-fonts.caskaydia-cove
+        nerd-fonts.hack
+        nerd-fonts.inconsolata
+        nerd-fonts.roboto-mono
+        nerd-fonts.ubuntu
+        nerd-fonts.ubuntu-mono
         openssl_3_3
         podman
         podman-compose
@@ -130,7 +136,7 @@
         remmina
         shfmt
         signal-desktop
-        vagrant
+        # vagrant
       ] ++ commonPackages pkgsLinux;
 
       darwinPkgs = with pkgsDarwin; [
