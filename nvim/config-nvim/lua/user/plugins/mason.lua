@@ -23,7 +23,7 @@ return {
       "rnix",
       "ruff_lsp",
       "rust_analyzer",
-      "solc",
+      "solidity_ls",
       "sqls",
       "svelte",
       "terraformls",
