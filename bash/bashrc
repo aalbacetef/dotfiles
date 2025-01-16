@@ -42,6 +42,11 @@ if platform::is_darwin; then
   source_if_exists "$nix_profile_comp"
 fi
 
+if platform::is_linux; then
+  echo "is linux"
+  source "$DOTFILES/bash/extension.linux.sh"
+fi
+
 # load additional programs
 source_if_exists "$NVM_DIR/nvm.sh"
 source_if_exists "$NVM_DIR/bash_completion"
