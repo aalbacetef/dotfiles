@@ -1,21 +1,21 @@
-#!/usr/bin/env bash 
+#!/usr/bin/env bash
 
 platform::get_os() {
-  uname -o 
+  uname -o
 }
 
 platform::is_linux() {
-  if [[ $(platform::get_os) = "Linux" ]]; then 
+  if [[ $(platform::get_os) = *Linux ]]; then
     return 0
-  fi 
-  
+  fi
+
   return 1
 }
 
 platform::is_darwin() {
   if [[ $(platform::get_os) = "Darwin" ]]; then
     return 0
-  fi 
+  fi
 
   return 1
 }
