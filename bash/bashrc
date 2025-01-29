@@ -43,7 +43,6 @@ if platform::is_darwin; then
 fi
 
 if platform::is_linux; then
-  echo "is linux"
   source "$DOTFILES/bash/extension.linux.sh"
 fi
 
