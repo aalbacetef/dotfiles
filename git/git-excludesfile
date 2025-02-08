@@ -29,3 +29,8 @@ Taskfile.yml
 /build/
 /builds/
 /dist/
+
+## 
+## Mac specific
+##
+.DS_Store
