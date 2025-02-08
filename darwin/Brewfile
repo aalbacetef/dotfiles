@@ -8,10 +8,7 @@ cask 'atom'
 cask 'chromium'
 cask 'discord'
 cask 'gimp'
-cask 'ghdl'
 cask 'google-chrome'
-cask 'julia'
-cask 'kicad'
 cask 'koodo-reader'
 cask 'libreoffice'
 cask 'macfuse'
@@ -32,3 +29,10 @@ cask 'popcorn-time'
 
 tap 'cfergeau/crc'
 brew 'vfkit'
+
+
+## temporarily removed due to not being used 
+# cask 'ghdl'
+# cask 'julia'
+# cask 'kicad'
+
