@@ -4,13 +4,24 @@
   inputs = {
     nixpkgs.url = github:NixOS/nixpkgs/nixpkgs-unstable;
     roc.url = github:roc-lang/roc;
+    nixgl.url = github:guibou/nixGL;
   };
 
 
-  outputs = { self, nixpkgs, roc, ... }:
+  outputs = { self, nixpkgs, roc, nixgl, ... }:
     let
+      wrapWithNixGL = final: prev: {
+        alacritty = final.writeShellScriptBin "alacritty" ''
+          exec ${nixgl.packages.x86_64-linux.nixGLDefault}/bin/nixGL ${prev.alacritty}/bin/alacritty "$@"
+        '';
+        kitty = final.writeShellScriptBin "kitty" ''
+          exec ${nixgl.packages.x86_64-linux.nixGLDefault}/bin/nixGL ${prev.kitty}/bin/kitty "$@"
+        '';
+      };
+
       pkgsFor = system: import nixpkgs {
         inherit system;
+        overlays = if system == "x86_64-linux" then [ wrapWithNixGL ] else [];
       };
 
       pkgsLinux = pkgsFor "x86_64-linux";
@@ -57,6 +68,7 @@
       ];
 
       apps = sysPkgs: with sysPkgs; [
+        alacritty
         ansible
         ansible-lint
         asciidoctor
@@ -140,7 +152,6 @@
       ] ++ commonPackages pkgsLinux;
 
       darwinPkgs = with pkgsDarwin; [
-        alacritty
         ponyc
         rectangle
         skhd
