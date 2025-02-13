@@ -75,7 +75,6 @@
         bun
         devenv
         doctl
-        emacs
         ffmpeg
         fish
         gh
@@ -110,7 +109,6 @@
         go_1_23
         lua
         luarocks
-        maxima
         metals
         nodejs
         ocaml
@@ -148,7 +146,7 @@
         remmina
         shfmt
         signal-desktop
-        # vagrant
+        vagrant
       ] ++ commonPackages pkgsLinux;
 
       darwinPkgs = with pkgsDarwin; [
