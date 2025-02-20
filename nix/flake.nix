@@ -5,10 +5,10 @@
     nixpkgs.url = github:NixOS/nixpkgs/nixpkgs-unstable;
     roc.url = github:roc-lang/roc;
     nixgl.url = github:guibou/nixGL;
+    pinnedRacketVersion.url = github:NixOS/nixpkgs/05bbf675397d5366259409139039af8077d695ce;
   };
 
-
-  outputs = { self, nixpkgs, roc, nixgl, ... }:
+  outputs = { self, nixpkgs, roc, nixgl, pinnedRacketVersion, ... }:
     let
       wrapWithNixGL = final: prev: {
         alacritty = final.writeShellScriptBin "alacritty" ''
@@ -19,9 +19,18 @@
         '';
       };
 
+      pinnedRacket = final: prev: {
+        racket = pinnedRacketVersion.legacyPackages.${prev.system}.racket;
+      };
+
+      overlay_settings = {
+        "x86_64-linux" = [ wrapWithNixGL ];
+        "x86_64-darwin" = [ pinnedRacket ];
+      };
+
       pkgsFor = system: import nixpkgs {
         inherit system;
-        overlays = if system == "x86_64-linux" then [ wrapWithNixGL ] else [];
+        overlays = overlay_settings."${system}" or  [ ];
       };
 
       pkgsLinux = pkgsFor "x86_64-linux";
@@ -34,7 +43,6 @@
         coreutils-full
         fd
         fzf
-        gdb
         git
         gnumake
         gnuplot
@@ -139,6 +147,7 @@
         autotools-language-server
         checksec
         chromium
+        gdb
         ghdl
         ngspice
         octaveFull
@@ -150,7 +159,7 @@
       ] ++ commonPackages pkgsLinux;
 
       darwinPkgs = with pkgsDarwin; [
-        ponyc
+        # ponyc
         rectangle
         skhd
         texliveMedium
