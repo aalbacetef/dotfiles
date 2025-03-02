@@ -159,7 +159,6 @@
       ] ++ commonPackages pkgsLinux;
 
       darwinPkgs = with pkgsDarwin; [
-        # ponyc
         rectangle
         skhd
         texliveMedium
