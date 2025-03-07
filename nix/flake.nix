@@ -144,6 +144,7 @@
       commonPackages = sysPkgs: apps sysPkgs ++ langs sysPkgs ++ essentials sysPkgs;
 
       linuxPkgs = with pkgsLinux; [
+        aardvark-dns
         autotools-language-server
         checksec
         chromium
@@ -155,6 +156,7 @@
         remmina
         shfmt
         signal-desktop
+        slirp4netns
         vagrant
       ] ++ commonPackages pkgsLinux;
 
