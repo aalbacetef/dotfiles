@@ -6,9 +6,10 @@
     roc.url = github:roc-lang/roc;
     nixgl.url = github:guibou/nixGL;
     pinnedRacketVersion.url = github:NixOS/nixpkgs/05bbf675397d5366259409139039af8077d695ce;
+    pinnedPodmanVersion.url = github:NixOS/nixpkgs/21808d22b1cda1898b71cf1a1beb524a97add2c4;
   };
 
-  outputs = { self, nixpkgs, roc, nixgl, pinnedRacketVersion, ... }:
+  outputs = { self, nixpkgs, roc, nixgl, pinnedRacketVersion, pinnedPodmanVersion, ... }:
     let
       wrapWithNixGL = final: prev: {
         alacritty = final.writeShellScriptBin "alacritty" ''
@@ -23,9 +24,17 @@
         racket = pinnedRacketVersion.legacyPackages.${prev.system}.racket;
       };
 
+      pinnedPodman = final: prev: {
+        podman = pinnedPodmanVersion.legacyPackages.${prev.system}.podman;
+      };
+
+
       overlay_settings = {
         "x86_64-linux" = [ wrapWithNixGL ];
-        "x86_64-darwin" = [ pinnedRacket ];
+        "x86_64-darwin" = [
+          pinnedRacket
+          pinnedPodman
+        ];
       };
 
       pkgsFor = system: import nixpkgs {

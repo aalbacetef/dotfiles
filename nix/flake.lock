@@ -115,6 +115,22 @@
         "type": "github"
       }
     },
+    "pinnedPodmanVersion": {
+      "locked": {
+        "lastModified": 1737545071,
+        "narHash": "sha256-j4HeaLw1LZxkCvuOxdO1xTnPYLSOQuzOjGEuCK80X2w=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "21808d22b1cda1898b71cf1a1beb524a97add2c4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "21808d22b1cda1898b71cf1a1beb524a97add2c4",
+        "type": "github"
+      }
+    },
     "pinnedRacketVersion": {
       "locked": {
         "lastModified": 1720494119,
@@ -156,6 +172,7 @@
       "inputs": {
         "nixgl": "nixgl",
         "nixpkgs": "nixpkgs_2",
+        "pinnedPodmanVersion": "pinnedPodmanVersion",
         "pinnedRacketVersion": "pinnedRacketVersion",
         "roc": "roc"
       }
