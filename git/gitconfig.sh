@@ -26,3 +26,6 @@ git config --global core.excludesfile "$excludes_file"
 # set meld as the merge tool
 git config --global --unset-all merge.tool
 git config --global merge.tool meld
+
+# set nano as the default editor
+git config --global core.editor nano
