@@ -116,6 +116,10 @@
         tmux
         yarn
         yq
+
+        ## solana dev environment 
+        anchor 
+        solana-cli
       ];
 
       langs = sysPkgs: with sysPkgs; [
