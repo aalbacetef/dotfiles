@@ -114,11 +114,12 @@
         terraform
         thc-hydra
         tmux
+        web-ext
         yarn
         yq
 
         ## solana dev environment 
-        anchor 
+        anchor
         solana-cli
       ];
 
