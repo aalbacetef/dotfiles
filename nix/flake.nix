@@ -128,7 +128,7 @@
         dotnet-sdk_8
         elixir
         fsharp
-        go_1_23
+        go_1_24
         lua
         luarocks
         metals
@@ -143,7 +143,7 @@
         opam
         poetry
         purescript
-        python312
+        python313
         racket
         ruby
         rustup
