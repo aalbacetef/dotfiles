@@ -159,6 +159,7 @@
 
       linuxPkgs = with pkgsLinux; [
         aardvark-dns
+        apostrophe
         autotools-language-server
         checksec
         chromium
