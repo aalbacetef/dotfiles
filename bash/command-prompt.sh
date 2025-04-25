@@ -43,11 +43,11 @@ git_branch() {
 
     st_short=$(git status --porcelain)
 
-    added=$(echo -n "$st_short" | grep -Ec '^A')
-    modified=$(echo -n "$st_short" | grep -Ec '^ M')
-    renamed=$(echo -n "$st_short" | grep -Ec '^R')
-    deleted=$(echo -n "$st_short" | grep -Ec '^ D')
-    untracked=$(echo -n "$st_short" | grep -Ec '^\?\?')
+    added=$(echo -n "$st_short" | grep -Ec '^ ?A')
+    modified=$(echo -n "$st_short" | grep -Ec '^ ?M')
+    renamed=$(echo -n "$st_short" | grep -Ec '^ ?R')
+    deleted=$(echo -n "$st_short" | grep -Ec '^ ?D')
+    untracked=$(echo -n "$st_short" | grep -Ec '^ ?\?\?')
 
     branch_name="git ~ $(git_branch_name) "
     status_output="Add: $added Mod: $(expr $modified + $renamed) Del: $deleted Unt: $untracked"
