@@ -113,6 +113,7 @@
         ranger
         terraform
         thc-hydra
+        tree-sitter
         tmux
         web-ext
         yarn
