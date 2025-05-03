@@ -40,6 +40,17 @@ if platform::is_darwin; then
   export FONTCONFIG_FILE=/usr/local/etc/fonts/fonts.conf
   nix_profile_comp="$HOME/.nix-profile/etc/profile.d/bash_completion.sh"
   source_if_exists "$nix_profile_comp"
+
+  
+  # run rectangle if it isn't running
+  # set IGNORE_RECTANGLE to skip 
+  if test -d ~/.nix-profile/Applications/Rectangle.app; then
+    rect_pid=$(pgrep '[Rr]ectangle')
+
+    if test -z "$IGNORE_RECTANGLE" -a -z "$rect_pid"; then 
+      open ~/.nix-profile/Applications/Rectangle.app 
+    fi 
+  fi 
 fi
 
 if platform::is_linux; then
