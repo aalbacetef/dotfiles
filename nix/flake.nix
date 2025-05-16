@@ -116,6 +116,7 @@
         tree-sitter
         tmux
         web-ext
+        wrk
         yarn
         yq
 
@@ -173,6 +174,7 @@
         shfmt
         signal-desktop
         slirp4netns
+        sysstat
         vagrant
       ] ++ commonPackages pkgsLinux;
 
