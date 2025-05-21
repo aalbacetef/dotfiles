@@ -45,6 +45,8 @@
       pkgsLinux = pkgsFor "x86_64-linux";
       pkgsDarwin = pkgsFor "x86_64-darwin";
 
+      workPkgs = sysPkgs: (import ./work.nix { inherit sysPkgs; });
+
       essentials = sysPkgs: with sysPkgs; [
         bash-completion
         cmake
@@ -157,7 +159,11 @@
         zig
       ];
 
-      commonPackages = sysPkgs: apps sysPkgs ++ langs sysPkgs ++ essentials sysPkgs;
+      commonPackages = sysPkgs: 
+        apps sysPkgs ++ 
+        langs sysPkgs ++ 
+        essentials sysPkgs ++ 
+        workPkgs sysPkgs;
 
       linuxPkgs = with pkgsLinux; [
         aardvark-dns
