@@ -36,7 +36,6 @@
       ${go_1_24}/bin/go install gotest.tools/gotestsum@v1.12.2
       ${go_1_24}/bin/go install github.com/golang/mock/mockgen@v1.6.0
       ${go_1_24}/bin/go install github.com/gohugoio/hugo@v0.147.4
-
       ${go_1_24}/bin/go install -tags 'postgres' github.com/golang-migrate/migrate/v4/cmd/migrate@v4.18.3
 
       echo "Done"
