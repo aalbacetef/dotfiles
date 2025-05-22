@@ -68,6 +68,12 @@ get_branch_info() {
     echo " "
 }
 
+nix_info() {
+    if test -n "$IN_NIX_SHELL"; then
+        echo "(nix develop)"
+    fi
+}
+
 # size helpers
 files_count="\$(ls -1 2>/dev/null | wc -l | sed 's: ::g' )"
 
@@ -84,10 +90,11 @@ time_var=$RED' \t'$RESET_COLOR
 size_str=$YELLOW" files: $files_count "$RESET_COLOR
 directory=$BLUE'\w'$RESET_COLOR
 venv=$PINK'$(venv_info)'$RESET_COLOR
+in_nix_shell=$PINK'$(nix_info)'$RESET_COLOR
 
 PROMPT_COMMAND='export git_str=$( get_branch_info )'
 
 ## disable venv prompt change
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 
-export PS1="\n$login_info $time_var $size_str $venv \n ~> $directory \n"'$git_str''$ '
+export PS1="\n$login_info $time_var $size_str $in_nix_shell \n ~> $directory \n"'$git_str''$ '
