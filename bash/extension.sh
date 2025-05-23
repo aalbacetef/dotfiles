@@ -83,3 +83,20 @@ ddo-launch() {
   echo ""
   env WINEPREFIX="$pfx" wine "$rootdir/DNDLauncher.exe"
 }
+
+########################################################
+#
+# Logs out from gcloud services and deletes the
+# associated container config (~/.docker/config.json)
+#
+########################################################
+cloud-logout() {
+  echo "[cloud-logout] logging out of gcloud..."
+  gcloud auth revoke --all
+  echo "[cloud-logout] ...done"
+
+  echo "[cloud-logout] rm container config..."
+  rm -f ~/.docker/config.json
+  echo "[cloud-logout] ...done"
+
+}
