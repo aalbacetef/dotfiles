@@ -62,4 +62,8 @@ source_if_exists "$NVM_DIR/nvm.sh"
 source_if_exists "$NVM_DIR/bash_completion"
 source_if_exists "/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh"
 
+test -z "$FNM_DIR" && {
+  eval "$(fnm env)"
+}
+
 macchina

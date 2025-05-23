@@ -119,7 +119,6 @@
         tmux
         web-ext
         wrk
-        yarn
         yq
 
         ## solana dev environment 
@@ -131,12 +130,12 @@
         ammonite
         dotnet-sdk_8
         elixir
+        fnm
         fsharp
         go_1_24
         lua
         luarocks
         metals
-        nodejs
         ocaml
         ocamlformat
         ocamlPackages.dune_3
