@@ -3,10 +3,14 @@ with sysPkgs;
 
   let 
     isLinux = builtins.match "x86_64-linux" system != null;
+
+    gdk = pkgs.google-cloud-sdk.withExtraComponents( with pkgs.google-cloud-sdk.components; [
+      gke-gcloud-auth-plugin
+    ]);
+
     workPkgs = [
       go-ethereum
       golangci-lint
-      google-cloud-sdk
       go-task
       kubectl
       kustomize
@@ -17,6 +21,7 @@ with sysPkgs;
       _1password-cli
       google-cloud-sql-proxy
       foundry
+      gdk
     ];
 
     goPkgs = if isLinux then [] else [(stdenv.mkDerivation {
