@@ -51,7 +51,8 @@
       };
 
       pkgsLinux = pkgsFor "x86_64-linux";
-      pkgsDarwin = pkgsFor "x86_64-darwin";
+      pkgsDarwinX86 = pkgsFor "x86_64-darwin";
+      pkgsDarwinArm = pkgsFor "aarch64-darwin";
 
       workPkgs = sysPkgs: (import ./work.nix { inherit sysPkgs; });
 
@@ -191,12 +192,12 @@
         vagrant
       ] ++ commonPackages pkgsLinux;
 
-      darwinPkgs = with pkgsDarwin; [
+      darwinPkgs = sysPkgs: with sysPkgs; [
         rectangle
         skhd
         texliveMedium
         texstudio
-      ] ++ commonPackages pkgsDarwin;
+      ] ++ commonPackages sysPkgs;
 
     in
     {
@@ -212,12 +213,23 @@
 
       packages.x86_64-darwin.default =
         let
-          pkgs = pkgsDarwin;
+          pkgs = pkgsDarwinX86;
           rocPkgs = roc.packages.x86_64-darwin;
         in
         pkgs.buildEnv {
           name = "user-darwin-packages";
-          paths = darwinPkgs ++ [ rocPkgs.cli ];
+          paths = darwinPkgs pkgsDarwinX86 ++ [ rocPkgs.cli ];
         };
+
+      packages.aarch64-darwin.default =
+        let
+          pkgs = pkgsDarwinArm;
+          rocPkgs = roc.packages.aarch64-darwin;
+        in
+        pkgs.buildEnv {
+          name = "user-darwin-packages-arm";
+          paths = darwinPkgs pkgsDarwinArm ++ [ rocPkgs.cli ];
+        };
+
     };
 }
