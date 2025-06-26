@@ -16,6 +16,7 @@ with sysPkgs;
       kustomize
       krew
       sqlc
+      dotenvx
 
       ## additional
       _1password-cli
