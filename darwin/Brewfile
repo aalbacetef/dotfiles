@@ -24,6 +24,7 @@ cask 'vagrant'
 cask 'vivaldi'
 cask 'whatsapp'
 cask 'wine-stable'
+cask 'virtualbox'
 cask 'vlc'
 
 tap 'cfergeau/crc'
