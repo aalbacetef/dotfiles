@@ -43,6 +43,10 @@
           pinnedPodman
           pinnedNeovim
         ];
+        "aarch64-darwin" = [
+          pinnedRacket
+          pinnedNeovim
+        ];
       };
 
       pkgsFor = system: import nixpkgs {
