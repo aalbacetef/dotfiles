@@ -133,6 +133,9 @@
         ## solana dev environment 
         anchor
         solana-cli
+
+        ## migrations tool
+        goose
       ];
 
       langs = sysPkgs: with sysPkgs; [
