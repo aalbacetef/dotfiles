@@ -136,6 +136,9 @@
 
         ## migrations tool
         goose
+
+        ## AI
+        aider-chat
       ];
 
       langs = sysPkgs: with sysPkgs; [
