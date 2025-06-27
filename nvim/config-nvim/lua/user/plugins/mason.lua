@@ -23,7 +23,6 @@ return {
       "ruff",
       "rust_analyzer",
       "solidity_ls",
-      "sqls",
       "svelte",
       "terraformls",
       "ts_ls",
