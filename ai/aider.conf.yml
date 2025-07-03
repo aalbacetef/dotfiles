@@ -1,0 +1,32 @@
+
+## Model
+
+# I mainly use the gemini model 
+model: 'gemini/gemini-2.0-flash'
+architect: false
+
+## History files 
+#
+#  I like them to be visible 
+input-history-file: aider.input.history
+chat-history-file: aider.chat.history.md
+llm-history-file: aider.llm.history
+
+restore-chat-history: true 
+
+## Git 
+
+git: true 
+gitignore: false  
+aiderignore: .aiderignore 
+
+auto-commits: false # don't autocommit all the time
+auto-edit: false
+
+## TODO 
+#
+# I'll probably want to tweak these in the future 
+
+# reasoning-effort: xxx
+# thinking-tokens: xxx
+

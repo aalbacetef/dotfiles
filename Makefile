@@ -14,6 +14,7 @@ help:
 	@echo "  - macchina"
 	@echo "  - ranger"
 	@echo "  - tmux"
+	@echo "  - ai"
 
 .PHONY: all
 all: bash emacs git helix machina ranger tmux
@@ -49,3 +50,7 @@ tmux: sync
 .PHONY: sync
 sync:
 	git submodule update --init --recursive
+
+.PHONY: ai
+ai:
+	./ai/__module.sh
