@@ -34,3 +34,10 @@ Taskfile.yml
 ## Mac specific
 ##
 .DS_Store
+
+##
+## AI files
+## 
+aider.input.history
+aider.chat.history.md
+aider.llm.history
