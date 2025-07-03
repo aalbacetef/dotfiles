@@ -21,7 +21,6 @@ gitignore: false
 aiderignore: .aiderignore 
 
 auto-commits: false # don't autocommit all the time
-auto-edit: false
 
 ## TODO 
 #
