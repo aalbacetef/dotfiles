@@ -7,7 +7,23 @@ darwin::nix-update() {
 }
 
 darwin::brew-sync() {
-  brew bundle install --cleanup --file "$(realpath "$DOTFILES/darwin/Brewfile")"
+  # don't install work casks on personal laptop
+  if ! test "$IS_WORK_LAPTOP" -eq "1"; then
+    brew bundle install --cleanup --file "$(realpath "$DOTFILES/darwin/Brewfile")"
+  fi 
+
+  # combine all deps
+  darwin_folder="$(realpath "$DOTFILES/darwin")"
+
+  ## create a temporary Brewfile combining base packages and work deps 
+  target_brew="$darwin_folder/Brewfile.generated"
+  cat "$darwin_folder/Brewfile" > "$target_brew"
+  cat "$darwin_folder/Brewfile.work" >> "$target_brew"
+
+  brew bundle install --cleanup --file "$target_brew"
+
+  ## clean up
+  rm "$target_brew"
 }
 
 darwin::ds-cleanup() {
