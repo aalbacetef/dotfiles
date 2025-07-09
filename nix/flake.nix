@@ -143,6 +143,9 @@
 
         ## AI
         aider-chat
+
+        ## linting and security
+        semgrep
       ];
 
       langs = sysPkgs: with sysPkgs; [
