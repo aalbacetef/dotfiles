@@ -98,5 +98,25 @@ cloud-logout() {
   echo "[cloud-logout] rm container config..."
   rm -f ~/.docker/config.json
   echo "[cloud-logout] ...done"
-
 }
+
+
+##############################
+#
+# Runs a nix profile upgrade 
+#
+##############################
+nix-up() {
+  local profile_name="nix"
+  local flags="--impure"
+
+  echo "[nix-up] starting nix profile upgrade..."
+  echo "[nix-up]   - name: $profile_name"
+  echo "[nix-up]   - flags: $flags"
+  
+  nix profile upgrade "$profile_name" $flags
+
+  echo "[nix-up] ...done"
+}
+
+
