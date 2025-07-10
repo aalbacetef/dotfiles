@@ -206,6 +206,8 @@
       ] ++ commonPackages pkgsLinux;
 
       darwinPkgs = sysPkgs: with sysPkgs; [
+        fswatch
+        gnused
         rectangle
         skhd
         texliveMedium
