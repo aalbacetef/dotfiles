@@ -119,4 +119,15 @@ nix-up() {
   echo "[nix-up] ...done"
 }
 
-
+#######################################
+#
+# Will watch the current directory  
+# and run the command passed in 
+#
+# Example: 
+#   watch-n-run go run ./cmd/server/
+#
+#######################################
+watch-n-run() {
+  "$DOTFILES/scripts/watch-n-run.fish" "$@"
+}
