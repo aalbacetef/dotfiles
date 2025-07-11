@@ -146,6 +146,9 @@
 
         ## linting and security
         semgrep
+
+        ## live reload go apps
+        air
       ];
 
       langs = sysPkgs: with sysPkgs; [
@@ -206,7 +209,6 @@
       ] ++ commonPackages pkgsLinux;
 
       darwinPkgs = sysPkgs: with sysPkgs; [
-        fswatch
         gnused
         rectangle
         skhd
