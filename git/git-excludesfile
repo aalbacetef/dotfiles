@@ -41,3 +41,4 @@ Taskfile.yml
 aider.input.history
 aider.chat.history.md
 aider.llm.history
+.aider.tags.cache.v4/
