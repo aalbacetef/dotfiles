@@ -6,11 +6,10 @@
     roc.url = github:roc-lang/roc;
     nixgl.url = github:guibou/nixGL;
     pinnedRacketVersion.url = github:NixOS/nixpkgs/05bbf675397d5366259409139039af8077d695ce;
-    pinnedPodmanVersion.url = github:NixOS/nixpkgs/21808d22b1cda1898b71cf1a1beb524a97add2c4;
     pinnedNeovimVersion.url = github:NixOS/nixpkgs/84b8c066959156b1a1c408d73669592b3ab10a9c;
   };
 
-  outputs = { self, nixpkgs, roc, nixgl, pinnedRacketVersion, pinnedPodmanVersion, pinnedNeovimVersion, ... }:
+  outputs = { self, nixpkgs, roc, nixgl, pinnedRacketVersion, pinnedNeovimVersion, ... }:
     let
       wrapWithNixGL = final: prev: {
         alacritty = final.writeShellScriptBin "alacritty" ''
@@ -25,10 +24,6 @@
         racket = pinnedRacketVersion.legacyPackages.${prev.system}.racket;
       };
 
-      pinnedPodman = final: prev: {
-        podman = pinnedPodmanVersion.legacyPackages.${prev.system}.podman;
-      };
-
       pinnedNeovim = final: prev: {
         neovim = pinnedNeovimVersion.legacyPackages.${prev.system}.neovim;
       };
@@ -40,7 +35,6 @@
         ];
         "x86_64-darwin" = [
           pinnedRacket
-          pinnedPodman
           pinnedNeovim
         ];
         "aarch64-darwin" = [
