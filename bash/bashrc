@@ -1,5 +1,18 @@
 #!/usr/bin/env bash
 
+## Set Locale
+##
+export LANG=en_US.UTF-8
+
+# handle characters and sorting in spanish fine
+export LC_CTYPE=es_ES.UTF-8
+export LC_COLLATE=es_ES.UTF-8
+
+# keep messages in english
+export LC_MESSAGES=en_US.UTF-8
+
+## Start script
+
 src="${BASH_SOURCE[0]}"
 curr_dir="$(dirname "$src")"
 dot_dir="$(dirname "$curr_dir")"
@@ -41,16 +54,15 @@ if platform::is_darwin; then
   nix_profile_comp="$HOME/.nix-profile/etc/profile.d/bash_completion.sh"
   source_if_exists "$nix_profile_comp"
 
-  
   # run rectangle if it isn't running
-  # set IGNORE_RECTANGLE to skip 
+  # set IGNORE_RECTANGLE to skip
   if test -d ~/.nix-profile/Applications/Rectangle.app; then
     rect_pid=$(pgrep '[Rr]ectangle')
 
-    if test -z "$IGNORE_RECTANGLE" -a -z "$rect_pid"; then 
-      open ~/.nix-profile/Applications/Rectangle.app 
-    fi 
-  fi 
+    if test -z "$IGNORE_RECTANGLE" -a -z "$rect_pid"; then
+      open ~/.nix-profile/Applications/Rectangle.app
+    fi
+  fi
 fi
 
 if platform::is_linux; then
