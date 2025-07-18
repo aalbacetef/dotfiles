@@ -22,6 +22,11 @@ aiderignore: .aiderignore
 
 auto-commits: false # don't autocommit all the time
 
+## Conventions 
+
+read:
+  - AGENTS.md
+
 ## TODO 
 #
 # I'll probably want to tweak these in the future 
