@@ -8,8 +8,9 @@ darwin::nix-update() {
 
 darwin::brew-sync() {
   # don't install work casks on personal laptop
-  if ! test "$IS_WORK_LAPTOP" = "1"; then
+  if test "$IS_WORK_LAPTOP" != "1"; then
     brew bundle install --cleanup --file "$(realpath "$DOTFILES/darwin/Brewfile")"
+    return 0
   fi 
 
   # combine all deps
