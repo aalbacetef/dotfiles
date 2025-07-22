@@ -23,6 +23,10 @@ with sysPkgs;
       google-cloud-sql-proxy
       foundry
       gdk
+
+      ## needed for builds
+      protobuf
+      protoc-gen-go
     ];
 
     goPkgs = if isLinux then [] else [(stdenv.mkDerivation {
