@@ -1,0 +1,37 @@
+metadata:
+  date-generated: '2025-07-28--09:03:06'
+  app-count: 8
+
+apps:
+  - name: 'Discord'
+    id: com.discordapp.Discord
+    version: 0.0.100
+
+  - name: 'Flatseal'
+    id: com.github.tchx84.Flatseal
+    version: 2.3.1
+
+  - name: 'Spotify'
+    id: com.spotify.Client
+    version: 1.2.63.394.g126b0d89
+
+  - name: 'Todoist'
+    id: com.todoist.Todoist
+    version: 9.17.0
+
+  - name: 'Steam'
+    id: com.valvesoftware.Steam
+    version: 1.0.0.83
+
+  - name: 'Koodo Reader'
+    id: io.github.troyeguo.koodo-reader
+    version: 1.7.4
+
+  - name: 'Telegram'
+    id: org.telegram.desktop
+    version: 5.15.2
+
+  - name: 'Telegram Desktop Webview Add-on'
+    id: org.telegram.desktop.webview
+    version: 2.48.3
+
