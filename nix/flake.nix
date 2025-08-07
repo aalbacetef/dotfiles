@@ -78,7 +78,7 @@
         nerd-fonts.roboto-mono
         nerd-fonts.ubuntu
         nerd-fonts.ubuntu-mono
-        openssl_3_4
+        openssl_3_5
         podman
         podman-compose
         qemu
