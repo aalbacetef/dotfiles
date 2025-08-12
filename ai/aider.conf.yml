@@ -1,6 +1,9 @@
 
 ## Model
 
+## ensure it uses English given I have some LC_ vars for Spanish
+chat-language: en
+
 # I mainly use the gemini model 
 model: 'gemini/gemini-2.0-flash'
 architect: false
