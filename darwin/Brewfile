@@ -5,6 +5,7 @@ brew 'octave'
 brew 'winetricks'
 
 cask 'atom'
+cask 'brave-browser'
 cask 'chromium'
 cask 'discord'
 cask 'firefox'
