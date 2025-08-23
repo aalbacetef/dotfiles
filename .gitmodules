@@ -1,14 +1,17 @@
 [submodule "tmux/config/tpm"]
 	path = tmux/config/tpm
 	url = https://github.com/tmux-plugins/tpm
+	branch = master
 
 [submodule "tmux/config/tmux"]
 	path = tmux/config/tmux
 	url = https://github.com/catppuccin/tmux
+	branch = main
 
 [submodule "tmux/config/tmux-sensible"]
 	path = tmux/config/tmux-sensible
 	url = https://github.com/tmux-plugins/tmux-sensible
+	branch = master
 
 [submodule "ranger/colorschemes/dracula"]
 	path = ranger/colorschemes/dracula
