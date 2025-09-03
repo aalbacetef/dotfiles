@@ -27,6 +27,9 @@ with sysPkgs;
       ## needed for builds
       protobuf
       protoc-gen-go
+
+      ## helper for dev work
+      watch
     ];
 
     goPkgs = if isLinux then [] else [(stdenv.mkDerivation {
