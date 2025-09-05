@@ -118,6 +118,22 @@
         "type": "github"
       }
     },
+    "pinnedGCLVersion": {
+      "locked": {
+        "lastModified": 1740344231,
+        "narHash": "sha256-eEOlHQAQF4jrrs3zs62wJ5GikQpukQPdtAi5mAy/om8=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "0bd7f95e4588643f2c2d403b38d8a2fe44b0fc73",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "0bd7f95e4588643f2c2d403b38d8a2fe44b0fc73",
+        "type": "github"
+      }
+    },
     "pinnedNeovimVersion": {
       "locked": {
         "lastModified": 1741215475,
@@ -175,6 +191,7 @@
       "inputs": {
         "nixgl": "nixgl",
         "nixpkgs": "nixpkgs_2",
+        "pinnedGCLVersion": "pinnedGCLVersion",
         "pinnedNeovimVersion": "pinnedNeovimVersion",
         "pinnedRacketVersion": "pinnedRacketVersion",
         "roc": "roc"
