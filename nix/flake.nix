@@ -27,6 +27,7 @@
 
       pinnedNeovim = final: prev: {
         neovim = pinnedNeovimVersion.legacyPackages.${prev.system}.neovim;
+        solana-cli = pinnedNeovimVersion.legacyPackages.${prev.system}.solana-cli; 
       };
 
       pinnedGCL = final: prev: {
@@ -38,6 +39,7 @@
           wrapWithNixGL 
           pinnedNeovim
         ];
+
         "x86_64-darwin" = [
           pinnedRacket
           pinnedNeovim
