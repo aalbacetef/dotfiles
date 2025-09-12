@@ -147,6 +147,7 @@
 
         ## AI
         aider-chat
+        gemini-cli
 
         ## linting and security
         semgrep
