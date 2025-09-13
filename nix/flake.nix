@@ -185,7 +185,7 @@
         scala
         scalafmt
         solc
-        zig
+        zig_0_14
       ];
 
       commonPackages = sysPkgs: 
