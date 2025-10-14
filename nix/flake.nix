@@ -174,9 +174,7 @@
         ocamlPackages.reason
         ocamlPackages.utop
         opam
-        poetry
         purescript
-        python313
         racket
         ruby
         rustup
@@ -186,6 +184,12 @@
         scalafmt
         solc
         zig_0_14
+
+        ## python
+        poetry
+        python313
+        uv
+
       ];
 
       commonPackages = sysPkgs: 
