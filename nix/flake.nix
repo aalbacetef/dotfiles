@@ -154,6 +154,9 @@
 
         ## live reload go apps
         air
+
+        ## security 
+        bitwarden-cli
       ];
 
       langs = sysPkgs: with sysPkgs; [
