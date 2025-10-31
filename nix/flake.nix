@@ -135,6 +135,7 @@
         nmap-formatter
         neovim
         obsidian
+        octaveFull
         ranger
         terraform
         thc-hydra
