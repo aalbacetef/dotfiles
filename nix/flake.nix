@@ -8,9 +8,10 @@
     pinnedRacketVersion.url = github:NixOS/nixpkgs/05bbf675397d5366259409139039af8077d695ce;
     pinnedNeovimVersion.url = github:NixOS/nixpkgs/84b8c066959156b1a1c408d73669592b3ab10a9c;
     pinnedGCLVersion.url = github:NixOS/nixpkgs/0bd7f95e4588643f2c2d403b38d8a2fe44b0fc73;
+    pinnedBWVersion.url = github:NixOS/nixpkgs/0bd7f95e4588643f2c2d403b38d8a2fe44b0fc73;
   };
 
-  outputs = { self, nixpkgs, roc, nixgl, pinnedRacketVersion, pinnedNeovimVersion, pinnedGCLVersion, ... }:
+  outputs = { self, nixpkgs, roc, nixgl, pinnedRacketVersion, pinnedNeovimVersion, pinnedGCLVersion, pinnedBWVersion, ... }:
     let
       wrapWithNixGL = final: prev: {
         alacritty = final.writeShellScriptBin "alacritty" ''
@@ -34,6 +35,10 @@
         golangci-lint = pinnedGCLVersion.legacyPackages.${prev.system}.golangci-lint;
       };
 
+      pinnedBW = final: prev: {
+        bitwarden-cli = pinnedBWVersion.legacyPackages.${prev.system}.bitwarden-cli;
+      };
+
       overlay_settings = {
         "x86_64-linux" = [ 
           wrapWithNixGL 
@@ -43,6 +48,7 @@
         "x86_64-darwin" = [
           pinnedRacket
           pinnedNeovim
+          pinnedBW
         ];
 
         ## work mac 
