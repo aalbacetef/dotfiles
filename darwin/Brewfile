@@ -1,7 +1,6 @@
 brew 'bash'
 brew 'djview4'
 brew 'm-cli'
-brew 'octave'
 brew 'winetricks'
 
 cask 'atom'
