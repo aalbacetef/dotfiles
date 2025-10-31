@@ -13,3 +13,7 @@ alias l='ls'
 
 ## nix
 alias nix-search='nix search nixpkgs'
+
+## dotenvx 
+alias dx='dotenvx'
+alias dxr='dotenvx run'
