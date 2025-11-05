@@ -187,7 +187,7 @@ local-install() {
 # Gets a folder ID based on name
 #
 #################################
-bw-folder() {
+bwf() {
   local name="$1"
   local found
 
@@ -213,4 +213,106 @@ bw-folder() {
 ###################################
 bw-folders() {
   bw list folders | jq -r '.[].name'
+}
+
+########################################################
+#
+# Add an attachment in the developer environment folder
+#
+########################################################
+bw-add-env() {
+  local name="$1"
+  local filename="$2"
+
+  if test -z "$name"; then
+    echo "name is empty. Usage: bw-mk-env NAME FILENAME"
+    return 1
+  fi
+
+  if test -z "$filename"; then
+    echo "filename is empty. Usage: bw-mk-env NAME FILENAME"
+    return 1
+  fi
+
+  local folderid
+  folderid="$(bw list folders | jq -r '.[]|select(.name == "developer environment").id')"
+
+  local itemid
+  itemid=$(bwi "$name" "developer environment")
+
+  if test -z "$itemid"; then
+    itemid=$(bw-mk-note "$name" "developer environment")
+  fi
+
+  if ! test -z "$(bw get attachment "$filename" --itemid="$itemid" --raw)"; then
+    echo "attachment already exists"
+    return 1
+  fi
+
+  bw create attachment --file "$filename" --itemid "$itemid" | jq
+}
+
+bwi() {
+  local name="$1"
+  local folder="$2"
+
+  if test -z "$name"; then
+    echo "name is empty"
+    return 1
+  fi
+
+  if test -z "$folder"; then
+    echo "folder is empty"
+    return 1
+  fi
+
+  local folderid
+  local itemid
+
+  folderid="$(bwf "$folder")"
+  if test -z "$folderid"; then
+    return 1
+  fi
+
+  itemid="$(bw list items --folderid="$folderid" | jq -r ".[]|select(.name == \"$name\").id")"
+
+  if test -z "$itemid"; then
+    return 1
+  fi
+
+  echo "$itemid"
+}
+
+bw-mk-note() {
+  local name="$1"
+  local folder="$2"
+
+  if test -z "$name"; then
+    echo "name is empty. Usage: bw-mk-note NAME FOLDER"
+    return 1
+  fi
+
+  if test -z "$folder"; then
+    echo "folder is empty. Usage: bw-mk-note NAME FOLDER"
+    return 1
+  fi
+
+  local folderid
+
+  folderid="$(bwf "$folder")"
+  if test -z "$folderid"; then
+    echo "folder doesn't exist"
+    return 1
+  fi
+
+  itemid=$(bw get template item |
+    jq '.login.urls = [] | .type = 2' |
+    jq '.secureNote.type = 0' |
+    jq ".name = \"$name\"" |
+    jq ".folderId = \"$folderid\"" |
+    bw encode |
+    bw create item |
+    jq -r '.id')
+
+  echo "$itemid"
 }
