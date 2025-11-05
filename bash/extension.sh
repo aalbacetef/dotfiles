@@ -158,26 +158,59 @@ np-info() {
 
 ##############################
 #
-# Installs a binary locally 
+# Installs a binary locally
 #
 ##############################
 local-install() {
   local path_to_file="$1"
 
-  if test -z "$path_to_file"; then 
+  if test -z "$path_to_file"; then
     echo "no file specified"
-    return 1 
-  fi 
+    return 1
+  fi
 
-  if test -z "$LOCAL_USER_BIN"; then 
+  if test -z "$LOCAL_USER_BIN"; then
     echo "no \$LOCAL_USER_BIN env var specified"
     return 1
-  fi 
+  fi
 
-  if ! test -d "$LOCAL_USER_BIN"; then 
+  if ! test -d "$LOCAL_USER_BIN"; then
     echo "$LOCAL_USER_BIN is not a directory"
     return 1
   fi
 
   cp "$path_to_file" "$LOCAL_USER_BIN"
+}
+
+#################################
+#
+# Gets a folder ID based on name
+#
+#################################
+bw-folder() {
+  local name="$1"
+  local found
+
+  if test -z "$name"; then
+    echo "no name provided"
+    return 1
+  fi
+
+  found="$(bw list folders | jq -r ".[]|select(.name == \"$name\").id")"
+
+  if test -z "$found"; then
+    echo "not found"
+    return 1
+  fi
+
+  echo "$found"
+}
+
+###################################
+#
+# Returns the names of bw folders
+#
+###################################
+bw-folders() {
+  bw list folders | jq -r '.[].name'
 }
