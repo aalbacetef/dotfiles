@@ -1,4 +1,4 @@
 [Context]
 sockets=session-bus;fallback-x11;!wayland
 devices=shm;dri
-filesystems=/media/arturo/cc6316ab-ead6-4170-a960-5ce437efd6fa/steam-library/:rw
+filesystems=/personal-files/steam-library/:rw;/media/arturo/cc6316ab-ead6-4170-a960-5ce437efd6fa/steam-library/:rw
