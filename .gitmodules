@@ -25,3 +25,8 @@
 	path = linux/popos/themes/dracula-arturo
 	url = https://github.com/aalbacetef/dracula-arturo
 	branch = master
+
+[submodule "linux/popos/themes/Tela-icon-them"] 
+	path = linux/popos/themes/Tela-icon-theme
+	url = https://github.com/vinceliuice/Tela-icon-theme
+
