@@ -114,6 +114,7 @@
         ansible
         ansible-lint
         asciidoctor
+        brave
         bun
         devenv
         doctl
@@ -225,6 +226,19 @@
         slirp4netns
         sysstat
         vagrant
+
+        virter
+        virt-manager
+
+
+        ## gnome extensions 
+        gnomeExtensions.caffeine
+        gnomeExtensions.extension-list
+        gnomeExtensions.just-perfection
+        gnomeExtensions.sound-output-device-chooser
+        gnomeExtensions.todotxt
+        gnomeExtensions.user-themes
+        gnomeExtensions.vitals
       ] ++ commonPackages pkgsLinux;
 
       darwinPkgs = sysPkgs: with sysPkgs; [
