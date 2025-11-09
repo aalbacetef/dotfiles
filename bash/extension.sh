@@ -316,3 +316,23 @@ bw-mk-note() {
 
   echo "$itemid"
 }
+
+###############################################
+#
+# Helper for setting up a pfx when installing
+# games with wine.
+#
+##################$$$$$$$$$$$$$$$$$$$$#########
+wine-install() {
+  local current_dir
+  local pfx
+  local exe_bin
+
+  exe_bin="$1"
+  current_dir="$(realpath "$(pwd)")"
+  pfx="$current_dir/pfx"
+
+  mkdir -p "$pfx"
+
+  env WINEPREFIX="$pfx" wine "$exe_bin"
+}
