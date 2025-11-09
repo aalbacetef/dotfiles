@@ -9,9 +9,10 @@
     pinnedNeovimVersion.url = github:NixOS/nixpkgs/84b8c066959156b1a1c408d73669592b3ab10a9c;
     pinnedGCLVersion.url = github:NixOS/nixpkgs/0bd7f95e4588643f2c2d403b38d8a2fe44b0fc73;
     pinnedBWVersion.url = github:NixOS/nixpkgs/0bd7f95e4588643f2c2d403b38d8a2fe44b0fc73;
+    pinnedGnomeExtVersion.url = github:NixOS/nixpkgs/6ef2b63f3929c62a1ec6a960234fe06940ce3b10;
   };
 
-  outputs = { self, nixpkgs, roc, nixgl, pinnedRacketVersion, pinnedNeovimVersion, pinnedGCLVersion, pinnedBWVersion, ... }:
+  outputs = { self, nixpkgs, roc, nixgl, pinnedRacketVersion, pinnedNeovimVersion, pinnedGCLVersion, pinnedBWVersion, pinnedGnomeExtVersion, ... }:
     let
       wrapWithNixGL = final: prev: {
         alacritty = final.writeShellScriptBin "alacritty" ''
@@ -39,10 +40,21 @@
         bitwarden-cli = pinnedBWVersion.legacyPackages.${prev.system}.bitwarden-cli;
       };
 
+      pinnedGnomeExt = final: prev: {
+        gnomeExtensions.caffeine = pinnedGnomeExtVersion.legacyPackages.${prev.system}.gnomeExtensions.caffeine;
+        gnomeExtensions.extension-list = pinnedGnomeExtVersion.legacyPackages.${prev.system}.gnomeExtensions.extension-list;
+        gnomeExtensions.just-perfection = pinnedGnomeExtVersion.legacyPackages.${prev.system}.gnomeExtensions.just-perfection;
+        gnomeExtensions.sound-output-device-chooser = pinnedGnomeExtVersion.legacyPackages.${prev.system}.gnomeExtensions.sound-output-device-chooser;
+        gnomeExtensions.todotxt = pinnedGnomeExtVersion.legacyPackages.${prev.system}.gnomeExtensions.todotxt;
+        gnomeExtensions.user-themes = pinnedGnomeExtVersion.legacyPackages.${prev.system}.gnomeExtensions.user-themes;
+        gnomeExtensions.vitals = pinnedGnomeExtVersion.legacyPackages.${prev.system}.gnomeExtensions.vitals;
+      };
+
       overlay_settings = {
         "x86_64-linux" = [ 
           wrapWithNixGL 
           pinnedNeovim
+          pinnedGnomeExt
         ];
 
         "x86_64-darwin" = [
@@ -110,61 +122,64 @@
       ];
 
       apps = sysPkgs: with sysPkgs; [
-        alacritty
+        # devops and infra
         ansible
         ansible-lint
-        asciidoctor
-        brave
-        bun
-        devenv
         doctl
-        ffmpeg
-        fish
         gh
         glab
+        terraform
+
+        # apps 
+        brave
         helix
-        htop
+        ladybird
+        meld
+        neovim
+        obsidian
+        octaveFull
+        ranger
+
+        # general CLI tools
+        alacritty
+        asciidoctor
+        bitwarden-cli
+        btop
+        bun
+        devenv
+        fish
+        ffmpeg
         http-server
         httpie
         jq
         kitty
         macchina
-        meld
         minio-client
+        tmux
+        tree-sitter
+        yq
+
+        ## network and security tools 
         netcat
         nmap
         nmap-formatter
-        neovim
-        obsidian
-        octaveFull
-        ranger
-        terraform
+        semgrep
         thc-hydra
-        tree-sitter
-        tmux
-        web-ext
-        wrk
-        yq
+
 
         ## solana dev environment 
         anchor
         solana-cli
 
-        ## migrations tool
+        ## dev tools
+        air
         goose
+        web-ext 
+        wrk
 
         ## AI
         aider-chat
         gemini-cli
-
-        ## linting and security
-        semgrep
-
-        ## live reload go apps
-        air
-
-        ## security 
-        bitwarden-cli
       ];
 
       langs = sysPkgs: with sysPkgs; [
@@ -225,6 +240,8 @@
         signal-desktop
         slirp4netns
         sysstat
+
+        transmission
         vagrant
 
         virter
@@ -239,6 +256,9 @@
         gnomeExtensions.todotxt
         gnomeExtensions.user-themes
         gnomeExtensions.vitals
+
+        ## wine 
+        wine
       ] ++ commonPackages pkgsLinux;
 
       darwinPkgs = sysPkgs: with sysPkgs; [
