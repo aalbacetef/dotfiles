@@ -150,6 +150,22 @@
         "type": "github"
       }
     },
+    "pinnedGnomeExtVersion": {
+      "locked": {
+        "lastModified": 1654722077,
+        "narHash": "sha256-OWvmCK416WNSdI/Ftc6c4IZDGs27ILptJ1s7Pn0OYsk=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "6ef2b63f3929c62a1ec6a960234fe06940ce3b10",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "6ef2b63f3929c62a1ec6a960234fe06940ce3b10",
+        "type": "github"
+      }
+    },
     "pinnedNeovimVersion": {
       "locked": {
         "lastModified": 1741215475,
@@ -209,6 +225,7 @@
         "nixpkgs": "nixpkgs_2",
         "pinnedBWVersion": "pinnedBWVersion",
         "pinnedGCLVersion": "pinnedGCLVersion",
+        "pinnedGnomeExtVersion": "pinnedGnomeExtVersion",
         "pinnedNeovimVersion": "pinnedNeovimVersion",
         "pinnedRacketVersion": "pinnedRacketVersion",
         "roc": "roc"
