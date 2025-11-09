@@ -54,3 +54,7 @@ sync:
 .PHONY: ai
 ai:
 	./ai/__module.sh
+
+.PHONY: alacritty
+alacritty:
+	./alacritty/__module.sh
