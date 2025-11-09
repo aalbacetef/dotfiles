@@ -58,3 +58,7 @@ ai:
 .PHONY: alacritty
 alacritty:
 	./alacritty/__module.sh
+
+.PHONY: flatpak
+flatpak:
+		./linux/flatpak/__module.sh
