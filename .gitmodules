@@ -30,3 +30,6 @@
 	path = linux/popos/themes/Tela-icon-theme
 	url = https://github.com/vinceliuice/Tela-icon-theme
 
+[submodule "emacs/doomemacs"]
+	path = emacs/doomemacs
+	url = https://github.com/doomemacs/doomemacs
