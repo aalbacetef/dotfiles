@@ -15,6 +15,7 @@ return {
       "golangci_lint_ls",
       "gopls",
       "html",
+      "hyprls",
       "julials",
       "marksman",
       "purescriptls",
