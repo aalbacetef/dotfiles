@@ -106,7 +106,7 @@
         nerd-fonts.roboto-mono
         nerd-fonts.ubuntu
         nerd-fonts.ubuntu-mono
-        openssl_3_5
+        openssl_3_6
         podman
         podman-compose
         qemu
@@ -132,6 +132,7 @@
 
         # apps 
         brave
+        emacs
         helix
         ladybird
         meld
@@ -139,6 +140,7 @@
         obsidian
         octaveFull
         ranger
+        vlc
 
         # general CLI tools
         alacritty
@@ -215,7 +217,6 @@
         poetry
         python313
         uv
-
       ];
 
       commonPackages = sysPkgs: 
@@ -241,12 +242,12 @@
         slirp4netns
         sysstat
 
-        transmission
+        popcorntime
+        transmission_4-gtk
         vagrant
 
         virter
         virt-manager
-
 
         ## gnome extensions 
         gnomeExtensions.caffeine
@@ -257,8 +258,23 @@
         gnomeExtensions.user-themes
         gnomeExtensions.vitals
 
-        ## wine 
+        ## gaming 
+        lutris
         wine
+
+        ## wm  
+        # NOTE: requires the following installed via apt: sway, swaybg
+        swayidle
+        swayimg
+        swaylock
+        waybar
+        wofi
+        mako 
+        nwg-launchers
+        nwg-look
+        blueman
+        eww
+        dracula-icon-theme
       ] ++ commonPackages pkgsLinux;
 
       darwinPkgs = sysPkgs: with sysPkgs; [
