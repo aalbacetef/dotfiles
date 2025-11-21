@@ -1,0 +1,26 @@
+window {
+  background-color: #282a36ee;
+  font-family: "CaskaydiaCove Nerd Font Mono";
+  font-size: 16px;
+  border-radius: 20px;
+  border: 3px solid #6272a4;
+  backdrop-filter: blur(12px);
+}
+
+#input {
+  background-color: #44475a;
+  color: #f8f8f2;
+  border: 3px solid #bd93f9;
+  border-radius: 16px;
+  padding: 14px;
+  margin: 12px;
+}
+
+#entry {
+  padding: 10px 16px;
+}
+
+#entry:selected {
+  background-color: #6272a4;
+  border-radius: 12px;
+}

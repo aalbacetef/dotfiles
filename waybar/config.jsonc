@@ -1,0 +1,127 @@
+// ~/.config/waybar/config.jsonc
+{
+    "layer": "top",
+    "position": "top",
+    "height": 32,
+    "spacing": 0,
+    "margin-top": 6,
+    "margin-left": 6,
+    "margin-right": 6,
+
+    "modules-center": ["clock"],
+    "modules-left": [
+        "custom/keybinds",
+        "sway/workspaces",
+        "sway/mode",
+        "idle_inhibitor"
+    ],
+    "modules-right": [
+        "cpu",
+        "memory",
+        "temperature",
+        "pulseaudio",
+        "network",
+        "battery",
+        "tray"   // ← Wi-Fi + Bluetooth dropdown icons appear here (Pop!_OS style)
+    ],
+
+    "sway/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": false,
+        "format": "{icon}",
+        "persistent-workspaces": {
+            "1": [],
+            "2": [], 
+            "3": []
+        },
+        "format-icons": {
+            "urgent": "󰀨"
+        }
+    },
+
+    "clock": {
+        "format": "{:%H:%M}",
+        "format-alt": "{:%A, %d %B %Y}",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "calendar": {
+            "mode": "month",
+            "weeks-pos": "right",
+            "format": {
+                "months": "<span color='#ff79c6ff'><b>{}</b></span>",
+                "days": "<span color='#f8f8f2'><b>{}</b></span>",
+                "weekdays": "<span color='#bd93f9'><b>{}</b></span>",
+                "today": "<span color='#ff79c6'><b>{}</b></span>"
+            }
+        }
+    },
+
+    "cpu": {
+        "format": "󰍛 {usage}%",
+        "tooltip": false
+    },
+    "memory": {
+        "format": "󰘚 {used:0.1f}G"
+    },
+    "temperature": {
+        "critical-threshold": 80,
+        "format": "{icon} {temperatureC}°C",
+        "format-icons": ["", "", ""]
+    },
+
+    // ────── Volume → eww audio mixer (per-app sliders + sink selector) ──────
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-bluetooth": "{icon} {volume}% ",
+        "format-muted": " muted",
+        "format-icons": {
+            "headphone": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "eww open volume",           // ← changed
+        "on-click-right": "eww close volume",
+        "scroll-step": 2
+    },
+
+    // ────── Network → eww wifi + vpn dropdown ──────
+    "network": {
+        "format-wifi": "  {essid}",
+        "format-ethernet": "󰈀",
+        "format-disconnected": "⚠",
+        "tooltip-format-wifi": "{signalStrength}%",
+        "on-click": "eww open wifi",              // ← changed
+        "on-click-right": "eww close wifi"
+    },
+
+    "tray": {
+        "icon-size": 18,
+        "spacing": 8
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    },
+
+    // ────── Battery → eww power/brightness/night-light dropdown ──────
+    "battery": {
+        "bat": "BAT0",
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon}  {capacity}%",
+        "format-icons": ["", "", "", "", ""],
+        "tooltip": false,
+        "on-click": "eww open power",             // ← changed
+        "on-click-right": "eww close power"
+    },
+    
+    "custom/keybinds": {
+        "format": "<span foreground='#ff79c6' weight='bold'>󰌌</span>",
+        "on-click": "~/.config/waybar/show-keybinds.sh",
+        "tooltip": "<span foreground='#bd93f9'>Sway shortcuts cheatsheet</span>",
+        "escape": true
+    }
+}
