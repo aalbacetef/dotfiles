@@ -444,3 +444,35 @@ ask() {
     --restore-chat-history \
     -m "'$*'"
 }
+
+#########################################################
+#
+# Convert virtualbox Vagrant boxes into libvirt format
+#
+#########################################################
+vagrant-pull() {
+  # Requires `vagrant-mutate` plugin:
+  # vagrant plugin install vagrant-mutate
+
+  # Check if a box slug is provided as an argument.
+  if test -z "$1"; then
+    echo "Usage: $0 <box_slug> [source_provider] [target_provider]"
+    echo "Example: $0 debian/jessie64 virtualbox libvirt"
+    return 1
+  fi
+
+  BOX_SLUG=$1
+  SOURCE_PROVIDER=${2:-"virtualbox"}
+  TARGET_PROVIDER=${3:-"libvirt"}
+
+  echo "==> Pulling box '${BOX_SLUG}' for provider '${SOURCE_PROVIDER}'..."
+  vagrant box add --provider "${SOURCE_PROVIDER}" "${BOX_SLUG}"
+
+  echo "==> Mutating box '${BOX_SLUG}' from '${SOURCE_PROVIDER}' to '${TARGET_PROVIDER}'..."
+  vagrant mutate "${BOX_SLUG}" "${TARGET_PROVIDER}"
+
+  echo "==> Removing original box '${BOX_SLUG}' for provider '${SOURCE_PROVIDER}'..."
+  vagrant box remove "${BOX_SLUG}" --provider "${SOURCE_PROVIDER}" --force
+
+  echo "==> Done. Box '${BOX_SLUG}' is now available for the '${TARGET_PROVIDER}' provider."
+}
