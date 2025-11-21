@@ -50,3 +50,7 @@ install() {
 if needs_install; then
   install
 fi
+
+log "adding all flatpak apps..."
+"$current_dir/install-apps.fish"
+log "done"

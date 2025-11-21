@@ -47,7 +47,6 @@ ranger: sync
 tmux: sync
 	./tmux/__module.sh
 
-.PHONY: sync
 sync:
 	git submodule update --init --recursive
 
@@ -59,6 +58,8 @@ ai:
 alacritty:
 	./alacritty/__module.sh
 
-.PHONY: flatpak
 flatpak:
-		./linux/flatpak/__module.sh
+	./linux/flatpak/__module.sh
+
+flatpak-update:
+	./linux/flatpak/update.fish
