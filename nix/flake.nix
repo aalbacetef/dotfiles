@@ -5,6 +5,10 @@
     nixpkgs.url = github:NixOS/nixpkgs/nixpkgs-unstable;
     roc.url = github:roc-lang/roc;
     nixgl.url = github:guibou/nixGL;
+    ags = {
+      url = github:aylur/ags;
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     pinnedRacketVersion.url = github:NixOS/nixpkgs/05bbf675397d5366259409139039af8077d695ce;
     pinnedNeovimVersion.url = github:NixOS/nixpkgs/84b8c066959156b1a1c408d73669592b3ab10a9c;
     pinnedGCLVersion.url = github:NixOS/nixpkgs/0bd7f95e4588643f2c2d403b38d8a2fe44b0fc73;
@@ -12,7 +16,15 @@
     pinnedGnomeExtVersion.url = github:NixOS/nixpkgs/6ef2b63f3929c62a1ec6a960234fe06940ce3b10;
   };
 
-  outputs = { self, nixpkgs, roc, nixgl, pinnedRacketVersion, pinnedNeovimVersion, pinnedGCLVersion, pinnedBWVersion, pinnedGnomeExtVersion, ... }:
+  outputs = { 
+    self, 
+    nixpkgs, roc, nixgl, ags, 
+    pinnedRacketVersion, 
+    pinnedNeovimVersion, 
+    pinnedGCLVersion, 
+    pinnedBWVersion, 
+    pinnedGnomeExtVersion, 
+  ... }:
     let
       wrapWithNixGL = final: prev: {
         alacritty = final.writeShellScriptBin "alacritty" ''
@@ -217,6 +229,8 @@
         poetry
         python313
         uv
+
+        roc.packages.${system}.cli
       ];
 
       commonPackages = sysPkgs: 
@@ -275,6 +289,7 @@
         blueman
         eww
         dracula-icon-theme
+        ags.packages.${system}.agsFull
       ] ++ commonPackages pkgsLinux;
 
       darwinPkgs = sysPkgs: with sysPkgs; [
@@ -294,7 +309,7 @@
         in
         pkgs.buildEnv {
           name = "user-linux-packages";
-          paths = linuxPkgs ++ [ rocPkgs.cli ];
+          paths = linuxPkgs;
         };
 
       packages.x86_64-darwin.default =
@@ -304,7 +319,7 @@
         in
         pkgs.buildEnv {
           name = "user-darwin-packages";
-          paths = darwinPkgs pkgsDarwinX86 ++ [ rocPkgs.cli ];
+          paths = darwinPkgs pkgsDarwinX86;
         };
 
       packages.aarch64-darwin.default =
