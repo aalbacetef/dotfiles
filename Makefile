@@ -15,6 +15,7 @@ help:
 	@echo "  - ranger"
 	@echo "  - tmux"
 	@echo "  - ai"
+	@echo "  - flatpak"
 
 .PHONY: all
 all: bash emacs git helix machina ranger tmux
