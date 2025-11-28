@@ -33,6 +33,31 @@
         kitty = final.writeShellScriptBin "kitty" ''
           exec ${nixgl.packages.x86_64-linux.nixGLDefault}/bin/nixGL ${prev.kitty}/bin/kitty "$@"
         '';
+
+        obsidian = prev.obsidian.overrideAttrs (old: {
+          postInstall = (old.postInstall or "") + ''
+            # Wrap only the main binary (lowercase hyprland) with nixGL
+            mv $out/bin/obsidian $out/bin/obsidian-unwrapped
+            makeWrapper ${nixgl.packages.${final.system}.nixGLDefault}/bin/nixGL \
+              $out/bin/obsidian \
+              --argv0 obsidian \
+              --add-flags $out/bin/obsidian-unwrapped
+          '';
+        });
+
+        ## hyprland package has a bunch of binaries but we only want to wrap the main one.
+        hyprland = prev.hyprland.overrideAttrs (old: {
+          postInstall = (old.postInstall or "") + ''
+            # Wrap only the main binary (lowercase hyprland) with nixGL
+            mv $out/bin/hyprland $out/bin/hyprland-unwrapped
+            makeWrapper ${nixgl.packages.${final.system}.nixGLDefault}/bin/nixGL \
+              $out/bin/hyprland \
+              --argv0 hyprland \
+              --add-flags $out/bin/hyprland-unwrapped
+
+            # All the other binaries (hyprctl, hyprpm, hyprpaper, etc.) stay untouched
+          '';
+        });
       };
 
       pinnedRacket = final: prev: {
@@ -93,6 +118,21 @@
       pkgsDarwinArm = pkgsFor "aarch64-darwin";
 
       workPkgs = sysPkgs: (import ./work.nix { inherit sysPkgs; });
+
+      goimports = sysPkgs: sysPkgs.buildGoModule {
+        pname = "goimports";
+        version = "commit--nov-26-2025"; 
+
+        src = sysPkgs.fetchFromGitHub {
+          owner = "golang";
+          repo = "tools";
+          rev = "d32ec344545c517da66ce368d0298ed9655d27ac"; 
+          hash = "sha256-UGT9mUW0xu8Z+w0FgQsuqT5Gc7NP5WrEdVU2gj0BtfA="; 
+        };
+
+        subPackages = [ "cmd/goimports" ];
+        vendorHash = "sha256-FVtHrFgxgDBAfU4x4+zANNhGa3pfsh3XgEQaQYdV1Bs=";
+      };
 
       essentials = sysPkgs: with sysPkgs; [
         bash-completion
@@ -172,6 +212,7 @@
         tmux
         tree-sitter
         yq
+        zellij
 
         ## network and security tools 
         netcat
@@ -202,7 +243,6 @@
         elixir
         fnm
         fsharp
-        go_1_24
         lua
         luarocks
         metals
@@ -231,6 +271,10 @@
         uv
 
         roc.packages.${system}.cli
+
+        ## golang 
+        go_1_24
+        (goimports sysPkgs)
       ];
 
       commonPackages = sysPkgs: 
@@ -290,6 +334,19 @@
         eww
         dracula-icon-theme
         ags.packages.${system}.agsFull
+
+        ## trying out hyprland
+        hyprland
+        hyprlauncher
+        hyprpaper
+        hypridle
+        hyprpanel
+        flameshot
+        grim
+        hyprshot 
+        hyprpicker
+        xdg-desktop-portal
+        xdg-desktop-portal-hyprland
       ] ++ commonPackages pkgsLinux;
 
       darwinPkgs = sysPkgs: with sysPkgs; [
