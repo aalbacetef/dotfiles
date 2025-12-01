@@ -64,3 +64,7 @@ flatpak:
 
 flatpak-update:
 	./linux/flatpak/update.fish
+
+.PHONY: wallpaper
+wallpaper:
+	./wallpaper/__module.sh
