@@ -476,3 +476,45 @@ vagrant-pull() {
 
   echo "==> Done. Box '${BOX_SLUG}' is now available for the '${TARGET_PROVIDER}' provider."
 }
+
+####################################
+#
+# Scaffold a directory for a module
+#
+####################################
+mk-module() {
+  if test -z "$1"; then
+    echo "please pass in a module path"
+    return 1
+  fi
+
+  local path_to_module="$DOTFILES/$1"
+  local module_name="$(basename "$path_to_module")"
+  local script_path="$path_to_module/__module.sh"
+
+  echo "ensuring module exists: '$path_to_module'"
+
+  mkdir -p "$path_to_module"
+
+  if test -f "$script_path"; then
+    echo "script already exists"
+    return 0
+  fi
+
+  echo "scaffolding basic script..."
+
+  echo '
+#!/usr/bin/env bash
+
+current_dir="$(dirname "$(realpath "${BASH_SOURCE[0]}")")"
+
+log() {
+  now=$(date +"%H:%M:%S")
+  echo "[{{ .ModuleName }} | $now]" "$@"
+}
+  ' >"$script_path"
+
+  sed -i "s/{{ .ModuleName }}/$module_name/" "$script_path"
+
+  echo "done"
+}
