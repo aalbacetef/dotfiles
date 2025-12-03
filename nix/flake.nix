@@ -10,7 +10,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     pinnedRacketVersion.url = github:NixOS/nixpkgs/05bbf675397d5366259409139039af8077d695ce;
-    pinnedNeovimVersion.url = github:NixOS/nixpkgs/84b8c066959156b1a1c408d73669592b3ab10a9c;
+    pinnedSolanaVersion.url = github:NixOS/nixpkgs/84b8c066959156b1a1c408d73669592b3ab10a9c;
     pinnedGCLVersion.url = github:NixOS/nixpkgs/0bd7f95e4588643f2c2d403b38d8a2fe44b0fc73;
     pinnedBWVersion.url = github:NixOS/nixpkgs/0bd7f95e4588643f2c2d403b38d8a2fe44b0fc73;
     pinnedGnomeExtVersion.url = github:NixOS/nixpkgs/6ef2b63f3929c62a1ec6a960234fe06940ce3b10;
@@ -20,7 +20,7 @@
     self, 
     nixpkgs, roc, nixgl, ags, 
     pinnedRacketVersion, 
-    pinnedNeovimVersion, 
+    pinnedSolanaVersion, 
     pinnedGCLVersion, 
     pinnedBWVersion, 
     pinnedGnomeExtVersion, 
@@ -64,9 +64,9 @@
         racket = pinnedRacketVersion.legacyPackages.${prev.system}.racket;
       };
 
-      pinnedNeovim = final: prev: {
-        neovim = pinnedNeovimVersion.legacyPackages.${prev.system}.neovim;
-        solana-cli = pinnedNeovimVersion.legacyPackages.${prev.system}.solana-cli; 
+      pinnedSolana = final: prev: {
+        # neovim = pinnedSolanaVersion.legacyPackages.${prev.system}.neovim;
+        solana-cli = pinnedSolanaVersion.legacyPackages.${prev.system}.solana-cli; 
       };
 
       pinnedGCL = final: prev: {
@@ -90,20 +90,20 @@
       overlay_settings = {
         "x86_64-linux" = [ 
           wrapWithNixGL 
-          pinnedNeovim
+          pinnedSolana
           pinnedGnomeExt
         ];
 
         "x86_64-darwin" = [
           pinnedRacket
-          pinnedNeovim
+          pinnedSolana
           pinnedBW
         ];
 
         ## work mac 
         "aarch64-darwin" = [
           pinnedRacket
-          pinnedNeovim
+          pinnedSolana
           pinnedGCL
         ];
       };
@@ -263,7 +263,7 @@
         scala
         scalafmt
         solc
-        zig_0_14
+        zig_0_15
 
         ## python
         poetry
@@ -273,7 +273,7 @@
         roc.packages.${system}.cli
 
         ## golang 
-        go_1_24
+        go_1_25
         (goimports sysPkgs)
       ];
 
@@ -331,7 +331,6 @@
         nwg-launchers
         nwg-look
         blueman
-        eww
         dracula-icon-theme
         ags.packages.${system}.agsFull
 
