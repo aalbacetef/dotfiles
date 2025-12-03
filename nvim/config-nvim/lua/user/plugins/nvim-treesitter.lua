@@ -16,6 +16,7 @@ return {
       "hcl",
       "html",
       "json",
+      "kdl",
       "latex",
       "lua", 
       "make",
