@@ -13,7 +13,7 @@ return {
   { "folke/neoconf.nvim", version = "^1", optional = true },
   { "folke/neodev.nvim", version = "^2", optional = true },
   { "folke/which-key.nvim", version = "^1", optional = true },
-  { "goolord/alpha-nvim", commit = "41283fb402713fc8b327e60907f74e46166f4cfd", optional = true },
+  { "goolord/alpha-nvim", commit = "3979b01cb05734331c7873049001d3f2bb8477f4", optional = true },
   { "hrsh7th/cmp-buffer", commit = "3022dbc9166796b644a841a02de8dd1cc1d311fa", optional = true },
   { "hrsh7th/cmp-nvim-lsp", commit = "5af77f54de1b16c34b23cba810150689a3a90312", optional = true },
   { "hrsh7th/cmp-path", commit = "91ff86cd9c29299a64f968ebb45846c485725f23", optional = true },
