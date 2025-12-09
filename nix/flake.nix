@@ -65,7 +65,6 @@
       };
 
       pinnedSolana = final: prev: {
-        # neovim = pinnedSolanaVersion.legacyPackages.${prev.system}.neovim;
         solana-cli = pinnedSolanaVersion.legacyPackages.${prev.system}.solana-cli; 
       };
 
@@ -180,6 +179,7 @@
         doctl
         gh
         glab
+        gitlab-ci-local
         terraform
 
         # apps 
@@ -346,6 +346,9 @@
         hyprpicker
         xdg-desktop-portal
         xdg-desktop-portal-hyprland
+
+        ## niri wm 
+        niri
       ] ++ commonPackages pkgsLinux;
 
       darwinPkgs = sysPkgs: with sysPkgs; [
