@@ -30,6 +30,9 @@ with sysPkgs;
 
       ## helper for dev work
       watch
+
+      ## new task runner 
+      just
     ];
 
     dlv = pkgs.buildGoModule rec {
