@@ -201,10 +201,12 @@
         btop
         bun
         devenv
+        doggo
         fish
         ffmpeg
         http-server
         httpie
+        jellyfin
         jq
         kitty
         macchina
