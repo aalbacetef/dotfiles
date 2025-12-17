@@ -407,8 +407,7 @@ mk-module() {
 
   echo "scaffolding basic script..."
 
-  echo '
-#!/usr/bin/env bash
+  echo '#!/usr/bin/env bash
 
 current_dir="$(dirname "$(realpath "${BASH_SOURCE[0]}")")"
 
@@ -419,6 +418,8 @@ log() {
   ' >"$script_path"
 
   sed -i "s/{{ .ModuleName }}/$module_name/" "$script_path"
+
+  chmod +x "$script_path"
 
   echo "done"
 }
