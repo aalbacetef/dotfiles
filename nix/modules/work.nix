@@ -33,6 +33,7 @@ with sysPkgs;
 
       ## new task runner 
       just
+      gum
     ];
 
     dlv = pkgs.buildGoModule rec {
