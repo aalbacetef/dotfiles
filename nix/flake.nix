@@ -9,6 +9,14 @@
       url = github:aylur/ags;
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    dms = {
+      url = "github:AvengeMedia/DankMaterialShell/stable";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    quickshell = {
+      url = "git+https://git.outfoxxed.me/quickshell/quickshell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     pinnedRacketVersion.url = github:NixOS/nixpkgs/05bbf675397d5366259409139039af8077d695ce;
     pinnedSolanaVersion.url = github:NixOS/nixpkgs/84b8c066959156b1a1c408d73669592b3ab10a9c;
     pinnedGCLVersion.url = github:NixOS/nixpkgs/0bd7f95e4588643f2c2d403b38d8a2fe44b0fc73;
@@ -19,6 +27,7 @@
   outputs = { 
     self, 
     nixpkgs, roc, nixgl, ags, 
+    dms, quickshell,
     pinnedRacketVersion, 
     pinnedSolanaVersion, 
     pinnedGCLVersion, 
@@ -56,6 +65,25 @@
               --add-flags $out/bin/hyprland-unwrapped
 
             # All the other binaries (hyprctl, hyprpm, hyprpaper, etc.) stay untouched
+          '';
+        });
+
+        ## niri needs gfx 
+        niri = prev.niri.overrideAttrs (old: {
+          buildInputs = (old.buildInputs or []) ++ [prev.makeWrapper];
+          postInstall = (old.postInstall or "") + ''
+            mv $out/bin/niri $out/bin/niri-unwrapped
+
+            makeWrapper ${nixgl.packages.${final.system}.nixGLDefault}/bin/nixGL \
+              $out/bin/niri \
+              --argv0 niri \
+              --add-flags $out/bin/niri-unwrapped
+            
+            mv $out/bin/niri-session $out/bin/niri-session-unwrapped
+            makeWrapper ${nixgl.packages.${final.system}.nixGLDefault}/bin/nixGL \
+              $out/bin/niri-session \
+              --argv0 niri-session \
+              --add-flags $out/bin/niri-session-unwrapped
           '';
         });
       };
@@ -320,6 +348,7 @@
 
         ## gaming 
         lutris
+        pcsx2
         wine
 
         ## wm  
@@ -351,7 +380,10 @@
 
         ## niri wm 
         niri
-      ] ++ commonPackages pkgsLinux;
+      ] ++ commonPackages pkgsLinux ++ [
+          dms.packages.x86_64-linux.dms-shell
+          quickshell.packages.x86_64-linux.quickshell
+        ];
 
       darwinPkgs = sysPkgs: with sysPkgs; [
         gnused
