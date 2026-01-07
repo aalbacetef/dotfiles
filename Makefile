@@ -68,3 +68,7 @@ flatpak-update:
 .PHONY: wallpaper
 wallpaper:
 	./wallpaper/__module.sh
+
+.PHONY: nvim 
+nvim:
+	./nvim/__module.sh
