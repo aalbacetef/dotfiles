@@ -423,3 +423,10 @@ log() {
 
   echo "done"
 }
+
+nix-develop-init() {
+  local path_to="${1:-./flake.nix}"
+  local dotfiles_dir="$(dirname "$current_dir")"
+  echo "path_to: $path_to"
+  "$dotfiles_dir/templates/nix-develop.sh" "$path_to"
+}
