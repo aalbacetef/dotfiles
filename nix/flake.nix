@@ -22,6 +22,8 @@
     pinnedGCLVersion.url = github:NixOS/nixpkgs/0bd7f95e4588643f2c2d403b38d8a2fe44b0fc73;
     pinnedBWVersion.url = github:NixOS/nixpkgs/0bd7f95e4588643f2c2d403b38d8a2fe44b0fc73;
     pinnedGnomeExtVersion.url = github:NixOS/nixpkgs/6ef2b63f3929c62a1ec6a960234fe06940ce3b10;
+    pinnedDXVersion.url = github:NixOS/nixpkgs/93e8cdce7afc64297cfec447c311470788131cd9;
+    pinnedSeanimeVersion.url = github:NixOS/nixpkgs/e4bae1bd10c9c57b2cf517953ab70060a828ee6f;
   };
 
   outputs = { 
@@ -33,6 +35,8 @@
     pinnedGCLVersion, 
     pinnedBWVersion, 
     pinnedGnomeExtVersion, 
+    pinnedDXVersion,
+    pinnedSeanimeVersion,
   ... }:
     let
       wrapWithNixGL = final: prev: {
@@ -42,6 +46,18 @@
         kitty = final.writeShellScriptBin "kitty" ''
           exec ${nixgl.packages.x86_64-linux.nixGLDefault}/bin/nixGL ${prev.kitty}/bin/kitty "$@"
         '';
+
+        zed-editor = prev.zed-editor.overrideAttrs (old: {
+          postInstall = (old.postInstall or "") + ''
+            # Wrap only the main binary (lowercase hyprland) with nixGL
+            mv $out/bin/zed-editor $out/bin/zed-editor-unwrapped
+            makeWrapper ${nixgl.packages.${final.system}.nixGLDefault}/bin/nixGL \
+              $out/bin/zed-editor \
+              --argv0 zed-editor \
+              --add-flags $out/bin/zed-editor-unwrapped
+          '';
+        });
+
 
         obsidian = prev.obsidian.overrideAttrs (old: {
           postInstall = (old.postInstall or "") + ''
@@ -88,6 +104,15 @@
         });
       };
 
+      wrappedDocker = final: prev: {
+        podman = prev.podman.overrideAttrs (old: {
+          postInstall = (old.postInstall or "") + ''
+            ln -s $out/bin/podman $out/bin/docker
+          '';
+        });
+      };
+
+
       pinnedRacket = final: prev: {
         racket = pinnedRacketVersion.legacyPackages.${prev.system}.racket;
       };
@@ -104,6 +129,10 @@
         bitwarden-cli = pinnedBWVersion.legacyPackages.${prev.system}.bitwarden-cli;
       };
 
+      pinnedSeanime = final: prev: {
+        seanime = pinnedSeanimeVersion.legacyPackages.${prev.system}.seanime;
+      };
+
       pinnedGnomeExt = final: prev: {
         gnomeExtensions.caffeine = pinnedGnomeExtVersion.legacyPackages.${prev.system}.gnomeExtensions.caffeine;
         gnomeExtensions.extension-list = pinnedGnomeExtVersion.legacyPackages.${prev.system}.gnomeExtensions.extension-list;
@@ -114,11 +143,18 @@
         gnomeExtensions.vitals = pinnedGnomeExtVersion.legacyPackages.${prev.system}.gnomeExtensions.vitals;
       };
 
+      pinnedDX = final: prev: {
+        dotenvx = pinnedDXVersion.legacyPackages.${prev.system}.dotenvx;
+      };
+
       overlay_settings = {
         "x86_64-linux" = [ 
           wrapWithNixGL 
           pinnedSolana
           pinnedGnomeExt
+          pinnedDX
+          pinnedSeanime
+          wrappedDocker
         ];
 
         "x86_64-darwin" = [
@@ -204,23 +240,25 @@
         # devops and infra
         ansible
         ansible-lint
+        act
         doctl
         gh
         glab
         gitlab-ci-local
         terraform
+        pgcli
+        sqlfluff
 
         # apps 
         brave
         emacs
         helix
-        ladybird
         meld
         neovim
         obsidian
         octaveFull
         ranger
-        vlc
+        zed-editor
 
         # general CLI tools
         alacritty
@@ -231,10 +269,9 @@
         devenv
         doggo
         fish
-        ffmpeg
+        glow
         http-server
         httpie
-        jellyfin
         jq
         kitty
         macchina
@@ -265,6 +302,12 @@
         ## AI
         aider-chat
         gemini-cli
+
+        ## multimedia 
+        ffmpeg
+        jellyfin
+        mpv
+        vlc
       ];
 
       langs = sysPkgs: with sysPkgs; [
@@ -305,104 +348,107 @@
         ## golang 
         go_1_25
         (goimports sysPkgs)
+
+        julia 
       ];
 
       commonPackages = sysPkgs: 
         apps sysPkgs ++ 
         langs sysPkgs ++ 
-        essentials sysPkgs ++ 
-        workPkgs sysPkgs;
+        essentials sysPkgs;
 
-      linuxPkgs = with pkgsLinux; [
-        aardvark-dns
-        apostrophe
-        autotools-language-server
-        checksec
-        chromium
-        gdb
-        ghdl
-        ngspice
-        octaveFull
-        qucs-s
-        remmina
-        shfmt
-        signal-desktop
-        slirp4netns
-        sysstat
+      # linuxPkgs = with pkgsLinux; [
+      #   aardvark-dns
+      #   apostrophe
+      #   autotools-language-server
+      #   checksec
+      #   chromium
+      #   gdb
+      #   ghdl
+      #   ngspice
+      #   octaveFull
+      #   qucs-s
+      #   remmina
+      #   shfmt
+      #   signal-desktop
+      #   slirp4netns
+      #   sysstat
+      #
+      #   popcorntime
+      #   transmission_4-gtk
+      #   vagrant
+      #
+      #   virter
+      #   virt-manager
+      #
+      #   ## gnome extensions 
+      #   gnomeExtensions.caffeine
+      #   gnomeExtensions.extension-list
+      #   gnomeExtensions.just-perfection
+      #   gnomeExtensions.sound-output-device-chooser
+      #   gnomeExtensions.todotxt
+      #   gnomeExtensions.user-themes
+      #   gnomeExtensions.vitals
+      #
+      #   ## gaming 
+      #   lutris
+      #   pcsx2
+      #   wine
+      #
+      #   ## wm  
+      #   # NOTE: requires the following installed via apt: sway, swaybg
+      #   # swayidle
+      #   # swayimg
+      #   # swaylock
+      #   # waybar
+      #   # wofi
+      #   # mako 
+      #   # nwg-launchers
+      #   # nwg-look
+      #   # blueman
+      #   dracula-icon-theme
+      #   # ags.packages.${system}.agsFull
+      #
+      #   ## trying out hyprland
+      #   # hyprland
+      #   # hyprlauncher
+      #   # hyprpaper
+      #   # hypridle
+      #   # hyprpanel
+      #   # flameshot
+      #   # grim
+      #   # hyprshot 
+      #   # hyprpicker
+      #   # xdg-desktop-portal
+      #   # xdg-desktop-portal-hyprland
+      #
+      #   ## niri wm 
+      #   niri
+      #   xwayland
+      #   xwayland-run
+      #   xwayland-satellite
+      #
+      #   ## anime 
+      #   seanime 
+      # ] ++ commonPackages pkgsLinux ++ [
+      #     dms.packages.x86_64-linux.dms-shell
+      #     quickshell.packages.x86_64-linux.quickshell
+      #   ];
+      #
+      # linuxPkgs = sysPkgs: (import ./modules/linux.nix {inherit sysPkgs; inherit dms; inherit quickshell;});
+      linuxPkgs = sysPkgs: (import ./modules/linux.nix {inherit sysPkgs; inherit dms; inherit quickshell;});
 
-        popcorntime
-        transmission_4-gtk
-        vagrant
-
-        virter
-        virt-manager
-
-        ## gnome extensions 
-        gnomeExtensions.caffeine
-        gnomeExtensions.extension-list
-        gnomeExtensions.just-perfection
-        gnomeExtensions.sound-output-device-chooser
-        gnomeExtensions.todotxt
-        gnomeExtensions.user-themes
-        gnomeExtensions.vitals
-
-        ## gaming 
-        lutris
-        pcsx2
-        wine
-
-        ## wm  
-        # NOTE: requires the following installed via apt: sway, swaybg
-        swayidle
-        swayimg
-        swaylock
-        waybar
-        wofi
-        mako 
-        nwg-launchers
-        nwg-look
-        blueman
-        dracula-icon-theme
-        ags.packages.${system}.agsFull
-
-        ## trying out hyprland
-        hyprland
-        hyprlauncher
-        hyprpaper
-        hypridle
-        hyprpanel
-        flameshot
-        grim
-        hyprshot 
-        hyprpicker
-        xdg-desktop-portal
-        xdg-desktop-portal-hyprland
-
-        ## niri wm 
-        niri
-      ] ++ commonPackages pkgsLinux ++ [
-          dms.packages.x86_64-linux.dms-shell
-          quickshell.packages.x86_64-linux.quickshell
-        ];
-
-      darwinPkgs = sysPkgs: with sysPkgs; [
-        gnused
-        rectangle
-        skhd
-        texliveMedium
-        texstudio
-      ] ++ commonPackages sysPkgs;
+      darwinPkgs = sysPkgs: (import ./modules/darwin.nix { inherit sysPkgs; });
 
     in
     {
       packages.x86_64-linux.default =
         let
           pkgs = pkgsLinux;
-          rocPkgs = roc.packages.x86_64-linux;
         in
         pkgs.buildEnv {
           name = "user-linux-packages";
-          paths = linuxPkgs;
+          paths = linuxPkgs pkgsLinux ++ commonPackages pkgsLinux;
         };
 
       packages.x86_64-darwin.default =
@@ -412,7 +458,8 @@
         in
         pkgs.buildEnv {
           name = "user-darwin-packages";
-          paths = darwinPkgs pkgsDarwinX86;
+
+          paths = darwinPkgs pkgsDarwinX86 ++ commonPackages pkgsDarwinX86 ;
         };
 
       packages.aarch64-darwin.default =
@@ -422,7 +469,7 @@
         in
         pkgs.buildEnv {
           name = "user-darwin-packages-arm";
-          paths = darwinPkgs pkgsDarwinArm ++ [ rocPkgs.cli ];
+          paths = darwinPkgs pkgsDarwinArm ++ commonPackages pkgsDarwinArm ++ workPkgs pkgsDarwinArm ;
         };
 
     };
