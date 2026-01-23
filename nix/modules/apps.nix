@@ -67,6 +67,7 @@
 
         ## dev tools
         air
+        dotenvx 
         goose
         web-ext 
         wrk

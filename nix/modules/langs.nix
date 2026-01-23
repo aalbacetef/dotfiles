@@ -19,6 +19,7 @@
 
     langs = with sysPkgs; [
         ammonite
+        dhall
         dotnet-sdk_8
         elixir
         fnm

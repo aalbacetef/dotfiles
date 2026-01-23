@@ -19,7 +19,6 @@
     };
     pinnedRacketVersion.url = github:NixOS/nixpkgs/05bbf675397d5366259409139039af8077d695ce;
     pinnedSolanaVersion.url = github:NixOS/nixpkgs/84b8c066959156b1a1c408d73669592b3ab10a9c;
-    pinnedGCLVersion.url = github:NixOS/nixpkgs/0bd7f95e4588643f2c2d403b38d8a2fe44b0fc73;
     pinnedBWVersion.url = github:NixOS/nixpkgs/0bd7f95e4588643f2c2d403b38d8a2fe44b0fc73;
     pinnedGnomeExtVersion.url = github:NixOS/nixpkgs/6ef2b63f3929c62a1ec6a960234fe06940ce3b10;
     pinnedDXVersion.url = github:NixOS/nixpkgs/93e8cdce7afc64297cfec447c311470788131cd9;
@@ -32,7 +31,6 @@
     dms, quickshell,
     pinnedRacketVersion, 
     pinnedSolanaVersion, 
-    pinnedGCLVersion, 
     pinnedBWVersion, 
     pinnedGnomeExtVersion, 
     pinnedDXVersion,
@@ -120,10 +118,6 @@
         solana-cli = pinnedSolanaVersion.legacyPackages.${prev.system}.solana-cli; 
       };
 
-      pinnedGCL = final: prev: {
-        golangci-lint = pinnedGCLVersion.legacyPackages.${prev.system}.golangci-lint;
-      };
-
       pinnedBW = final: prev: {
         bitwarden-cli = pinnedBWVersion.legacyPackages.${prev.system}.bitwarden-cli;
       };
@@ -166,7 +160,6 @@
         "aarch64-darwin" = [
           pinnedRacket
           pinnedSolana
-          pinnedGCL
         ];
       };
 
@@ -180,7 +173,7 @@
       pkgsDarwinArm = pkgsFor "aarch64-darwin";
 
       workPkgs = sysPkgs: (
-        import ./work.nix { 
+        import ./modules/work.nix { 
           inherit sysPkgs; 
         });
 

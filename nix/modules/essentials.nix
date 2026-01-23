@@ -29,7 +29,6 @@
       podman
       podman-compose
       qemu
-      ripgrep
       rsync
       shellcheck
       socat
