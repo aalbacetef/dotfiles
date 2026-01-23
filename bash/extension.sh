@@ -252,16 +252,24 @@ bw-add-env() {
   bw create attachment --file "$filename" --itemid "$itemid" | jq
 }
 
+########################################################
+#
+# Get an item matching NAME in the folder FOLDER
+#
+########################################################
 bwi() {
   local name="$1"
   local folder="$2"
 
   if test -z "$name"; then
-    echo "name is empty"
+    echo "bwi NAME FOLDER:"
+    echo "  find all items with name NAME in FOLDER"
+    echo "error: NAME is empty"
     return 1
   fi
 
   if test -z "$folder"; then
+    echo "bwi: find all items with name matching: NAME"
     echo "folder is empty"
     return 1
   fi
@@ -429,4 +437,19 @@ nix-develop-init() {
   local dotfiles_dir="$(dirname "$current_dir")"
   echo "path_to: $path_to"
   "$dotfiles_dir/templates/nix-develop.sh" "$path_to"
+}
+
+g-ask() {
+  mkd ~/.gemini-chat
+  gemini
+}
+
+dc-doc() {
+  local name="$1"
+
+  if test -z "$name"; then
+    echo "name cannot be blank"
+  fi
+
+  curl -s "https://hub.docker.com/v2/repositories/library/$name/" | jq -r .full_description | glow -p -s dark
 }
