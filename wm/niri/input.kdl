@@ -1,0 +1,19 @@
+
+// Input device configuration.
+// Find the full list of options on the wiki:
+// https://github.com/YaLTeR/niri/wiki/Configuration:-Input
+input {
+    keyboard {
+        xkb {
+	        layout "us"
+        }
+        numlock
+    }
+    touchpad {
+        "tap"
+    }
+    mouse {
+    }
+    trackpoint {
+    }
+}
