@@ -1,15 +1,88 @@
 
   { sysPkgs }:
-with sysPkgs;
 
   let 
-    apps = [
-        gnused
-        rectangle
-        skhd
-        texliveMedium
-        texstudio
+    devopsAndInfra = with sysPkgs; [
+        ansible
+        ansible-lint
+        act
+        doctl
+        gh
+        glab
+        gitlab-ci-local
+        terraform
+        pgcli
+        sqlfluff
+    ];
+
+    apps = with sysPkgs; [
+        brave
+        emacs
+        helix
+        meld
+        neovim
+        obsidian
+        octaveFull
+        ranger
+
+        ## disabled (causing issues)
+        # zed-editor
+    ];
+
+    cliTools = with sysPkgs; [
+        # general CLI tools
+        alacritty
+        asciidoctor
+        bitwarden-cli
+        btop
+        bun
+        devenv
+        doggo
+        fish
+        glow
+        http-server
+        httpie
+        jq
+        kitty
+        macchina
+        minio-client
+        tmux
+        tree-sitter
+        yq
+        zellij
+    ];
+
+    networkAndSecurity = with sysPkgs; [
+        netcat
+        nmap
+        nmap-formatter
+        semgrep
+        thc-hydra
+    ];
+
+    generalDevTools = with sysPkgs; [
+        ## solana dev environment 
+        anchor
+        solana-cli
+
+        ## dev tools
+        air
+        goose
+        web-ext 
+        wrk
+    ];
+
+    ai = with sysPkgs; [
+        aider-chat
+        gemini-cli
+    ];
+
+    multimediaAndStreaming = with sysPkgs; [
+        ffmpeg
+        jellyfin
+        mpv
+        vlc
     ];
 
   in
-    darwinPkgs 
+    devopsAndInfra ++ apps ++ cliTools ++ networkAndSecurity ++ generalDevTools ++ ai ++ multimediaAndStreaming

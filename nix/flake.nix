@@ -112,7 +112,6 @@
         });
       };
 
-
       pinnedRacket = final: prev: {
         racket = pinnedRacketVersion.legacyPackages.${prev.system}.racket;
       };
@@ -180,263 +179,38 @@
       pkgsDarwinX86 = pkgsFor "x86_64-darwin";
       pkgsDarwinArm = pkgsFor "aarch64-darwin";
 
-      workPkgs = sysPkgs: (import ./work.nix { inherit sysPkgs; });
+      workPkgs = sysPkgs: (
+        import ./work.nix { 
+          inherit sysPkgs; 
+        });
 
-      goimports = sysPkgs: sysPkgs.buildGoModule {
-        pname = "goimports";
-        version = "commit--nov-26-2025"; 
+      essentials = sysPkgs: (
+        import ./modules/essentials.nix {
+          inherit sysPkgs;
+        });
 
-        src = sysPkgs.fetchFromGitHub {
-          owner = "golang";
-          repo = "tools";
-          rev = "d32ec344545c517da66ce368d0298ed9655d27ac"; 
-          hash = "sha256-UGT9mUW0xu8Z+w0FgQsuqT5Gc7NP5WrEdVU2gj0BtfA="; 
-        };
+      langs =  sysPkgs: (
+        import ./modules/langs.nix {
+          inherit sysPkgs;
+          inherit roc;
+        });
 
-        subPackages = [ "cmd/goimports" ];
-        vendorHash = "sha256-FVtHrFgxgDBAfU4x4+zANNhGa3pfsh3XgEQaQYdV1Bs=";
-      };
-
-      essentials = sysPkgs: with sysPkgs; [
-        bash-completion
-        cmake
-        curl
-        coreutils-full
-        fd
-        fzf
-        git
-        gnumake
-        gnuplot
-        golangci-lint
-        go-toml
-        graphviz
-        grpc
-        imagemagick
-        libssh2
-        nasm
-        nerd-fonts._0xproto
-        nerd-fonts.caskaydia-cove
-        nerd-fonts.hack
-        nerd-fonts.inconsolata
-        nerd-fonts.roboto-mono
-        nerd-fonts.ubuntu
-        nerd-fonts.ubuntu-mono
-        openssl_3_6
-        podman
-        podman-compose
-        qemu
-        ripgrep
-        rsync
-        shellcheck
-        socat
-        tree
-        universal-ctags
-        wabt
-        wasmtime
-        wget
-      ];
-
-      apps = sysPkgs: with sysPkgs; [
-        # devops and infra
-        ansible
-        ansible-lint
-        act
-        doctl
-        gh
-        glab
-        gitlab-ci-local
-        terraform
-        pgcli
-        sqlfluff
-
-        # apps 
-        brave
-        emacs
-        helix
-        meld
-        neovim
-        obsidian
-        octaveFull
-        ranger
-        # zed-editor
-
-        # general CLI tools
-        alacritty
-        asciidoctor
-        bitwarden-cli
-        btop
-        bun
-        devenv
-        doggo
-        fish
-        glow
-        http-server
-        httpie
-        jq
-        kitty
-        macchina
-        minio-client
-        tmux
-        tree-sitter
-        yq
-        zellij
-
-        ## network and security tools 
-        netcat
-        nmap
-        nmap-formatter
-        semgrep
-        thc-hydra
-
-
-        ## solana dev environment 
-        anchor
-        solana-cli
-
-        ## dev tools
-        air
-        goose
-        web-ext 
-        wrk
-
-        ## AI
-        aider-chat
-        gemini-cli
-
-        ## multimedia 
-        ffmpeg
-        jellyfin
-        mpv
-        vlc
-      ];
-
-      langs = sysPkgs: with sysPkgs; [
-        ammonite
-        dotnet-sdk_8
-        elixir
-        fnm
-        fsharp
-        lua
-        luarocks
-        metals
-        ocaml
-        ocamlformat
-        ocamlPackages.dune_3
-        ocamlPackages.ocaml-lsp
-        ocamlPackages.odoc
-        ocamlPackages.reason
-        ocamlPackages.utop
-        opam
-        purescript
-        racket
-        ruby
-        rustup
-        sbcl
-        sbt
-        scala
-        scalafmt
-        solc
-        zig_0_15
-
-        ## python
-        poetry
-        python313
-        uv
-
-        roc.packages.${system}.cli
-
-        ## golang 
-        go_1_25
-        (goimports sysPkgs)
-
-        # julia 
-      ];
+      apps = sysPkgs: (
+        import ./modules/apps.nix {
+          inherit sysPkgs;
+        });
 
       commonPackages = sysPkgs: 
         apps sysPkgs ++ 
         langs sysPkgs ++ 
         essentials sysPkgs;
 
-      # linuxPkgs = with pkgsLinux; [
-      #   aardvark-dns
-      #   apostrophe
-      #   autotools-language-server
-      #   checksec
-      #   chromium
-      #   gdb
-      #   ghdl
-      #   ngspice
-      #   octaveFull
-      #   qucs-s
-      #   remmina
-      #   shfmt
-      #   signal-desktop
-      #   slirp4netns
-      #   sysstat
-      #
-      #   popcorntime
-      #   transmission_4-gtk
-      #   vagrant
-      #
-      #   virter
-      #   virt-manager
-      #
-      #   ## gnome extensions 
-      #   gnomeExtensions.caffeine
-      #   gnomeExtensions.extension-list
-      #   gnomeExtensions.just-perfection
-      #   gnomeExtensions.sound-output-device-chooser
-      #   gnomeExtensions.todotxt
-      #   gnomeExtensions.user-themes
-      #   gnomeExtensions.vitals
-      #
-      #   ## gaming 
-      #   lutris
-      #   pcsx2
-      #   wine
-      #
-      #   ## wm  
-      #   # NOTE: requires the following installed via apt: sway, swaybg
-      #   # swayidle
-      #   # swayimg
-      #   # swaylock
-      #   # waybar
-      #   # wofi
-      #   # mako 
-      #   # nwg-launchers
-      #   # nwg-look
-      #   # blueman
-      #   dracula-icon-theme
-      #   # ags.packages.${system}.agsFull
-      #
-      #   ## trying out hyprland
-      #   # hyprland
-      #   # hyprlauncher
-      #   # hyprpaper
-      #   # hypridle
-      #   # hyprpanel
-      #   # flameshot
-      #   # grim
-      #   # hyprshot 
-      #   # hyprpicker
-      #   # xdg-desktop-portal
-      #   # xdg-desktop-portal-hyprland
-      #
-      #   ## niri wm 
-      #   niri
-      #   xwayland
-      #   xwayland-run
-      #   xwayland-satellite
-      #
-      #   ## anime 
-      #   seanime 
-      # ] ++ commonPackages pkgsLinux ++ [
-      #     dms.packages.x86_64-linux.dms-shell
-      #     quickshell.packages.x86_64-linux.quickshell
-      #   ];
-      #
-      # linuxPkgs = sysPkgs: (import ./modules/linux.nix {inherit sysPkgs; inherit dms; inherit quickshell;});
-      linuxPkgs = sysPkgs: (import ./modules/linux.nix {inherit sysPkgs; inherit dms; inherit quickshell;});
+      linuxPkgs = sysPkgs: (
+        import ./modules/linux.nix {
+          inherit sysPkgs; 
+          inherit dms; 
+          inherit quickshell;
+        });
 
       darwinPkgs = sysPkgs: (
         import ./modules/darwin.nix { 

@@ -1,0 +1,43 @@
+  { sysPkgs }: 
+
+  let 
+    essentials = with sysPkgs; [
+      bash-completion
+      cmake
+      curl
+      coreutils-full
+      fd
+      fzf
+      git
+      gnumake
+      gnuplot
+      golangci-lint
+      go-toml
+      graphviz
+      grpc
+      imagemagick
+      libssh2
+      nasm
+      nerd-fonts._0xproto
+      nerd-fonts.caskaydia-cove
+      nerd-fonts.hack
+      nerd-fonts.inconsolata
+      nerd-fonts.roboto-mono
+      nerd-fonts.ubuntu
+      nerd-fonts.ubuntu-mono
+      openssl_3_6
+      podman
+      podman-compose
+      qemu
+      ripgrep
+      rsync
+      shellcheck
+      socat
+      tree
+      universal-ctags
+      wabt
+      wasmtime
+      wget
+    ];
+  in 
+    essentials
