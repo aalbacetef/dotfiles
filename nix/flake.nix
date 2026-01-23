@@ -258,7 +258,7 @@
         obsidian
         octaveFull
         ranger
-        zed-editor
+        # zed-editor
 
         # general CLI tools
         alacritty
@@ -349,7 +349,7 @@
         go_1_25
         (goimports sysPkgs)
 
-        julia 
+        # julia 
       ];
 
       commonPackages = sysPkgs: 
@@ -438,7 +438,10 @@
       # linuxPkgs = sysPkgs: (import ./modules/linux.nix {inherit sysPkgs; inherit dms; inherit quickshell;});
       linuxPkgs = sysPkgs: (import ./modules/linux.nix {inherit sysPkgs; inherit dms; inherit quickshell;});
 
-      darwinPkgs = sysPkgs: (import ./modules/darwin.nix { inherit sysPkgs; });
+      darwinPkgs = sysPkgs: (
+        import ./modules/darwin.nix { 
+          inherit sysPkgs; 
+        });
 
     in
     {

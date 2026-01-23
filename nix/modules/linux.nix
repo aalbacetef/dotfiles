@@ -84,4 +84,4 @@
   ];
 
   in
-    linuxPkgs ++ otherPkgs;
+    linuxPkgs ++ otherPkgs
