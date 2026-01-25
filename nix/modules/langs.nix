@@ -44,6 +44,7 @@
         scala
         scalafmt
         solc
+        typespec
         zig_0_15
 
         ## python

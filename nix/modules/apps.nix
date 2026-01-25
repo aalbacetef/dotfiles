@@ -69,6 +69,7 @@
         air
         dotenvx 
         goose
+        sqlc
         web-ext 
         wrk
     ];
