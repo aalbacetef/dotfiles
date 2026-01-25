@@ -440,8 +440,10 @@ nix-develop-init() {
 }
 
 g-ask() {
-  mkd ~/.gemini-chat
-  gemini
+  ({
+    mkd ~/.gemini-chat
+    gemini
+  })
 }
 
 dc-doc() {
@@ -452,4 +454,21 @@ dc-doc() {
   fi
 
   curl -s "https://hub.docker.com/v2/repositories/library/$name/" | jq -r .full_description | glow -p -s dark
+}
+
+dot-help() {
+  echo '
+  HELPERS
+
+    GENERAL 
+      dc-doc             get Docker Hub README for image (IMAGE)
+      nix-develop-init   bootstrap nix develop flake
+
+    BITWARDEN 
+      bwf                get folder ID based on name  (NAME)
+      bw-folders         get all folder names
+      bw-add-env         add an attachment to developer environment folder (NAME, FILENAME)
+      bwi                get item based on name  (NAME, FOLDER)
+      bw-mk-note         make a note (NAME, FOLDER)
+  '
 }
