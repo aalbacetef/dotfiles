@@ -10,6 +10,7 @@ return {
       "c", 
       "css",
       "csv",
+      "cue",
       "dhall",
       "dockerfile", 
       "elixir",
