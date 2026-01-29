@@ -456,6 +456,18 @@ dc-doc() {
   curl -s "https://hub.docker.com/v2/repositories/library/$name/" | jq -r .full_description | glow -p -s dark
 }
 
+nd-enter() {
+  nix develop --impure
+}
+
+nd-run() {
+  nix develop --impure --command -- "$@"
+}
+
+dt() {
+  date -u +"%Y-%m-%dT%H:%M:%SZ" "$@"
+}
+
 dot-help() {
   echo '
   HELPERS
@@ -463,6 +475,8 @@ dot-help() {
     GENERAL 
       dc-doc             get Docker Hub README for image (IMAGE)
       nix-develop-init   bootstrap nix develop flake
+      nd-run             run a command in nix develop (COMMAND)
+      nd-enter           enter nix develop flake
 
     BITWARDEN 
       bwf                get folder ID based on name  (NAME)
