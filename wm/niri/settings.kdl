@@ -8,7 +8,7 @@ spawn-at-startup "dms" "run"
 spawn-at-startup "/usr/lib/mate-polkit/polkit-mate-authentication-agent-1"
 
 spawn-at-startup "dms" "ipc" "call" "wallpaper" "set" "/home/arturo/.config/wallpaper/wallpaper.png"
-spawn-at-startup "pkill" "nm-applet"
+spawn-at-startup "bash" "-c" "sleep 2 && pkill nm-applet"
 
 prefer-no-csd
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
