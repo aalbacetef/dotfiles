@@ -7,6 +7,7 @@ return {
       "bash-language-server",
       "clangd",
       "css-lsp",
+      "cue",
       "dhall-lsp",
       "docker-language-server",
       "elixir-ls",
