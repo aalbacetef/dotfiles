@@ -1,6 +1,7 @@
 FROM nixpkgs/nix:latest AS base 
 
 WORKDIR /test
+
 RUN mkdir -p /root/.config/nix
 
 COPY ./config/nix/nix.conf /root/.config/nix/nix.conf 

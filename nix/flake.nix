@@ -56,7 +56,6 @@
           '';
         });
 
-
         obsidian = prev.obsidian.overrideAttrs (old: {
           postInstall = (old.postInstall or "") + ''
             # Wrap only the main binary (lowercase hyprland) with nixGL

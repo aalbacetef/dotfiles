@@ -26,7 +26,7 @@
         fsharp
         lua
         luarocks
-        metals
+        nickel
         ocaml
         ocamlformat
         ocamlPackages.dune_3
@@ -60,7 +60,29 @@
 
         ## disabled 
         # julia 
+
+        # configs 
+        cue
+        nickel
+    ];
+
+    language_servers = with sysPkgs; [
+        lua-language-server
+        metals
+        pyright
+        zls
+        nil
+
+        dhall-lsp-server
+        gopls
+        autotools-language-server
+        eslint
+        typescript-language-server
+        yaml-language-server
+        bash-language-server
+        sqls
+        vscode-langservers-extracted
     ];
 
   in
-    langs
+    langs ++ language_servers

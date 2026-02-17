@@ -6,6 +6,7 @@
         aardvark-dns
         apostrophe
         autotools-language-server
+        blocky
         checksec
         chromium
         gdb

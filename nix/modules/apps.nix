@@ -53,10 +53,13 @@
     ];
 
     networkAndSecurity = with sysPkgs; [
+        assetfinder
         netcat
         nmap
         nmap-formatter
         semgrep
+        subfinder
+        testssl
         thc-hydra
     ];
 
@@ -82,6 +85,7 @@
     multimediaAndStreaming = with sysPkgs; [
         ffmpeg
         jellyfin
+        mangayomi
         mpv
         vlc
     ];
