@@ -1,0 +1,161 @@
+[language-server.typescript-language-server]
+command = "typescript-language-server"
+args = ["--stdio"]
+
+[language-server.eslint]
+command = "vscode-eslint-language-server"
+args = ["--stdio"]
+
+[[language]]
+name = "typescript"
+scope = "source.ts"
+file-types = ["ts"]
+language-servers = [ "typescript-language-server", "eslint" ]
+auto-format = true
+
+[[language]]
+name = "tsx"
+scope = "source.tsx"
+file-types = ["tsx"]
+language-servers = [ "typescript-language-server", "eslint" ]
+auto-format = true
+
+[language-server.vue-language-server]
+command = "vue-language-server"
+args = ["--stdio"]
+
+[[language]]
+name = "vue"
+scope = "source.vue"
+file-types = ["vue"]
+language-servers = [ "vue-language-server", "eslint" ]
+auto-format = true
+
+[language-server.make-ls]
+command = "make-ls"
+
+[[language]]
+name = "makefile"
+scope = "source.makefile"
+file-types = ["Makefile", "makefile", "mk"]
+language-servers = [ "make-ls" ]
+
+[language-server.gopls]
+command = "gopls"
+
+[[language]]
+name = "go"
+scope = "source.go"
+file-types = ["go"]
+language-servers = [ "gopls" ]
+auto-format = true
+
+[language-server.dhall-lsp-server]
+command = "dhall-lsp-server"
+
+[[language]]
+name = "dhall"
+scope = "source.dhall"
+file-types = ["dhall"]
+language-servers = [ "dhall-lsp-server" ]
+auto-format = true
+
+[language-server.yaml-language-server]
+command = "yaml-language-server"
+args = ["--stdio"]
+
+[[language]]
+name = "yaml"
+scope = "source.yaml"
+file-types = ["yaml", "yml"]
+language-servers = ["yaml-language-server"]
+auto-format = true
+
+[language-server.sql-language-server]
+command = "sql-language-server"
+args = ["--stdio"]
+
+[[language]]
+name = "sql"
+scope = "source.sql"
+file-types = ["sql"]
+language-servers = ["sql-language-server"]
+auto-format = true
+
+[language-server.bash-language-server]
+command = "bash-language-server"
+args = ["start"]
+
+[[language]]
+name = "bash"
+scope = "source.bash"
+file-types = ["sh", "bash"]
+shebangs = ["sh", "bash"]
+language-servers = ["bash-language-server"]
+auto-format = true
+
+[language-server.mojo-lsp-server]
+command = "mojo-lsp-server"
+
+[[language]]
+name = "mojo"
+scope = "source.mojo"
+file-types = ["mojo", "🔥"]
+roots = ["mojo_project.toml", "pyproject.toml"]
+language-servers = ["mojo-lsp-server"]
+auto-format = true
+
+[[grammar]]
+name = "mojo"
+source = { git = "https://github.com/lsh/tree-sitter-mojo", rev = "main" }
+
+[language-server.nil]
+command = "nil"
+
+[[language]]
+name = "nix"
+scope = "source.nix"
+file-types = ["nix"]
+language-servers = ["nil"]
+auto-format = true
+
+[language-server.zls]
+command = "zls"
+
+[[language]]
+name = "zig"
+scope = "source.zig"
+file-types = ["zig"]
+language-servers = ["zls"]
+auto-format = true
+
+[language-server.rust-analyzer]
+command = "rust-analyzer"
+
+[[language]]
+name = "rust"
+scope = "source.rust"
+file-types = ["rs"]
+language-servers = ["rust-analyzer"]
+auto-format = true
+
+[language-server.pyright]
+command = "pyright-langserver"
+args = ["--stdio"]
+
+[[language]]
+name = "python"
+scope = "source.python"
+file-types = ["py"]
+language-servers = ["pyright"]
+auto-format = true
+
+[language-server.lua-language-server]
+command = "lua-language-server"
+
+[[language]]
+name = "lua"
+scope = "source.lua"
+file-types = ["lua"]
+language-servers = ["lua-language-server"]
+auto-format = true
