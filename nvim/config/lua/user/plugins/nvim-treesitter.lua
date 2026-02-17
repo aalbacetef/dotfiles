@@ -2,8 +2,12 @@ return {
   "nvim-treesitter/nvim-treesitter",
   config = function(_, opts)
     vim.g.ts_update_concurrency = 1
+    require("nvim-treesitter.configs").setup(opts)
   end,
   opts = {
+    highlight = {
+      enable = true
+    },
     ensure_installed = {
       "astro",
       "bash", 
@@ -27,6 +31,7 @@ return {
       "markdown",
       "markdown_inline",
       "meson",
+      "nickel",
       "ninja",
       "nix",
       "ocaml",

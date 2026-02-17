@@ -6,7 +6,8 @@ vim.filetype.add({
 
 vim.filetype.add({
   extension = {
-    purs = 'purescript'
+    purs = 'purescript',
+    ncl = 'nickel'
   }
 })
 
@@ -16,18 +17,18 @@ return {
   { import = "user.plugins" },
 
   -- ensure wrapping is enabled
-  { 
-    "AstroNvim/astrocore", 
+  {
+    "AstroNvim/astrocore",
     opts = function(_, opts)
       opts.options.opt.wrap = true
       return opts
-    end 
+    end
   },
   {
     "AstroNvim/astrolsp",
     opts = function(_, opts)
-      opts.formatting.format_on_save.enabled = true 
+      opts.formatting.format_on_save.enabled = true
       return opts
-    end 
+    end
   },
 }

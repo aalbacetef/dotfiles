@@ -20,6 +20,7 @@ return {
       "julia-lsp",
       "kdlfmt",
       "marksman",
+      "nickel-lang-lsp",
       "oxlint",
       "purescript-language-server",
       "pyright",
