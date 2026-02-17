@@ -1,0 +1,11 @@
+[Unit]
+Description=Blocky DNS
+After=network.target 
+
+[Service]
+ExecStart=/usr/bin/sg blocky-bypass -c "%h/.nix-profile/bin/blocky --config %h/.config/blocky/config.yml"
+
+Restart=on-failure
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,9 @@
+#!/usr/bin/env nft -f
+
+table ip user_dns_nat {
+    chain OUTPUT {
+        type nat hook output priority 0; policy accept;
+        udp dport 53 skuid 1000 skgid != 30001 counter redirect to :25353
+        tcp dport 53 skuid 1000 skgid != 30001 counter redirect to :25353
+    }
+}

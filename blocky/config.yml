@@ -1,0 +1,43 @@
+
+upstreams:
+  groups:
+    default:
+      # controld (ads)
+      - 76.76.2.2
+      - 76.76.10.2
+
+      # controld (malware)
+      - 76.76.2.1
+      - 76.76.10.1
+
+      # adguard dns (blocks tracking and ads)
+      - 94.140.14.14
+      - 94.140.14.15
+
+      # quad9 - security (blocks malware)
+      - 9.9.9.9 
+      - 149.112.112.112
+
+      # control D - uncensored / private 
+      - 76.76.2.0
+      - 76.76.10.0
+
+blocking:
+  denylists:
+    ads:
+      - https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
+      - https://s3.amazonaws.com/lists.disconnect.me/simple_ad.txt
+  clientGroupsBlock:
+    default: 
+      - ads
+
+customDNS:
+  mapping:
+    "test.dev": "127.0.0.1"
+
+ports:
+  dns: 25353
+  http: 25380
+
+log:
+  level: info
