@@ -468,12 +468,19 @@ dt() {
   date -u +"%Y-%m-%dT%H:%M:%SZ" "$@"
 }
 
+gh-doc() {
+  local repo_path="$1"
+
+  glow -s dark -p github.com/$repo_path
+}
+
 dot-help() {
   echo '
   HELPERS
 
     GENERAL 
       dc-doc             get Docker Hub README for image (IMAGE)
+      gh-doc             get Github README for repo (REPO_PATH)
       nix-develop-init   bootstrap nix develop flake
       nd-run             run a command in nix develop (COMMAND)
       nd-enter           enter nix develop flake

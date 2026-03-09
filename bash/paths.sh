@@ -6,14 +6,14 @@ source "$DOTFILES/bash/helpers/platform.sh"
 envrc="$DOTFILES/bash/env.rc"
 
 if GO_BIN="$(go env GOPATH)/bin"; then
-  if ! (echo "$PATH" | grep -q "$GO_BIN") ; then 
+  if ! (echo "$PATH" | grep -q "$GO_BIN"); then
     export PATH="$GO_BIN:$PATH"
   fi
 fi
 
 add_local_bin=$(env::get "$envrc" ADD_LOCAL_BIN)
-if test -n "$add_local_bin"; then 
-  if ! (echo "$PATH" | grep -q "$add_local_bin"); then 
+if test -n "$add_local_bin"; then
+  if ! (echo "$PATH" | grep -q "$add_local_bin"); then
     export PATH="$add_local_bin:$PATH"
   fi
 fi
@@ -23,24 +23,29 @@ export NVM_DIR="$HOME/.nvm"
 export KITTY_CONFIG_DIRECTORY="$DOTFILES/kitty"
 
 vagrant_home=$(env::get "$envrc" VAGRANT_HOME)
-if test -n "$vagrant_home"; then 
+if test -n "$vagrant_home"; then
   export VAGRANT_HOME="$vagrant_home"
 fi
 
 docker_host=$(env::get "$envrc" DOCKER_HOST)
-if test -n "$docker_host"; then 
+if test -n "$docker_host"; then
   export DOCKER_HOST="$docker_host"
-fi 
+fi
 
 shadowed_docker_host=$(env::get "$envrc" SHADOWED_DOCKER_HOST)
-if test -n "$shadowed_docker_host"; then 
+if test -n "$shadowed_docker_host"; then
   export SHADOWED_DOCKER_HOST="$shadowed_docker_host"
 fi
 
-if platform::is_linux; then 
+if platform::is_linux; then
   xdg_data_dirs="$(env::get "$envrc" XDG_DATA_DIRS)"
 
-  if test -n "$xdg_data_dirs"; then 
+  if test -n "$xdg_data_dirs"; then
     export XDG_DATA_DIRS="$xdg_data_dirs:$XDG_DATA_DIRS"
-  fi 
+  fi
+fi
+
+pager=$(env::get "$envrc" PAGER)
+if test -n "$pager"; then
+  export PAGER="$pager"
 fi
