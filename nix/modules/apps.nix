@@ -46,6 +46,8 @@
         kitty
         macchina
         minio-client
+        moor # pager, replaces less
+        ngrok
         tmux
         tree-sitter
         yq
