@@ -34,6 +34,18 @@ with sysPkgs;
       ## new task runner 
       just
       gum
+
+
+      ### annoying packages to build
+
+      ## needed for mocks 
+      mockgen
+
+      ## needed for formatting 
+      golines
+
+      ## for test summaries 
+      gotestsum
     ];
 
     dlv = pkgs.buildGoModule rec {
@@ -53,7 +65,7 @@ with sysPkgs;
 
     gofumpt = pkgs.buildGoModule rec {
       pname = "gofumpt";
-      version = "0.8.0";
+      version = "0.9.2";
       src = pkgs.fetchFromGitHub {
         owner = "mvdan";
         repo = "gofumpt";
@@ -61,50 +73,7 @@ with sysPkgs;
         hash = "sha256-37wYYB0k8mhQq30y1oo77qW3bIqqN/K/NG1RgxK6dyI=";
       };
       vendorHash = "sha256-T6/xEXv8+io3XwQ2keacpYYIdTnYhTTUCojf62tTwbA=";
-      go = pkgs.go_1_24;
-      doCheck = false;
-    };
-
-    golines = pkgs.buildGoModule rec {
-      pname = "golines";
-      version = "0.12.2";
-      src = pkgs.fetchFromGitHub {
-        owner = "segmentio";
-        repo = "golines";
-        rev = "v${version}";
-        hash = "sha256-D0gI9BA0vgM1DBqwolNTfPsTCWuOGrcu5gAVFEdyVGg=";
-      };
-      vendorHash = "sha256-jI3/m1UdZMKrS3H9jPhcVAUCjc1G/ejzHi9SCTy24ak=";
-      go = pkgs.go_1_24;
-      doCheck = false;
-    };
-
-    gotestsum = pkgs.buildGoModule rec {
-      pname = "gotestsum";
-      version = "1.12.2";
-      src = pkgs.fetchFromGitHub {
-        owner = "gotestyourself";
-        repo = "gotestsum";
-        rev = "v${version}";
-        hash = "sha256-l4K+8J24egaKS64inQrBWnPLLGBu1W03OUi4WWQoAgs=";
-      };
-      vendorHash = "sha256-SJacdFAdMiKDGLnEEBKnblvHglIBIKf2N20EOFCPs88=";
-      go = pkgs.go_1_24;
-      doCheck = false;
-    };
-
-    mockgen = pkgs.buildGoModule rec {
-      pname = "mockgen";
-      version = "1.6.0";
-      src = pkgs.fetchFromGitHub {
-        owner = "golang";
-        repo = "mock";
-        rev = "v${version}";
-        hash = "sha256-5Kp7oTmd8kqUN+rzm9cLqp9nb3jZdQyltGGQDiRSWcE=";
-      };
-      vendorHash = "sha256-5gkrn+OxbNN8J1lbgbxM8jACtKA7t07sbfJ7gVJWpJM=";
-      subPackages = [ "mockgen" ];
-      go = pkgs.go_1_24;
+      go = pkgs.go_1_26;
       doCheck = false;
     };
 
@@ -132,7 +101,7 @@ with sysPkgs;
         rev = "v${version}";
         hash = "sha256-aM8okSrLj2oIb3Ey2KkHu3UQY7mSnPjMfwNsdL2Fz28=";
       };
-      vendorHash = "sha256-yJ1D0uhUQXBjw7ikRmcW8DFn0wvnBCw6jDYl3UQepXU=";
+      vendorHash = "sha256-MuX5CrjOXZOYsGhyaT+e39ne5iQFmnXzGZidyOoIQvM=";
       subPackages = [ "cmd/migrate" ];
       tags = [ "postgres" ];
       go = pkgs.go_1_24;

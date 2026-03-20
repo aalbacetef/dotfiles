@@ -147,6 +147,10 @@
         vlc = prev.runCommand "stubbed-package" {} ''
           mkdir $out
         '';
+
+        thc-hydra = prev.runCommand "stubbed-package" {} ''
+          mkdir $out
+        '';
       };
 
       overlay_settings = {
