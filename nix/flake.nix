@@ -139,6 +139,16 @@
         dotenvx = pinnedDXVersion.legacyPackages.${prev.system}.dotenvx;
       };
 
+
+      noopOverlayARMDarwin = final: prev: {
+        mangayomi = prev.runCommand "stubbed-package" {} ''
+          mkdir $out
+        '';
+        vlc = prev.runCommand "stubbed-package" {} ''
+          mkdir $out
+        '';
+      };
+
       overlay_settings = {
         "x86_64-linux" = [ 
           wrapWithNixGL 
@@ -159,6 +169,8 @@
         "aarch64-darwin" = [
           pinnedRacket
           pinnedSolana
+          pinnedDX
+          noopOverlayARMDarwin
         ];
       };
 
