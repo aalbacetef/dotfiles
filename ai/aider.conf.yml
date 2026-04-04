@@ -29,7 +29,7 @@ auto-commits: false # don't autocommit all the time
 
 read:
   - AGENTS.md
-
+  - ai/
 ## TODO 
 #
 # I'll probably want to tweak these in the future 
