@@ -1,0 +1,41 @@
+{
+  "$schema": "https://charm.land/crush.json",
+  "options": {
+    "initialize_as": "AGENTS.md",
+    "disable_metrics": true,
+    "skills_paths": ["~/.agents/skills/"]
+  },
+  "providers": {
+    "ollama": {
+      "name": "Ollama",
+      "base_url": "http://localhost:11434/v1/",
+      "type": "openai",
+      "models": [
+        {
+          "name": "Ollama Phi3.5 3.8B",
+          "id": "phi3.5:3.8b",
+          "context_window": 65536,
+          "default_max_tokens": 20000
+        },
+        {
+          "name": "Ollama Qwen3-VL 4B Instruct",
+          "id": "qwen3-vl:4b-instruct",
+          "context_window": 65536,
+          "default_max_tokens": 20000
+        },
+        {
+          "name": "Ollama Deepseek Coder 6.7B",
+          "id": "deepseek-coder:6.7b",
+          "context_window": 65536,
+          "default_max_tokens": 20000
+        }
+      ]
+    }
+  },
+  "models": {
+    "default": {
+      "model": "gemini-2.5-flash",
+      "provider": "google"
+    }
+  }
+}
