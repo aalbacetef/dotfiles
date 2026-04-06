@@ -14,7 +14,7 @@ help:
 	@echo "  - macchina"
 	@echo "  - ranger"
 	@echo "  - tmux"
-	@echo "  - ai"
+	@echo "  - aider"
 	@echo "  - flatpak"
 
 .PHONY: all
@@ -51,9 +51,9 @@ tmux: sync
 sync:
 	git submodule update --init --recursive
 
-.PHONY: ai
-ai:
-	./ai/__module.sh
+.PHONY: aider
+aider:
+	./ai/aider/__module.sh
 
 .PHONY: alacritty
 alacritty:
