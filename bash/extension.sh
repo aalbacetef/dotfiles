@@ -493,3 +493,12 @@ dot-help() {
       bw-mk-note         make a note (NAME, FOLDER)
   '
 }
+
+crushy() {
+  set -ueo pipefail
+
+  readonly HASH=$(pwd | sha1sum | cut -d' ' -f1)
+  readonly STATE_PATH="${HOME}/.local/share/crush/projects/${HASH}"
+
+  crush -D "${STATE_PATH}" "${@}"
+}
