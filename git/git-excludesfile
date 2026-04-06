@@ -30,6 +30,9 @@ Taskfile.yml
 /builds/
 /dist/
 
+# exclude node stuff
+node_modules/
+
 ## 
 ## Mac specific
 ##
@@ -37,8 +40,10 @@ Taskfile.yml
 
 ##
 ## AI files
-## 
+##
 aider.input.history
 aider.chat.history.md
 aider.llm.history
 .aider.tags.cache.v4/
+.crush/
+
