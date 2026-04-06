@@ -43,7 +43,6 @@
         sbt
         scala
         scalafmt
-        solc
         typespec
         zig_0_15
 
@@ -64,6 +63,12 @@
         # configs 
         cue
         nickel
+
+        ## evm 
+        solc
+        vyper 
+        foundry
+        go-ethereum
     ];
 
     language_servers = with sysPkgs; [

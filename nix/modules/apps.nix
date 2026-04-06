@@ -80,8 +80,13 @@
     ];
 
     ai = with sysPkgs; [
-        aider-chat
+        # temporary disabling:
+        ## aider-chat
+
         gemini-cli
+        crush 
+        ollama
+        opencode
     ];
 
     multimediaAndStreaming = with sysPkgs; [
