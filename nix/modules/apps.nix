@@ -10,6 +10,7 @@
         gh
         glab
         gitlab-ci-local
+        kustomize
         terraform
         pgcli
         sqlfluff
@@ -87,6 +88,7 @@
         crush 
         ollama
         opencode
+        llama-swap
     ];
 
     multimediaAndStreaming = with sysPkgs; [
