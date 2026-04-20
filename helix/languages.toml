@@ -159,3 +159,18 @@ scope = "source.lua"
 file-types = ["lua"]
 language-servers = ["lua-language-server"]
 auto-format = true
+
+[language-server.vyper-lsp]
+command = "/home/arturo/.local/bin/vyper-lsp"
+args = ["--stdio"]
+
+[[language]]
+name = "vyper"
+scope = "source.vyper"
+file-types = ["vy"]
+language-servers = ["vyper-lsp"]
+auto-format = true
+
+[[grammar]]
+name = "vyper"
+source = { git = "https://github.com/madlabman/tree-sitter-vyper", rev = "master" }
