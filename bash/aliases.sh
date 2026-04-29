@@ -14,6 +14,10 @@ alias l='ls'
 ## nix
 alias nix-search='nix search nixpkgs'
 
-## dotenvx 
+## dotenvx
 alias dx='dotenvx'
 alias dxr='dotenvx run'
+
+## k8s
+alias kubectl='kubecolor'
+alias k='kubecolor'
