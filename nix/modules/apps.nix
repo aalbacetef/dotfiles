@@ -14,6 +14,11 @@
         terraform
         pgcli
         sqlfluff
+        lima
+        k9s
+        kubie
+        kubectl
+        kubecolor
     ];
 
     apps = with sysPkgs; [
@@ -25,9 +30,6 @@
         obsidian
         octaveFull
         ranger
-
-        ## disabled (causing issues)
-        # zed-editor
     ];
 
     cliTools = with sysPkgs; [
@@ -81,9 +83,7 @@
     ];
 
     ai = with sysPkgs; [
-        # temporary disabling:
-        ## aider-chat
-
+        aider-chat
         gemini-cli
         crush 
         ollama
