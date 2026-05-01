@@ -19,7 +19,7 @@ return {
       "julia-lsp",
       "kdlfmt",
       "marksman",
-      "nickel-lang-lsp",
+      -- "nickel-lang-lsp",
       "oxfmt",
       "oxlint",
       "pkl-lsp",
